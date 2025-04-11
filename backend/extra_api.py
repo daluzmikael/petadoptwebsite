@@ -30,7 +30,7 @@ def upload_document():
     return jsonify({"message": "Document uploaded successfully"})
 
 
-# --- Adoption Process Tracker ---
+# Adoption Process Tracker 
 
 @extra_api.route('/api/adoption/status', methods=['GET'])
 def get_adoption_status():
