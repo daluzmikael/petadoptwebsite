@@ -11,7 +11,7 @@ app.register_blueprint(extra_api)
 
 @app.route('/')
 def home():
-    return 'API is running! Try /api/pets or /api/profile'
+    return 'API is running'
 
 if __name__ == '__main__':
     app.run(debug=True)
