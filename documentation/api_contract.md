@@ -2,8 +2,8 @@
 API Contract — Milestone 5
 ===========================
 
-Team: CSE2102 - Spring 2025  
-Document: API Contract  
+Team 16 Spring 2025  
+API Contract  
 Date: April 10, 2025
 
 Pet Endpoints
