@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 
 extra_api = Blueprint('extra_api', __name__)
 
-# --- Application Status & Notifications ---
+# Application Status & Notifications 
 
 @extra_api.route('/api/application/status', methods=['GET'])
 def get_application_status():
@@ -16,7 +16,7 @@ def get_notifications():
     ])
 
 
-# --- Digital Paperwork ---
+# Digital Paperwork 
 
 @extra_api.route('/api/documents', methods=['GET'])
 def get_documents():
@@ -43,7 +43,7 @@ def get_adoption_status():
     })
 
 
-# --- Events: RSVP and Check-In ---
+# Events: RSVP and Check-In 
 
 @extra_api.route('/api/events', methods=['GET'])
 def get_events():
