@@ -9,4 +9,4 @@ app.register_blueprint(user_app)
 app.register_blueprint(pet_app)
 
 if __name__ == '__main__':
-    app.run(debug=True)ain py
+    app.run(debug=True)
