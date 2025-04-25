@@ -12,6 +12,7 @@ import Questionnaire from './pages/Questionnaire';
 function App() {
   return (
     <Router>
+      <Nav />
       <div className="min-h-screen bg-white text-black font-sans">
         <Routes>
           <Route path="/" element={<Login />} />
@@ -28,3 +29,4 @@ function App() {
 }
 
 export default App;
+
