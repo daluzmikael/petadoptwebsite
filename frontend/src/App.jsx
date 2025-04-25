@@ -1,3 +1,4 @@
+// src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Adopt from './pages/Adopt';
@@ -10,9 +11,11 @@ import Questionnaire from './pages/Questionnaire';
 import Matching from './pages/Matching';
 import Landing from './pages/Landing'; // Optional, if you still want a landing page
 
+
 function App() {
   return (
     <Router>
+      <Nav />
       <div className="min-h-screen bg-white text-black font-sans">
         <Routes>
           <Route path="/" element={<Login />} />
