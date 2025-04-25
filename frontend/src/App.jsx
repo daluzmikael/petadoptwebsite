@@ -8,6 +8,9 @@ import Events from './pages/Events';
 import Login from './pages/Login';
 import Guide from './pages/Guide';
 import Questionnaire from './pages/Questionnaire';
+import Matching from './pages/Matching';
+import Landing from './pages/Landing'; // Optional, if you still want a landing page
+
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/guide" element={<Guide />} />
           <Route path="/questionnaire" element={<Questionnaire />} />
+          <Route path="/matching" element={<Matching />} />
+          {/* Optional homepage route */}
+          {/* <Route path="/landing" element={<Landing />} /> */}
         </Routes>
       </div>
     </Router>
