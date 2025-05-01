@@ -36,8 +36,10 @@ python backend/main.py
 - /apidocs <- Swagger UI doc
 
 
-Docker
+## Docker
+
 docker build -t teamXX-backend ./backend
+
 docker run -p 5000:5000 teamXX-backend
 
 ---
