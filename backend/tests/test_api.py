@@ -1,4 +1,5 @@
 import requests
+import uuid
 # Backend tests go here
 
 BASE_URL = "http://localhost:5000"
