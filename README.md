@@ -53,9 +53,11 @@ docker run -p 5000:5000 teamXX-backend
 | `/api/pets` | `GET` | Get all pets
 | `/api/pets/search?species=cat` | `GET` | Filter pets by species
 | `/api/pets/<id>` | `GET` | Get pet by ID
-| `/api/pets/<id>/save` | `POST` | (Mock) Save pet
-| `/api/pets/saved` | `GET` | (Mock) Get saved pets
+| `/api/pets/<id>/save` | `POST` | Save pet
+| `/api/pets/saved` | `GET` |  Get saved pets
 | `/apidocs` | `GET` | Swagger UI interactive docs
+
+(/api/pets/<id>/save and /api/pets/saved  have full functionality)
 
 
 
