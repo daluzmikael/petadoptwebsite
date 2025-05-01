@@ -44,7 +44,7 @@ docker run -p 5000:5000 teamXX-backend
 
 ---
 
-##API Endpoints Summary
+## API Endpoints Summary
 
 | Endpoint | Method | Description |
 |-------------|---------|----------|
