@@ -1,10 +1,11 @@
-"""Main Api Function"""
 from flask import Flask
+from flasgger import Swagger
 from user_api import user_api
 from pet_api import pet_api
 from extra_api import extra_api
 
 app = Flask(__name__)
+swagger = Swagger(app)
 
 app.register_blueprint(user_api)
 app.register_blueprint(pet_api)
