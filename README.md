@@ -44,7 +44,7 @@ docker run -p 5000:5000 teamXX-backend
 API Endpoints Summary
 
 | Endpoint | Method | Description |
-|-------------|---------|
+|-------------|---------|----------|
 | `/api/users` | All Python scripts for each stage of the project (modularized) |
 | `/api/register` | Cleaned and split datasets (train/test) |
 | `/api/login` | Fine-tuned BERT models and tokenizers |
