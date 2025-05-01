@@ -10,10 +10,6 @@ Von Lindenthal vml21004
 Trello Board Link: https://trello.com/b/uu1cemtE/cse2102-project
 
 Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-2102-Project-Prototype?node-id=0-1&t=dOAkwKwEU7wwRfE0-1
-
-
-This is the backend Flask API for the Pet Adoption web app, developed as part of Milestone 6.
-
 ---
 
 ## Project Structure
