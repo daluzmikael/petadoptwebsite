@@ -45,14 +45,14 @@ API Endpoints Summary
 
 | Endpoint | Method | Description |
 |-------------|---------|----------|
-| `/api/users` | All Python scripts for each stage of the project (modularized) |
-| `/api/register` | Cleaned and split datasets (train/test) |
-| `/api/login` | Fine-tuned BERT models and tokenizers |
-| `/api/profile` | Confusion matrix visualizations |
-| `/api/pets` | Jupyter notebook version of full pipeline (optional) |
-| `/api/pets/search?species=cat` | Project overview and documentation |
-| `/api/pets/<id>` | All Python scripts for each stage of the project (modularized) |
-| `/api/pets/<id>/save` | All Python scripts for each stage of the project (modularized) |
-| `/api/pets/saved` | All Python scripts for each stage of the project (modularized) |
-| `/apidocs` | All Python scripts for each stage of the project (modularized) |
+| `/api/users` | `GET` |
+| `/api/register` | `POST` |
+| `/api/login` | `POST` |
+| `/api/profile` | `GET/PUT` |
+| `/api/pets` | `GET` |
+| `/api/pets/search?species=cat` | `GET` |
+| `/api/pets/<id>` | `GET` |
+| `/api/pets/<id>/save` | `POST` |
+| `/api/pets/saved` | `GET` |
+| `/apidocs` | `GET` |
 
