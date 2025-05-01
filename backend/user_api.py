@@ -1,4 +1,6 @@
 from flask import Blueprint, jsonify, request
+from db import get_all_users, create_user, get_user_by_email, update_user_profile
+
 '''Users api'''
 
 user_api = Blueprint('user_api', __name__)
@@ -24,10 +26,8 @@ def get_users():
                 type: string
     """
     
-    users = [
-        {"id": 1, "name": "John Doe", "email": "john@example.com"},
-        {"id": 2, "name": "Jane Smith", "email": "jane@example.com"}
-    ]
+    users = get_all_users()
+
     return jsonify(users)
 
 @user_api.route('/api/register', methods=['POST'])
@@ -52,18 +52,44 @@ def register_user():
       200:
         description: Confirmation of registration
     """
-    return jsonify(request.json)
 
+    data = request.get_json()
+    name = data.get('name')
+    email = data.get('email')
+    result = create_user(name, email)
+    if "error" in result:
+        return jsonify(result), 409  # 409 Conflict
+    return jsonify(result)
+
+@user_api.route('/api/login', methods=['POST'])
 @user_api.route('/api/login', methods=['POST'])
 def login_user():
     """
     Login user
     ---
+    parameters:
+      - in: body
+        name: credentials
+        required: true
+        schema:
+          type: object
+          required:
+            - email
+          properties:
+            email:
+              type: string
     responses:
       200:
-        description: Login success message
+        description: Login success or failure
     """
-    return jsonify({"message": "Logged in"})
+    data = request.get_json()
+    email = data.get("email")
+    user = get_user_by_email(email)
+    if user:
+        return jsonify({"message": "Logged in", "user": user})
+    else:
+        return jsonify({"error": "User not found"}), 404
+
 
 @user_api.route('/api/profile', methods=['GET'])
 def get_profile():
@@ -83,10 +109,14 @@ def get_profile():
             email:
               type: string
     """
-    return jsonify({"id": 1, "name": "John Doe", "email": "john@example.com"})
-
-@user_api.route('/api/profile', methods=['PUT'])
-def update_profile():
+    user = get_user_by_email("alice@example.com")  # TEMP: Simulating a logged-in user
+    if user:
+        return jsonify(user)
+    else:
+        return jsonify({"error": "Profile not found"}), 404
+    
+@user_api.route('/api/users/<int:user_id>', methods=['PUT'])
+def update_profile(user_id):
     """
     Update user profile
     ---
@@ -104,5 +134,8 @@ def update_profile():
       200:
         description: Updated profile object
     """
-    return jsonify(request.json)
-
+    data = request.get_json()
+    name = data.get("name")
+    email = data.get("email")
+    update_user_profile(user_id, name, email)
+    return jsonify({"id": user_id, "username": name, "email": email})
