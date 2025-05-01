@@ -41,18 +41,22 @@ docker build -t teamXX-backend ./backend
 docker run -p 5000:5000 teamXX-backend
 
 ---
-API Endpoints Summary
+
+##API Endpoints Summary
 
 | Endpoint | Method | Description |
 |-------------|---------|----------|
-| `/api/users` | `GET` |
-| `/api/register` | `POST` |
-| `/api/login` | `POST` |
-| `/api/profile` | `GET/PUT` |
-| `/api/pets` | `GET` |
-| `/api/pets/search?species=cat` | `GET` |
-| `/api/pets/<id>` | `GET` |
-| `/api/pets/<id>/save` | `POST` |
-| `/api/pets/saved` | `GET` |
-| `/apidocs` | `GET` |
+| `/api/users` | `GET` | Get all users
+| `/api/register` | `POST` | Register a user
+| `/api/login` | `POST` | Login with email
+| `/api/profile` | `GET/PUT` | Get or update profile (user ID 1 for demo)
+| `/api/pets` | `GET` | Get all pets
+| `/api/pets/search?species=cat` | `GET` | Filter pets by species
+| `/api/pets/<id>` | `GET` | Get pet by ID
+| `/api/pets/<id>/save` | `POST` | (Mock) Save pet
+| `/api/pets/saved` | `GET` | (Mock) Get saved pets
+| `/apidocs` | `GET` | Swagger UI interactive docs
+
+
+
 
