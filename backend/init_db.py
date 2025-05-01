@@ -5,6 +5,9 @@ def init_db():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
 
+    # Enable foreign key constraints
+    c.execute("PRAGMA foreign_keys = ON;")
+
     # Create users table
     c.execute('''
         CREATE TABLE IF NOT EXISTS users (
@@ -33,7 +36,19 @@ def init_db():
         )
     ''')
 
-    # List of Users
+    # Create saved_pets table
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS saved_pets (
+            user_id INTEGER,
+            pet_id INTEGER,
+            PRIMARY KEY (user_id, pet_id),
+            FOREIGN KEY(user_id) REFERENCES users(id),
+            FOREIGN KEY(pet_id) REFERENCES pets(id)
+        )
+    ''')
+
+
+    # Insert sample users
     users = [
         ('alice', 'alice@example.com'),
         ('bob', 'bob@example.com'),
@@ -46,7 +61,7 @@ def init_db():
     ]
     c.executemany("INSERT OR IGNORE INTO users (username, email) VALUES (?, ?)", users)
 
-    # List of Pets
+    # Insert sample pets
     pets = [
         ('Fluffy', 'Cat', 1),
         ('Rover', 'Dog', 2),
@@ -61,9 +76,9 @@ def init_db():
         ('Bubbles', 'Fish', 3),
         ('Nibbles', 'Hamster', 4),
     ]
-    c.executemany("INSERT INTO pets (name, species, owner_id) VALUES (?, ?, ?)", pets)
+    c.executemany("INSERT OR IGNORE INTO pets (name, species, owner_id) VALUES (?, ?, ?)", pets)
 
-    #  extra data
+    # Insert extra info
     c.execute("INSERT OR IGNORE INTO extra (id, info) VALUES (?, ?)", (1, "Welcome to the extended API!"))
 
     conn.commit()
