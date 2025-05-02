@@ -48,7 +48,6 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
 
 ### Docker
 
-`cd ..`
 (run from root)
 
 `docker build -t team16-backend ./backend`
