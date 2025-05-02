@@ -1,18 +1,40 @@
-// src/pages/FAQ.jsx
+import './FAQ.css';
+
 export default function FAQ() {
-    return (
-      <div>
-        <h2 className="text-2xl font-bold mb-4">FAQ</h2>
-        <div className="grid grid-cols-2 gap-4">
-          {["Question 1", "Question 2", "Question 3", "Question 4", "Adoption Guides"].map(q => (
-            <div key={q} className="border p-2">
-              <h3 className="font-bold">{q}</h3>
-              <p>Question heading</p>
-              <p>Body</p>
-            </div>
-          ))}
-        </div>
+  const questions = [
+    {
+      question: "How do I adopt a pet?",
+      answer: "Visit the Adopt page, browse pets, and click 'Adopt' to start the process."
+    },
+    {
+      question: "What is the adoption fee?",
+      answer: "Adoption fees vary by pet but usually range from $50–$200 depending on breed and age."
+    },
+    {
+      question: "Are pets vaccinated?",
+      answer: "Yes, all pets are vaccinated and medically cleared before adoption."
+    },
+    {
+      question: "Can I return a pet after adoption?",
+      answer: "Yes, we offer a 30-day return policy for all adoptions, no questions asked."
+    },
+    {
+      question: "Where can I learn about caring for a new pet?",
+      answer: "Check out our Guide section for tips on feeding, training, and vet visits."
+    }
+  ];
+
+  return (
+    <div className="faq-page">
+      <h2 className="faq-title">Frequently Asked Questions</h2>
+      <div className="faq-grid">
+        {questions.map((q, index) => (
+          <div key={index} className="faq-item">
+            <h3 className="faq-question">{q.question}</h3>
+            <p className="faq-answer">{q.answer}</p>
+          </div>
+        ))}
       </div>
-    );
-  }
-  
+    </div>
+  );
+}

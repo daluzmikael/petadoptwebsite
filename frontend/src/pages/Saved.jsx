@@ -14,6 +14,19 @@ export default function Saved() {
       });
   }, []);
 
+  const handleRemove = (petId) => {
+    fetch(`http://localhost:5000/api/pets/saved/${petId}/remove`, {
+      method: 'POST',
+    })
+      .then(res => res.json())
+      .then(() => {
+        setSavedPets(prev => prev.filter(p => p.id !== petId));
+      })
+      .catch(err => {
+        console.error("Failed to remove pet:", err);
+      });
+  };
+
   return (
     <div className="saved-page">
       <h2 className="saved-title">Your Saved Pets</h2>
@@ -24,10 +37,12 @@ export default function Saved() {
           {savedPets.map((pet, index) => (
             <PetCard
               key={index}
+              id={pet.id}
               name={pet.name}
               species={pet.species}
               breed={pet.breed || "Unknown"}
               image={pet.image}
+              onRemove={handleRemove}
             />
           ))}
         </div>
