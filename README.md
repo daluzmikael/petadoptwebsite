@@ -82,7 +82,7 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
 
 `cd frontend`
 
-2. Install dependencies 
+2. Install dependencies (only run once)
 
 `npm install`
 
