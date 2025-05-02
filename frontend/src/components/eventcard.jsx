@@ -1,15 +1,13 @@
-// src/components/EventCard.jsx
+// src/components/eventcard.jsx
+
 import React from 'react';
 
-function EventCard({ event }) {
+export default function EventCard({ title, date, location }) {
   return (
-    <div className="event-card">
-      <h3>{event.title}</h3>
-      <p>{event.date}</p>
-      <p>{event.description}</p>
-      <button>Learn More</button>
+    <div className="border p-4 rounded shadow bg-white text-center">
+      <h3 className="text-xl font-bold">{title}</h3>
+      <p className="text-sm text-gray-600">{date}</p>
+      <p className="text-sm text-gray-600">{location}</p>
     </div>
   );
 }
-
-export default EventCard;
