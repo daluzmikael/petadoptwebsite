@@ -1,12 +1,13 @@
 // src/pages/Login.jsx
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -26,6 +27,7 @@ export default function Login() {
         console.log("Login response data:", data);
         if (data.user) {
           localStorage.setItem("userEmail", data.user.email);
+          localStorage.setItem("userId", data.user.id);
           navigate("/adopt");
         } else {
           setError("Login failed: user not found.");
@@ -37,9 +39,16 @@ export default function Login() {
       });
   };
 
+  const loginRedirectMsg = new URLSearchParams(location.search).get("error") === "login_required"
+    ? "Please log in to continue."
+    : "";
+
   return (
     <div className="p-6 max-w-md mx-auto">
       <h2 className="text-3xl font-bold mb-6 text-center">Log In</h2>
+      {loginRedirectMsg && (
+        <p className="text-red-600 text-sm mb-4 text-center">{loginRedirectMsg}</p>
+      )}
       <form onSubmit={handleLogin} className="space-y-4">
         <div>
           <label className="block mb-1 font-medium">Email Address</label>

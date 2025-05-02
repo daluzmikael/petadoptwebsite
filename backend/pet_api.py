@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from db import get_all_pets, get_pet_by_id, search_pets_by_species, save_pet_for_user, get_saved_pets_for_user
+from db import get_connection, get_all_pets, get_pet_by_id, search_pets_by_species, save_pet_for_user, get_saved_pets_for_user
 
 '''Pets api'''
 
@@ -56,22 +56,35 @@ def save_pet(pet_id):
       200:
         description: Confirmation message
     """
-    user_id = 1  # Simulated logged-in user
-    save_pet_for_user(user_id, pet_id)
-    return jsonify({"message": f"Pet {pet_id} saved for user {user_id}."})
+    data = request.get_json()
+    user_id = data.get("user_id")
 
-@pet_api.route('/api/pets/saved', methods=['GET'])
-def get_saved_pets():
-    """
-    Get saved pets (currently always empty)
-    ---
-    responses:
-      200:
-        description: List of saved pets
-    """
-    user_id = 1  # Simulated logged-in user
-    pets = get_saved_pets_for_user(user_id)
-    return jsonify(pets)
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("INSERT INTO saved_pets (user_id, pet_id) VALUES (?, ?)", (user_id, pet_id))
+    conn.commit()
+    conn.close()
+
+    return jsonify({"message": f"Pet {pet_id} saved for user {user_id}"}), 200
+
+
+@pet_api.route('/api/pets/saved/<int:user_id>', methods=['GET'])
+def get_saved_pets(user_id):
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute('''
+        SELECT pets.id, pets.name, pets.species, pets.breed
+        FROM pets
+        JOIN saved_pets ON pets.id = saved_pets.pet_id
+        WHERE saved_pets.user_id = ?
+    ''', (user_id,))
+    pets = c.fetchall()
+    conn.close()
+
+    return jsonify([
+        {"id": p[0], "name": p[1], "species": p[2], "breed": p[3]} for p in pets
+    ])
+
 
 @pet_api.route('/api/pets/search', methods=['GET'])
 def search_pets():

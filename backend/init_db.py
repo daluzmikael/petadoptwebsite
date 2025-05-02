@@ -39,9 +39,9 @@ def init_db():
     # Create saved_pets table
     c.execute('''
         CREATE TABLE IF NOT EXISTS saved_pets (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER,
             pet_id INTEGER,
-            PRIMARY KEY (user_id, pet_id),
             FOREIGN KEY(user_id) REFERENCES users(id),
             FOREIGN KEY(pet_id) REFERENCES pets(id)
         )

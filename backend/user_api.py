@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from db import get_all_users, create_user, get_user_by_email, update_user_profile
+from db import get_all_users, create_user, get_user_by_email, update_user_profile, get_connection
 
 '''Users api'''
 

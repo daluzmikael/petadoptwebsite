@@ -1,49 +1,42 @@
+// src/pages/Saved.jsx
+
 import { useEffect, useState } from 'react';
-import PetCard from '../components/petcard';
-import './Saved.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Saved() {
   const [savedPets, setSavedPets] = useState([]);
+  const userId = localStorage.getItem("userId");
+  const navigate = useNavigate();
 
+  // Redirect if not logged in
   useEffect(() => {
-    fetch("http://localhost:5000/api/pets/saved")
-      .then(res => res.json())
-      .then(data => setSavedPets(data))
-      .catch(err => {
-        console.error("Failed to fetch saved pets:", err);
-      });
-  }, []);
+    if (!userId) {
+      navigate("/?error=login_required");
+    }
+  }, [userId, navigate]);
 
-  const handleRemove = (petId) => {
-    fetch(`http://localhost:5000/api/pets/saved/${petId}/remove`, {
-      method: 'POST',
-    })
-      .then(res => res.json())
-      .then(() => {
-        setSavedPets(prev => prev.filter(p => p.id !== petId));
-      })
-      .catch(err => {
-        console.error("Failed to remove pet:", err);
-      });
-  };
+  // Fetch saved pets for this user
+  useEffect(() => {
+    if (userId) {
+      fetch(`http://localhost:5000/api/pets/saved/${userId}`)
+        .then(res => res.json())
+        .then(data => setSavedPets(data))
+        .catch(err => console.error("Failed to fetch saved pets:", err));
+    }
+  }, [userId]);
 
   return (
-    <div className="saved-page">
-      <h2 className="saved-title">Your Saved Pets</h2>
+    <div className="p-6">
+      <h2 className="text-3xl font-bold mb-6 text-center">Your Saved Pets</h2>
       {savedPets.length === 0 ? (
-        <p className="saved-empty">You have no saved pets yet.</p>
+        <p className="text-center text-gray-600">You haven't saved any pets yet.</p>
       ) : (
-        <div className="saved-grid">
-          {savedPets.map((pet, index) => (
-            <PetCard
-              key={index}
-              id={pet.id}
-              name={pet.name}
-              species={pet.species}
-              breed={pet.breed || "Unknown"}
-              image={pet.image}
-              onRemove={handleRemove}
-            />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {savedPets.map((pet) => (
+            <div key={pet.id} className="border p-4 rounded shadow text-center">
+              <h3 className="text-xl font-bold">{pet.name}</h3>
+              <p>{pet.species} • {pet.breed}</p>
+            </div>
           ))}
         </div>
       )}
