@@ -32,7 +32,7 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
 
    `pip install -r requirements.txt`
 
-5. Initialize the DB(from CSE2102-Spring25-Team16 directory)
+5. Initialize the DB
    
    `python init_db.py`
 
@@ -47,11 +47,14 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
 
 
 ### Docker
-(from root)
 
-docker build -t team16-backend ./backend
+`cd ..`
 
-docker run -p 5000:5000 team16-backend
+(run from root)
+
+`docker build -t team16-backend ./backend`
+
+`docker run -p 5000:5000 team16-backend`
 
 
 
@@ -70,7 +73,7 @@ docker run -p 5000:5000 team16-backend
 | `/api/pets/saved` | `GET` |  Get saved pets
 | `/apidocs` | `GET` | Swagger UI interactive docs
 
-(/api/pets/<id>/save and /api/pets/saved  have full functionality)
+(`/api/pets/<id>/save` and `/api/pets/saved`  have full functionality)
 
 ---
 
