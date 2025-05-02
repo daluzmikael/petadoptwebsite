@@ -1,7 +1,6 @@
-// src/pages/Saved.jsx
-
 import { useEffect, useState } from 'react';
 import PetCard from '../components/petcard';
+import './Saved.css';
 
 export default function Saved() {
   const [savedPets, setSavedPets] = useState([]);
@@ -16,18 +15,19 @@ export default function Saved() {
   }, []);
 
   return (
-    <div className="p-6">
-      <h2 className="text-3xl font-bold mb-6 text-center">Your Saved Pets</h2>
+    <div className="saved-page">
+      <h2 className="saved-title">Your Saved Pets</h2>
       {savedPets.length === 0 ? (
-        <p className="text-center text-gray-600">You have no saved pets yet.</p>
+        <p className="saved-empty">You have no saved pets yet.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="saved-grid">
           {savedPets.map((pet, index) => (
             <PetCard
               key={index}
               name={pet.name}
               species={pet.species}
               breed={pet.breed || "Unknown"}
+              image={pet.image}
             />
           ))}
         </div>
