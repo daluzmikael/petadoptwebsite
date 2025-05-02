@@ -13,7 +13,7 @@ pets = [
 @pet_api.route('/api/pets', methods=['GET'])
 
 @pet_api.route('/pets', methods=['GET'])
-main
+
 def get_pets():
     pets = get_all_pets()
     return jsonify(pets)
