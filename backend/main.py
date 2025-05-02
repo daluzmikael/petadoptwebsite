@@ -7,7 +7,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 swagger = Swagger(app)
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+CORS(app, origins=["http://localhost:3000"])
 
 app.register_blueprint(user_api, url_prefix="/api")
 app.register_blueprint(pet_api, url_prefix="/api")

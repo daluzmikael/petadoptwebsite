@@ -4,7 +4,16 @@ from db import get_connection, get_all_pets, get_pet_by_id, search_pets_by_speci
 '''Pets API'''
 pet_api = Blueprint('pet_api', __name__)
 
+
+pets = [
+    {"id": 1, "name": "Buddy", "species": "Dog"},
+    {"id": 2, "name": "Whiskers", "species": "Cat"}
+]
+
+@pet_api.route('/api/pets', methods=['GET'])
+
 @pet_api.route('/pets', methods=['GET'])
+main
 def get_pets():
     pets = get_all_pets()
     return jsonify(pets)
@@ -41,7 +50,7 @@ def get_saved_pets(user_id):
     conn = get_connection()
     c = conn.cursor()
     c.execute('''
-        SELECT pets.id, pets.name, pets.species, pets.breed
+        SELECT pets.id, pets.name, pets.species
         FROM pets
         JOIN saved_pets ON pets.id = saved_pets.pet_id
         WHERE saved_pets.user_id = ?
@@ -50,7 +59,7 @@ def get_saved_pets(user_id):
     conn.close()
 
     return jsonify([
-        {"id": p[0], "name": p[1], "species": p[2], "breed": p[3]} for p in pets
+        {"id": p[0], "name": p[1], "species": p[2]} for p in pets
     ])
 
 @pet_api.route('/pets/search', methods=['GET'])
