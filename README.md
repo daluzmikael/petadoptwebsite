@@ -18,7 +18,7 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
    
    `git clone <https://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16.git>`
 
-2. Use a vm(optional)
+2. Use a vm for this to run
    
    `python3 -m venv venv`
 
@@ -48,7 +48,7 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
 
 ### Docker
 
-(run from root)
+(run from root and vm)
 
 `docker build -t team16-backend ./backend`
 
@@ -90,6 +90,8 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
 `npm start`
 
 ### Docker Setup
+
+run with vm
 
 Build Docker image 
 
