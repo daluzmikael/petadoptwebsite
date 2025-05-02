@@ -16,10 +16,12 @@ def get_all_users():
 def get_user_by_email(email):
     conn = get_connection()
     c = conn.cursor()
-    c.execute("SELECT * FROM users WHERE email = ?", (email,))
+    c.execute("SELECT id, username, email FROM users WHERE email = ?", (email,))
     row = c.fetchone()
     conn.close()
-    return {"id": row[0], "username": row[1], "email": row[2]} if row else None
+    if row:
+        return {"id": row[0], "username": row[1], "email": row[2]}
+    return None
 
 def create_user(name, email):
     try:
@@ -27,11 +29,11 @@ def create_user(name, email):
         c = conn.cursor()
         c.execute("INSERT INTO users (username, email) VALUES (?, ?)", (name, email))
         conn.commit()
-        user_id = c.lastrowid
+        return {"message": "User created", "name": name, "email": email}
+    except sqlite3.IntegrityError:
+        return {"error": "Email already exists"}
+    finally:
         conn.close()
-        return {"id": user_id, "username": name, "email": email}
-    except sqlite3.IntegrityError as e:
-        return {"error": str(e)}
 
 def update_user_profile(user_id, name, email):
     conn = get_connection()

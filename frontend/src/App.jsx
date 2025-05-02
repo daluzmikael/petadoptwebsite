@@ -1,18 +1,19 @@
 // src/App.jsx
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Nav from './components/nav';
 import Adopt from './pages/Adopt';
 import Saved from './pages/Saved';
 import FAQ from './pages/FAQ';
 import Events from './pages/Events';
-import Login from './pages/Login';
 import Guide from './pages/Guide';
+import Login from './pages/Login';
 import Questionnaire from './pages/Questionnaire';
 import Matching from './pages/Matching';
-import Landing from './pages/Landing'; // Optional, if you still want a landing page
+import Landing from './pages/Landing'; // Optional homepage if needed
 
-
-function App() {
+export default function App() {
   return (
     <Router>
       <Nav />
@@ -26,13 +27,9 @@ function App() {
           <Route path="/guide" element={<Guide />} />
           <Route path="/questionnaire" element={<Questionnaire />} />
           <Route path="/matching" element={<Matching />} />
-          {/* Optional homepage route */}
-          {/* <Route path="/landing" element={<Landing />} /> */}
+          <Route path="/" element={<Landing />} />
         </Routes>
       </div>
     </Router>
   );
 }
-
-export default App;
-

@@ -62,7 +62,6 @@ def register_user():
     return jsonify(result)
 
 @user_api.route('/api/login', methods=['POST'])
-@user_api.route('/api/login', methods=['POST'])
 def login_user():
     """
     Login user
@@ -84,11 +83,13 @@ def login_user():
     """
     data = request.get_json()
     email = data.get("email")
+    print("LOGIN ATTEMPT:", email)
     user = get_user_by_email(email)
     if user:
         return jsonify({"message": "Logged in", "user": user})
     else:
         return jsonify({"error": "User not found"}), 404
+    
 
 
 @user_api.route('/api/profile', methods=['GET'])
