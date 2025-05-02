@@ -1,0 +1,69 @@
+.adopt-page {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #cfe7fe;
+  }
+  
+  .adopt-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+  }
+  
+  .pets-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .pet-card {
+    background-color: #ffffff;
+    border: 1px solid #a6abb0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .pet-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .pet-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #344b63;
+  }
+  
+  .pet-details {
+    font-size: 1rem;
+    color: #626b6b;
+    margin-bottom: 1rem;
+  }
+  
+  .save-button {
+    background-color: #3498db;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-button:hover {
+    background-color: #2980b9;
+  }
+  .pet-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
