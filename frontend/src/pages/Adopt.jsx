@@ -1,6 +1,5 @@
-// src/pages/Adopt.jsx
-
 import { useEffect, useState } from 'react';
+import './Adopt.css';
 
 export default function Adopt() {
   const [pets, setPets] = useState([]);
@@ -24,18 +23,20 @@ export default function Adopt() {
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-3xl font-bold mb-6 text-center">Available Pets</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="adopt-page">
+      <h2 className="adopt-title">Available Pets</h2>
+      <div className="pets-grid">
         {pets.map((pet) => (
-          <div
-            key={pet.id}
-            className="border p-4 rounded shadow text-center bg-white"
-          >
-            <h3 className="text-xl font-bold">{pet.name}</h3>
-            <p>{pet.species} • {pet.breed}</p>
+          <div key={pet.id} className="pet-card">
+            <img
+              src={`/images/${pet.image}`}
+              alt={pet.name}
+              className="pet-image"
+            />
+            <h3 className="pet-name">{pet.name}</h3>
+            <p className="pet-details">{pet.species} • {pet.breed}</p>
             <button
-              className="mt-3 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              className="save-button"
               onClick={() => handleSave(pet.id)}
             >
               Save

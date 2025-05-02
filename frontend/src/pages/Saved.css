@@ -1,0 +1,57 @@
+.saved-page {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #cfe7fe;
+  }
+  
+  .saved-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+  }
+  
+  .saved-empty {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-top: 2rem;
+  }
+  
+  .saved-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  .pet-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  .save-button {
+    background-color: #53a3ff;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .save-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+  }
+  
+  .save-button:active {
+    transform: scale(0.98);
+  }
+  
+  
+  
+  
