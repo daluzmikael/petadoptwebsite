@@ -1,15 +1,11 @@
-// src/components/PetCard.jsx
-import React from 'react';
+// src/components/petcard.jsx
 
-function PetCard({ pet }) {
+export default function PetCard({ name, species, breed }) {
   return (
-    <div className="pet-card">
-      <h3>{pet.name}</h3>
-      <p>Breed: {pet.breed}</p>
-      <img src={pet.image} alt={pet.name} />
-      <button>Adopt</button>
+    <div className="border p-4 rounded shadow text-center">
+      <h3 className="text-xl font-bold">{name}</h3>
+      <p>{species} • {breed}</p>
+      <button className="mt-2 px-4 py-1 bg-blue-500 text-white rounded">Save</button>
     </div>
   );
 }
-
-export default PetCard;
