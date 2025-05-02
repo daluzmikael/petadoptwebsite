@@ -36,7 +36,7 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
    
    `python init_db.py`
 
-6. Run the Backend API Server
+6. Run the Backend API Server (or run from docker, steps below)
    
    `python main.py`
 
