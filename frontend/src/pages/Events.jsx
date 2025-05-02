@@ -1,6 +1,6 @@
 // src/pages/Events.jsx
 
-import EventCard from '../components/eventcard';
+import EventCard from '../components/EventCard';
 
 export default function Events() {
   const events = [
@@ -28,6 +28,7 @@ export default function Events() {
         {events.map((event, index) => (
           <EventCard
             key={index}
+            index={index}
             title={event.title}
             date={event.date}
             location={event.location}
