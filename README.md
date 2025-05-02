@@ -42,7 +42,7 @@ docker build -t teamXX-backend ./backend
 
 docker run -p 5000:5000 teamXX-backend
 
----
+
 
 ### API Endpoints Summary
 
