@@ -61,6 +61,16 @@ docker run -p 5000:5000 teamXX-backend
 
 (/api/pets/<id>/save and /api/pets/saved  have full functionality)
 
+## Frontend Structure
 
+### Navigate to the frontend directory
 
+cd frontend
 
+### Install dependencies 
+
+npm install
+
+### Start the development server:
+
+npm start
