@@ -76,7 +76,7 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
 
 ---
 
-## Frontend Structure
+## Frontend Structure (check Doceker below)
 
 1. Navigate to the frontend directory
 
@@ -89,3 +89,16 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
 3. Start the development server:
 
 `npm start`
+
+### Docker Setup
+
+Build Docker image 
+
+From the `/frontend` directory: `docker build -t pet-frontend .`
+
+Run it
+
+`docker run -p 3000:3000 pet-frontend`
+
+
+
