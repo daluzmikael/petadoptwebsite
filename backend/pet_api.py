@@ -1,74 +1,42 @@
 from flask import Blueprint, jsonify, request
-from db import get_connection, get_all_pets, get_pet_by_id, search_pets_by_species, save_pet_for_user, get_saved_pets_for_user
+from db import get_connection, get_all_pets, get_pet_by_id, search_pets_by_species
 
-'''Pets api'''
-
+'''Pets API'''
 pet_api = Blueprint('pet_api', __name__)
 
-pets = [
-    {"id": 1, "name": "Buddy", "species": "Dog", "breed": "Labrador"},
-    {"id": 2, "name": "Whiskers", "species": "Cat", "breed": "Siamese"}
-]
-
-@pet_api.route('/api/pets', methods=['GET'])
+@pet_api.route('/pets', methods=['GET'])
 def get_pets():
-    """
-    Get list of all pets
-    ---
-    responses:
-      200:
-        description: A list of pets
-    """
     pets = get_all_pets()
     return jsonify(pets)
 
-@pet_api.route('/api/pets/<int:pet_id>', methods=['GET'])
+@pet_api.route('/pets/<int:pet_id>', methods=['GET'])
 def get_pet(pet_id):
-    """
-    Get a pet by ID
-    ---
-    parameters:
-      - name: pet_id
-        in: path
-        type: integer
-        required: true
-    responses:
-      200:
-        description: Pet details or error
-    """
     pet = get_pet_by_id(pet_id)
     if pet:
         return jsonify(pet)
     else:
         return jsonify({"error": "Pet not found"}), 404
 
-@pet_api.route('/api/pets/<int:pet_id>/save', methods=['POST'])
+@pet_api.route('/pets/<int:pet_id>/save', methods=['POST'])
 def save_pet(pet_id):
-    """
-    Save a pet by ID
-    ---
-    parameters:
-      - name: pet_id
-        in: path
-        type: integer
-        required: true
-    responses:
-      200:
-        description: Confirmation message
-    """
     data = request.get_json()
     user_id = data.get("user_id")
 
+    print("SAVING PET:", pet_id, "FOR USER:", user_id)
+
     conn = get_connection()
     c = conn.cursor()
-    c.execute("INSERT INTO saved_pets (user_id, pet_id) VALUES (?, ?)", (user_id, pet_id))
-    conn.commit()
+
+    c.execute("SELECT 1 FROM saved_pets WHERE user_id = ? AND pet_id = ?", (user_id, pet_id))
+    if not c.fetchone():
+        c.execute("INSERT INTO saved_pets (user_id, pet_id) VALUES (?, ?)", (user_id, pet_id))
+        conn.commit()
+
     conn.close()
+    return jsonify({"message": f"Pet {pet_id} saved for user {user_id}"})
 
-    return jsonify({"message": f"Pet {pet_id} saved for user {user_id}"}), 200
 
-
-@pet_api.route('/api/pets/saved/<int:user_id>', methods=['GET'])
+@pet_api.route('/pets/saved/<int:user_id>', methods=['GET'])
 def get_saved_pets(user_id):
     conn = get_connection()
     c = conn.cursor()
@@ -85,21 +53,8 @@ def get_saved_pets(user_id):
         {"id": p[0], "name": p[1], "species": p[2], "breed": p[3]} for p in pets
     ])
 
-
-@pet_api.route('/api/pets/search', methods=['GET'])
+@pet_api.route('/pets/search', methods=['GET'])
 def search_pets():
-    """
-    Search pets by species
-    ---
-    parameters:
-      - name: species
-        in: query
-        type: string
-        required: false
-    responses:
-      200:
-        description: Filtered list of pets
-    """    
     species = request.args.get('species')
     pets = search_pets_by_species(species) if species else get_all_pets()
     return jsonify(pets)
