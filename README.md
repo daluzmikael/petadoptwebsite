@@ -34,11 +34,11 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
 
 5. Initialize the DB(from CSE2102-Spring25-Team16 directory)
    
-   `python backend/init_db.py`
+   `python init_db.py`
 
 6. Run the Backend API Server
    
-   `python backend/main.py`
+   `python main.py`
 
 - http://127.0.0.1:5000 <- server address
 - /api/pets <- pets
