@@ -31,15 +31,19 @@ def init_db():
         )
     ''')
 
-    # Saved pets
+    # Pets table
     c.execute('''
-        CREATE TABLE IF NOT EXISTS saved_pets (
+        CREATE TABLE IF NOT EXISTS pets (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER,
-            pet_id INTEGER,
-            UNIQUE(user_id, pet_id),
-            FOREIGN KEY(user_id) REFERENCES users(id),
-            FOREIGN KEY(pet_id) REFERENCES pets(id)
+            name TEXT NOT NULL,
+            species TEXT NOT NULL,
+            breed TEXT NOT NULL,
+            age INTEGER NOT NULL,
+            allergen TEXT NOT NULL,
+            temperament TEXT NOT NULL,
+            owner_id INTEGER,
+            image TEXT NOT NULL,
+            FOREIGN KEY(owner_id) REFERENCES users(id)
         )
     ''')
 
@@ -85,25 +89,36 @@ def init_db():
     ]
     c.executemany("INSERT OR IGNORE INTO users (username, email, password) VALUES (?, ?, ?)", users)
 
-    # Sample pets (with full fields)
+    # Sample pets
     pets = [
-        ('Fluffy', 'Cat', 'Siamese', 2, 'None', 'Playful', 1),
-        ('Rover', 'Dog', 'Labrador', 4, 'None', 'Friendly', 2),
-        ('Goldie', 'Fish', 'Goldfish', 1, 'None', 'Calm', 3),
-        ('Spike', 'Hedgehog', 'African Pygmy', 3, 'None', 'Quiet', 4),
-        ('Mittens', 'Cat', 'Tabby', 5, 'None', 'Curious', 5),
-        ('Buddy', 'Dog', 'Beagle', 6, 'None', 'Energetic', 6),
-        ('Charlie', 'Parrot', 'Macaw', 3, 'Feathers', 'Talkative', 7),
-        ('Daisy', 'Rabbit', 'Dutch', 2, 'Hay', 'Gentle', 8),
-        ('Luna', 'Cat', 'Persian', 4, 'None', 'Laid-back', 1),
-        ('Rocky', 'Dog', 'Bulldog', 5, 'None', 'Loyal', 2),
-        ('Bubbles', 'Fish', 'Betta', 1, 'None', 'Colorful', 3),
-        ('Nibbles', 'Hamster', 'Syrian', 2, 'Dust', 'Nocturnal', 4),
+        ('Max', 'Dog', 'Golden Retriever', 3, 'None', 'family-friendly', 1, '/images/max.jpg'),
+        ('Lily', 'Cat', 'Siamese', 2, 'None', 'quiet', 2, '/images/lily.jpg'),
+        ('Bella', 'Dog', 'Beagle', 5, 'None', 'energetic', 3, '/images/bella.jpg'),
+        ('Shadow', 'Cat', 'Persian', 4, 'None', 'calm', 4, '/images/shadow.jpg'),
+        ('Oreo', 'Rabbit', 'Dutch', 1, 'Hay', 'quiet', 5, '/images/oreo.jpg'),
+        ('Coco', 'Dog', 'French Bulldog', 3, 'None', 'loyal', 6, '/images/coco.jpg'),
+        ('Pepper', 'Cat', 'Bengal', 2, 'None', 'playful', 7, '/images/pepper.jpg'),
+        ('Milo', 'Hamster', 'Syrian', 1, 'Dust', 'independent', 8, '/images/milo.jpg'),
+        ('Rex', 'Dog', 'Rottweiler', 6, 'None', 'not-kid-friendly', 1, '/images/rex.jpg'),
+        ('Whiskers', 'Cat', 'Tabby', 5, 'None', 'family-friendly', 2, '/images/whiskers.jpg'),
+        ('Blue', 'Parrot', 'Macaw', 4, 'Feathers', 'loud', 3, '/images/blue.jpg'),
+        ('Finn', 'Fish', 'Betta', 1, 'None', 'calm', 4, '/images/finn.jpg'),
+        ('Hazel', 'Dog', 'Husky', 4, 'None', 'energetic', 5, '/images/hazel.jpg'),
+        ('Nugget', 'Rabbit', 'Lop', 2, 'Hay', 'quiet', 6, '/images/nugget.jpg'),
+        ('Ginger', 'Cat', 'Maine Coon', 3, 'None', 'loyal', 7, '/images/ginger.jpg'),
+        ('Tank', 'Dog', 'Bulldog', 5, 'None', 'calm', 8, '/images/tank.jpg'),
+        ('Daisy', 'Dog', 'Poodle', 4, 'None', 'playful', 1, '/images/daisy.jpg'),
+        ('Snowball', 'Cat', 'Ragdoll', 3, 'None', 'family-friendly', 2, '/images/snowball.jpg'),
+        ('Winston', 'Dog', 'Corgi', 2, 'None', 'energetic', 3, '/images/winston.jpg'),
+        ('Basil', 'Cat', 'British Shorthair', 6, 'None', 'quiet', 4, '/images/basil.jpg'),
+        ('Mocha', 'Dog', 'Chihuahua', 3, 'None', 'loud', 5, '/images/mocha.jpg'),
+        ('Poppy', 'Rabbit', 'Mini Rex', 2, 'Hay', 'independent', 6, '/images/poppy.jpg'),
+        ('Zazu', 'Parrot', 'Cockatoo', 4, 'Feathers', 'loud', 7, '/images/zazu.jpg'),
+        ('Buster', 'Dog', 'Boxer', 5, 'None', 'not-kid-friendly', 8, '/images/buster.jpg')
     ]
-    c.executemany('''
-        INSERT OR IGNORE INTO pets (name, species, breed, age, allergen, temperament, owner_id)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    ''', pets)
+
+    c.executemany("INSERT OR IGNORE INTO pets (name, species, breed, age, allergen, temperament, owner_id, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", pets)
+
 
     # Sample events
     events = [
