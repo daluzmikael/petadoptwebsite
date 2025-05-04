@@ -48,6 +48,3 @@ export default function Questionnaire() {
           Submit
         </button>
       </form>
-    </div>
-  );
-}

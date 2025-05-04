@@ -10,7 +10,7 @@ pets = [
     {"id": 2, "name": "Whiskers", "species": "Cat"}
 ]
 
-@pet_api.route('/api/pets', methods=['GET'])
+@pet_api.route('/pets', methods=['GET'])
 def get_pets():
     """
     Get list of all pets
@@ -22,7 +22,7 @@ def get_pets():
     pets = get_all_pets()
     return jsonify(pets)
 
-@pet_api.route('/api/pets/<int:pet_id>', methods=['GET'])
+@pet_api.route('/pets/<int:pet_id>', methods=['GET'])
 def get_pet(pet_id):
     """
     Get a pet by ID
@@ -42,7 +42,7 @@ def get_pet(pet_id):
     else:
         return jsonify({"error": "Pet not found"}), 404
 
-@pet_api.route('/api/pets/<int:pet_id>/save', methods=['POST'])
+@pet_api.route('/pets/<int:pet_id>/save', methods=['POST'])
 def save_pet(pet_id):
     """
     Save a pet by ID
@@ -68,7 +68,7 @@ def save_pet(pet_id):
     return jsonify({"message": f"Pet {pet_id} saved for user {user_id}"}), 200
 
 
-@pet_api.route('/api/pets/saved/<int:user_id>', methods=['GET'])
+@pet_api.route('/pets/saved/<int:user_id>', methods=['GET'])
 def get_saved_pets(user_id):
     conn = get_connection()
     c = conn.cursor()
@@ -86,7 +86,7 @@ def get_saved_pets(user_id):
     ])
 
 
-@pet_api.route('/api/pets/search', methods=['GET'])
+@pet_api.route('/pets/search', methods=['GET'])
 def search_pets():
     """
     Search pets by species
