@@ -56,9 +56,10 @@ def register_user():
     data = request.get_json()
     name = data.get('name')
     email = data.get('email')
-    result = create_user(name, email)
+    password = data.get('password')
+    result = create_user(name, email, password)
     if "error" in result:
-        return jsonify(result), 409  # 409 Conflict
+        return jsonify(result), 409
     return jsonify(result)
 
 @user_api.route('/login', methods=['POST'])
@@ -83,12 +84,12 @@ def login_user():
     """
     data = request.get_json()
     email = data.get("email")
-    print("LOGIN ATTEMPT:", email)
+    password = data.get("password")
     user = get_user_by_email(email)
-    if user:
+    if user and user.get("password") == password:
         return jsonify({"message": "Logged in", "user": user})
     else:
-        return jsonify({"error": "User not found"}), 404
+        return jsonify({"error": "Invalid email or password"}), 404
     
 
 
