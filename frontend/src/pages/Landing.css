@@ -1,0 +1,31 @@
+.landing-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #cfe7fe, #0080ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .landing-content {
+    text-align: center;
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 90%;
+  }
+  
+  .landing-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+  
+  .landing-subtitle {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
