@@ -4,6 +4,8 @@ def init_db():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
 
+    c.execute("PRAGMA foreign_keys = ON;")
+
     # Users table with password
     c.execute('''
         CREATE TABLE IF NOT EXISTS users (
@@ -62,7 +64,7 @@ def init_db():
         )
     ''')
 
-    # Extra info
+    # Extra info table
     c.execute('''
         CREATE TABLE IF NOT EXISTS extra (
             id INTEGER PRIMARY KEY,
@@ -70,7 +72,7 @@ def init_db():
         )
     ''')
 
-    # Sample users with default password "password123"
+    # Sample users with password
     users = [
         ('alice', 'alice@example.com', 'password123'),
         ('bob', 'bob@example.com', 'password123'),
@@ -83,7 +85,7 @@ def init_db():
     ]
     c.executemany("INSERT OR IGNORE INTO users (username, email, password) VALUES (?, ?, ?)", users)
 
-    # Sample pets
+    # Sample pets (with full fields)
     pets = [
         ('Fluffy', 'Cat', 'Siamese', 2, 'None', 'Playful', 1),
         ('Rover', 'Dog', 'Labrador', 4, 'None', 'Friendly', 2),
@@ -98,7 +100,10 @@ def init_db():
         ('Bubbles', 'Fish', 'Betta', 1, 'None', 'Colorful', 3),
         ('Nibbles', 'Hamster', 'Syrian', 2, 'Dust', 'Nocturnal', 4),
     ]
-    c.executemany("INSERT OR IGNORE INTO pets (name, species, breed, age, allergen, temperament, owner_id) VALUES (?, ?, ?, ?, ?, ?, ?)", pets)
+    c.executemany('''
+        INSERT OR IGNORE INTO pets (name, species, breed, age, allergen, temperament, owner_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    ''', pets)
 
     # Sample events
     events = [
