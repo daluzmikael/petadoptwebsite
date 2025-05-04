@@ -9,7 +9,7 @@ export default function Matching() {
     if (!query.trim()) return;
 
     fetch(`http://localhost:5000/api/pets/search?query=${encodeURIComponent(query)}`)
-      .then(res => res.json())
+    .then(res => res.json())
       .then(data => setResults(data))
       .catch(err => console.error("Search failed:", err));
   };

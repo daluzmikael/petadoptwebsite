@@ -123,23 +123,28 @@ def has_user_rsvped(user_id, event_id):
 def search_pets_by_query(query):
     conn = get_connection()
     c = conn.cursor()
+
+    query = query.lower()  # ensure case-insensitive matching
+
     c.execute("""
         SELECT id, name, species, breed, age, allergen, temperament
         FROM pets
-        WHERE 
-            species LIKE ? OR 
-            breed LIKE ? OR 
-            CAST(age AS TEXT) LIKE ? OR 
-            allergen LIKE ? OR 
-            temperament LIKE ?
-    """, (f"%{query}%",)*5)
+        WHERE
+            LOWER(species) LIKE ?
+            OR LOWER(breed) LIKE ?
+            OR LOWER(temperament) LIKE ?
+            OR CAST(age AS TEXT) LIKE ?
+    """, tuple(f"%{query}%" for _ in range(4)))
+
     rows = c.fetchall()
     conn.close()
-    return [
-        {
-            "id": row[0], "name": row[1], "species": row[2],
-            "breed": row[3], "age": row[4],
-            "allergen": row[5], "temperament": row[6]
-        }
-        for row in rows
-    ]
+
+    return [{
+        "id": row[0],
+        "name": row[1],
+        "species": row[2],
+        "breed": row[3],
+        "age": row[4],
+        "allergen": row[5],
+        "temperament": row[6]
+    } for row in rows]
