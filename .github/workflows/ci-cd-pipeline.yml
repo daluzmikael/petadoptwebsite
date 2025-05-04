@@ -72,10 +72,20 @@ jobs:
 
       - name: Run Docker Container
         id: docker
-        run: docker run -d -p 5000:5000 team16-backend
+        run: |
+          # Check if a container is already running on port 5000, kill if exists
+          CONTAINER_ID=$(docker ps -q --filter "ancestor=team16-backend")
+          if [ -n "$CONTAINER_ID" ]; then
+            echo "Container is already running, stopping it..."
+            docker stop $CONTAINER_ID
+            docker rm $CONTAINER_ID
+          fi
+          docker run -d -p 5000:5000 team16-backend
 
       - name: Wait for the container to be ready
-        run: sleep 10  
+        run: |
+          echo "Waiting for the container to be ready..."
+          sleep 15  # Increased wait time for the container to be fully up
 
       - name: Check Docker Container Status
         run: docker ps
@@ -88,7 +98,12 @@ jobs:
 
       - name: Test Docker API Endpoint
         run: |
-          curl http://${{ steps.docker_ip.outputs.container_ip }}:5000/api/users
+          # Make the curl call more reliable by ensuring the container is ready
+          echo "Testing API endpoint..."
+          until curl -s http://${{ steps.docker_ip.outputs.container_ip }}:5000/api/users; do
+            echo "Waiting for container to respond..."
+            sleep 5  # Retry every 5 seconds until the API responds
+          done
 
   cleanup:
     name: Cleanup Workspace
