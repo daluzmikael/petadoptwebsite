@@ -4,7 +4,7 @@ def init_db():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
 
-    # Users table with password
+    # Users table 
     c.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -14,7 +14,7 @@ def init_db():
         )
     ''')
 
-    # Pets table with new fields
+    # Pets table
     c.execute('''
         CREATE TABLE IF NOT EXISTS pets (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,9 +25,11 @@ def init_db():
             allergen TEXT NOT NULL,
             temperament TEXT NOT NULL,
             owner_id INTEGER,
+            image TEXT NOT NULL,
             FOREIGN KEY(owner_id) REFERENCES users(id)
         )
     ''')
+
 
     # Saved pets
     c.execute('''
@@ -70,7 +72,7 @@ def init_db():
         )
     ''')
 
-    # Sample users with default password "password123"
+    # Sample users 
     users = [
         ('alice', 'alice@example.com', 'password123'),
         ('bob', 'bob@example.com', 'password123'),
@@ -85,33 +87,34 @@ def init_db():
 
     # Sample pets
     pets = [
-        ('Max', 'Dog', 'Golden Retriever', 3, 'None', 'family-friendly', 1),
-        ('Lily', 'Cat', 'Siamese', 2, 'None', 'quiet', 2),
-        ('Bella', 'Dog', 'Beagle', 5, 'None', 'energetic', 3),
-        ('Shadow', 'Cat', 'Persian', 4, 'None', 'calm', 4),
-        ('Oreo', 'Rabbit', 'Dutch', 1, 'Hay', 'quiet', 5),
-        ('Coco', 'Dog', 'French Bulldog', 3, 'None', 'loyal', 6),
-        ('Pepper', 'Cat', 'Bengal', 2, 'None', 'playful', 7),
-        ('Milo', 'Hamster', 'Syrian', 1, 'Dust', 'independent', 8),
-        ('Rex', 'Dog', 'Rottweiler', 6, 'None', 'not-kid-friendly', 1),
-        ('Whiskers', 'Cat', 'Tabby', 5, 'None', 'family-friendly', 2),
-        ('Blue', 'Parrot', 'Macaw', 4, 'Feathers', 'loud', 3),
-        ('Finn', 'Fish', 'Betta', 1, 'None', 'calm', 4),
-        ('Hazel', 'Dog', 'Husky', 4, 'None', 'energetic', 5),
-        ('Nugget', 'Rabbit', 'Lop', 2, 'Hay', 'quiet', 6),
-        ('Ginger', 'Cat', 'Maine Coon', 3, 'None', 'loyal', 7),
-        ('Tank', 'Dog', 'Bulldog', 5, 'None', 'calm', 8),
-        ('Daisy', 'Dog', 'Poodle', 4, 'None', 'playful', 1),
-        ('Snowball', 'Cat', 'Ragdoll', 3, 'None', 'family-friendly', 2),
-        ('Winston', 'Dog', 'Corgi', 2, 'None', 'energetic', 3),
-        ('Basil', 'Cat', 'British Shorthair', 6, 'None', 'quiet', 4),
-        ('Mocha', 'Dog', 'Chihuahua', 3, 'None', 'loud', 5),
-        ('Poppy', 'Rabbit', 'Mini Rex', 2, 'Hay', 'independent', 6),
-        ('Zazu', 'Parrot', 'Cockatoo', 4, 'Feathers', 'loud', 7),
-        ('Buster', 'Dog', 'Boxer', 5, 'None', 'not-kid-friendly', 8)
+        ('Max', 'Dog', 'Golden Retriever', 3, 'None', 'family-friendly', 1, '/images/max.jpg'),
+        ('Lily', 'Cat', 'Siamese', 2, 'None', 'quiet', 2, '/images/lily.jpg'),
+        ('Bella', 'Dog', 'Beagle', 5, 'None', 'energetic', 3, '/images/bella.jpg'),
+        ('Shadow', 'Cat', 'Persian', 4, 'None', 'calm', 4, '/images/shadow.jpg'),
+        ('Oreo', 'Rabbit', 'Dutch', 1, 'Hay', 'quiet', 5, '/images/oreo.jpg'),
+        ('Coco', 'Dog', 'French Bulldog', 3, 'None', 'loyal', 6, '/images/coco.jpg'),
+        ('Pepper', 'Cat', 'Bengal', 2, 'None', 'playful', 7, '/images/pepper.jpg'),
+        ('Milo', 'Hamster', 'Syrian', 1, 'Dust', 'independent', 8, '/images/milo.jpg'),
+        ('Rex', 'Dog', 'Rottweiler', 6, 'None', 'not-kid-friendly', 1, '/images/rex.jpg'),
+        ('Whiskers', 'Cat', 'Tabby', 5, 'None', 'family-friendly', 2, '/images/whiskers.jpg'),
+        ('Blue', 'Parrot', 'Macaw', 4, 'Feathers', 'loud', 3, '/images/blue.jpg'),
+        ('Finn', 'Fish', 'Betta', 1, 'None', 'calm', 4, '/images/finn.jpg'),
+        ('Hazel', 'Dog', 'Husky', 4, 'None', 'energetic', 5, '/images/hazel.jpg'),
+        ('Nugget', 'Rabbit', 'Lop', 2, 'Hay', 'quiet', 6, '/images/nugget.jpg'),
+        ('Ginger', 'Cat', 'Maine Coon', 3, 'None', 'loyal', 7, '/images/ginger.jpg'),
+        ('Tank', 'Dog', 'Bulldog', 5, 'None', 'calm', 8, '/images/tank.jpg'),
+        ('Daisy', 'Dog', 'Poodle', 4, 'None', 'playful', 1, '/images/daisy.jpg'),
+        ('Snowball', 'Cat', 'Ragdoll', 3, 'None', 'family-friendly', 2, '/images/snowball.jpg'),
+        ('Winston', 'Dog', 'Corgi', 2, 'None', 'energetic', 3, '/images/winston.jpg'),
+        ('Basil', 'Cat', 'British Shorthair', 6, 'None', 'quiet', 4, '/images/basil.jpg'),
+        ('Mocha', 'Dog', 'Chihuahua', 3, 'None', 'loud', 5, '/images/mocha.jpg'),
+        ('Poppy', 'Rabbit', 'Mini Rex', 2, 'Hay', 'independent', 6, '/images/poppy.jpg'),
+        ('Zazu', 'Parrot', 'Cockatoo', 4, 'Feathers', 'loud', 7, '/images/zazu.jpg'),
+        ('Buster', 'Dog', 'Boxer', 5, 'None', 'not-kid-friendly', 8, '/images/buster.jpg')
     ]
 
-    c.executemany("INSERT OR IGNORE INTO pets (name, species, breed, age, allergen, temperament, owner_id) VALUES (?, ?, ?, ?, ?, ?, ?)", pets)
+
+    c.executemany("INSERT OR IGNORE INTO pets (name, species, breed, age, allergen, temperament, owner_id, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", pets)
 
     # Sample events
     events = [
