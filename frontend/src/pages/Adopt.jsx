@@ -1,8 +1,19 @@
+// src/pages/Adopt.jsx
+
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Adopt.css';
 
 export default function Adopt() {
   const [pets, setPets] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      navigate("/?error=login_required");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/pets")
@@ -11,15 +22,19 @@ export default function Adopt() {
       .catch((err) => console.error("Failed to fetch pets:", err));
   }, []);
 
-  const handleSave = (id) => {
-    fetch(`http://localhost:5000/api/pets/${id}/save`, {
+  const handleSave = (petId) => {
+    const userId = localStorage.getItem("userId");
+
+    fetch(`http://localhost:5000/api/pets/${petId}/save`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ user_id: userId })
     })
-      .then((res) => res.json())
-      .then((data) => {
-        alert(data.message || "Pet saved!");
-      })
-      .catch((err) => console.error("Save failed:", err));
+      .then(res => res.json())
+      .then(data => alert(data.message))
+      .catch(err => console.error("Save failed:", err));
   };
 
   return (

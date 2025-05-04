@@ -18,7 +18,7 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
    
    `git clone <https://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16.git>`
 
-2. Use a vm(optional)
+2. Use a vm for this to run
    
    `python3 -m venv venv`
 
@@ -32,11 +32,11 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
 
    `pip install -r requirements.txt`
 
-5. Initialize the DB(from CSE2102-Spring25-Team16 directory)
+5. Initialize the DB
    
    `python init_db.py`
 
-6. Run the Backend API Server
+6. Run the Backend API Server (or run from docker, steps below)
    
    `python main.py`
 
@@ -48,9 +48,11 @@ Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-210
 
 ### Docker
 
-docker build -t teamXX-backend ./backend
+(run from root and vm)
 
-docker run -p 5000:5000 teamXX-backend
+`docker build -t team16-backend ./backend`
+
+`docker run -p 5000:5000 team16-backend`
 
 
 
@@ -69,20 +71,35 @@ docker run -p 5000:5000 teamXX-backend
 | `/api/pets/saved` | `GET` |  Get saved pets
 | `/apidocs` | `GET` | Swagger UI interactive docs
 
-(/api/pets/<id>/save and /api/pets/saved  have full functionality)
+(`/api/pets/<id>/save` and `/api/pets/saved`  have full functionality)
 
 ---
 
-## Frontend Structure
+## Frontend Structure (check Doceker below)
 
 1. Navigate to the frontend directory
 
 `cd frontend`
 
-2. Install dependencies 
+2. Install dependencies (only run once)
 
 `npm install`
 
 3. Start the development server:
 
 `npm start`
+
+### Docker Setup
+
+run with vm
+
+Build Docker image 
+
+From the `/frontend` directory: `docker build -t pet-frontend .`
+
+Run it
+
+`docker run -p 3000:3000 pet-frontend`
+
+
+

@@ -1,11 +1,11 @@
 from flask import Blueprint, jsonify, request
-from db import get_all_users, create_user, get_user_by_email, update_user_profile
+from db import get_all_users, create_user, get_user_by_email, update_user_profile, get_connection
 
 '''Users api'''
 
 user_api = Blueprint('user_api', __name__)
 
-@user_api.route('/api/users', methods=['GET'])
+@user_api.route('/users', methods=['GET'])
 def get_users():
     """
     Get list of all users
@@ -30,7 +30,7 @@ def get_users():
 
     return jsonify(users)
 
-@user_api.route('/api/register', methods=['POST'])
+@user_api.route('/register', methods=['POST'])
 def register_user():
     """
     Register a new user
@@ -61,7 +61,7 @@ def register_user():
         return jsonify(result), 409  # 409 Conflict
     return jsonify(result)
 
-@user_api.route('/api/login', methods=['POST'])
+@user_api.route('/login', methods=['POST'])
 def login_user():
     """
     Login user
@@ -92,7 +92,7 @@ def login_user():
     
 
 
-@user_api.route('/api/profile', methods=['GET'])
+@user_api.route('/profile', methods=['GET'])
 def get_profile():
     """
     Get user profile
@@ -116,7 +116,7 @@ def get_profile():
     else:
         return jsonify({"error": "Profile not found"}), 404
     
-@user_api.route('/api/users/<int:user_id>', methods=['PUT'])
+@user_api.route('/users/<int:user_id>', methods=['PUT'])
 def update_profile(user_id):
     """
     Update user profile

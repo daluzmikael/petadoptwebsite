@@ -85,4 +85,36 @@ def get_saved_pets_for_user(user_id):
     rows = c.fetchall()
     conn.close()
     return [{"id": row[0], "name": row[1], "species": row[2]} for row in rows]
+def save_rsvp_for_user(user_id, event_id):
+    """Save a user RSVP for an event if not already saved."""
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("SELECT 1 FROM rsvped_events WHERE user_id = ? AND event_id = ?", (user_id, event_id))
+    exists = c.fetchone()
+    if not exists:
+        c.execute("INSERT INTO rsvped_events (user_id, event_id) VALUES (?, ?)", (user_id, event_id))
+        conn.commit()
+    conn.close()
 
+def get_rsvped_events_for_user(user_id):
+    """Return a list of events the user has RSVPed to."""
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("""
+        SELECT events.id, events.name, events.date
+        FROM events
+        JOIN rsvped_events ON events.id = rsvped_events.event_id
+        WHERE rsvped_events.user_id = ?
+    """, (user_id,))
+    rows = c.fetchall()
+    conn.close()
+    return [{"id": row[0], "name": row[1], "date": row[2]} for row in rows]
+
+def has_user_rsvped(user_id, event_id):
+    """Check if a user has already RSVPed for a given event."""
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("SELECT 1 FROM rsvped_events WHERE user_id = ? AND event_id = ?", (user_id, event_id))
+    exists = c.fetchone()
+    conn.close()
+    return exists is not Nonev

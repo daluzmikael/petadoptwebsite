@@ -5,10 +5,9 @@ def init_db():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
 
-    # Enable foreign key constraints
     c.execute("PRAGMA foreign_keys = ON;")
 
-    # Create users table
+    # Users
     c.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -17,7 +16,7 @@ def init_db():
         )
     ''')
 
-    # Create pets table
+    # Pets
     c.execute('''
         CREATE TABLE IF NOT EXISTS pets (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,7 +27,38 @@ def init_db():
         )
     ''')
 
-    # Create extra table
+    # Events
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS events (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            date TEXT NOT NULL
+        )
+    ''')
+
+    # RSVPed events
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS rsvped_events (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            event_id INTEGER,
+            FOREIGN KEY(user_id) REFERENCES users(id),
+            FOREIGN KEY(event_id) REFERENCES events(id)
+        )
+    ''')
+
+    # Saved pets
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS saved_pets (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            pet_id INTEGER,
+            FOREIGN KEY(user_id) REFERENCES users(id),
+            FOREIGN KEY(pet_id) REFERENCES pets(id)
+        )
+    ''')
+
+    # Extra info table
     c.execute('''
         CREATE TABLE IF NOT EXISTS extra (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,19 +66,7 @@ def init_db():
         )
     ''')
 
-    # Create saved_pets table
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS saved_pets (
-            user_id INTEGER,
-            pet_id INTEGER,
-            PRIMARY KEY (user_id, pet_id),
-            FOREIGN KEY(user_id) REFERENCES users(id),
-            FOREIGN KEY(pet_id) REFERENCES pets(id)
-        )
-    ''')
-
-
-    # Insert sample users
+    # Sample users
     users = [
         ('alice', 'alice@example.com'),
         ('bob', 'bob@example.com'),
@@ -61,7 +79,7 @@ def init_db():
     ]
     c.executemany("INSERT OR IGNORE INTO users (username, email) VALUES (?, ?)", users)
 
-    # Insert sample pets
+    # Sample pets
     pets = [
         ('Fluffy', 'Cat', 1),
         ('Rover', 'Dog', 2),
@@ -78,12 +96,20 @@ def init_db():
     ]
     c.executemany("INSERT OR IGNORE INTO pets (name, species, owner_id) VALUES (?, ?, ?)", pets)
 
-    # Insert extra info
+    # Sample events
+    events = [
+        ("Adopt-a-thon Weekend", "2025-05-04"),
+        ("Puppy Yoga", "2025-05-10"),
+        ("Summer Cat Café Meetup", "2025-05-15")
+    ]
+    c.executemany("INSERT OR IGNORE INTO events (id, name, date) VALUES (?, ?, ?)", [(i+1, e[0], e[1]) for i, e in enumerate(events)])
+
+    # Extra info
     c.execute("INSERT OR IGNORE INTO extra (id, info) VALUES (?, ?)", (1, "Welcome to the extended API!"))
 
     conn.commit()
     conn.close()
-    print("Database initialized with extended sample data.")
+    print("Database initialized with sample users, pets, and events.")
 
 if __name__ == "__main__":
     init_db()

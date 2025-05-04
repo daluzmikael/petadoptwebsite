@@ -5,18 +5,16 @@ from pet_api import pet_api
 from extra_api import extra_api
 from flask_cors import CORS
 
-
 app = Flask(__name__)
 swagger = Swagger(app)
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+CORS(app, origins=["http://localhost:3000"])
 
-app.register_blueprint(user_api)
-app.register_blueprint(pet_api)
-app.register_blueprint(extra_api)
+app.register_blueprint(user_api, url_prefix="/api")
+app.register_blueprint(pet_api, url_prefix="/api")
+app.register_blueprint(extra_api, url_prefix="/api")
 
 @app.route('/')
 def home():
-    """Api home"""
     return 'API is running'
 
 if __name__ == '__main__':
