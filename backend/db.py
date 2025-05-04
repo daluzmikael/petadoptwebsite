@@ -16,55 +16,55 @@ def get_all_users():
 def get_user_by_email(email):
     conn = get_connection()
     c = conn.cursor()
-    c.execute("SELECT id, username, email FROM users WHERE email = ?", (email,))
+    c.execute("SELECT id, username, email, password FROM users WHERE email = ?", (email,))
     row = c.fetchone()
     conn.close()
     if row:
-        return {"id": row[0], "username": row[1], "email": row[2]}
+        return {"id": row[0], "username": row[1], "email": row[2], "password": row[3]}
     return None
 
-def create_user(name, email):
+def create_user(username, email, password):
     try:
         conn = get_connection()
         c = conn.cursor()
-        c.execute("INSERT INTO users (username, email) VALUES (?, ?)", (name, email))
+        c.execute("INSERT INTO users (username, email, password) VALUES (?, ?, ?)", (username, email, password))
         conn.commit()
-        return {"message": "User created", "name": name, "email": email}
+        return {"message": "User created", "username": username, "email": email}
     except sqlite3.IntegrityError:
-        return {"error": "Email already exists"}
+        return {"error": "Email or username already exists"}
     finally:
         conn.close()
 
-def update_user_profile(user_id, name, email):
+def update_user_profile(user_id, username, email):
     conn = get_connection()
     c = conn.cursor()
-    c.execute("UPDATE users SET username = ?, email = ? WHERE id = ?", (name, email, user_id))
+    c.execute("UPDATE users SET username = ?, email = ? WHERE id = ?", (username, email, user_id))
     conn.commit()
     conn.close()
 
 def get_all_pets():
     conn = get_connection()
     c = conn.cursor()
-    c.execute("SELECT id, name, species FROM pets")
+    c.execute("SELECT id, name, species, breed, age, allergen, temperament FROM pets")
     rows = c.fetchall()
     conn.close()
-    return [{"id": row[0], "name": row[1], "species": row[2]} for row in rows]
+    return [{"id": row[0], "name": row[1], "species": row[2], "breed": row[3], "age": row[4], "allergen": row[5], "temperament": row[6]} for row in rows]
 
 def get_pet_by_id(pet_id):
     conn = get_connection()
     c = conn.cursor()
-    c.execute("SELECT id, name, species FROM pets WHERE id = ?", (pet_id,))
+    c.execute("SELECT id, name, species, breed, age, allergen, temperament FROM pets WHERE id = ?", (pet_id,))
     row = c.fetchone()
     conn.close()
-    return {"id": row[0], "name": row[1], "species": row[2]} if row else None
+    return {"id": row[0], "name": row[1], "species": row[2], "breed": row[3], "age": row[4], "allergen": row[5], "temperament": row[6]} if row else None
 
 def search_pets_by_species(species):
     conn = get_connection()
     c = conn.cursor()
-    c.execute("SELECT id, name, species FROM pets WHERE species LIKE ?", (f"%{species}%",))
+    c.execute("SELECT id, name, species, breed, age, allergen, temperament FROM pets WHERE species LIKE ?", (f"%{species}%",))
     rows = c.fetchall()
     conn.close()
-    return [{"id": row[0], "name": row[1], "species": row[2]} for row in rows]
+    return [{"id": row[0], "name": row[1], "species": row[2], "breed": row[3], "age": row[4], "allergen": row[5], "temperament": row[6]} for row in rows]
 
 def save_pet_for_user(user_id, pet_id):
     conn = get_connection()
@@ -77,14 +77,15 @@ def get_saved_pets_for_user(user_id):
     conn = get_connection()
     c = conn.cursor()
     c.execute("""
-        SELECT pets.id, pets.name, pets.species
+        SELECT pets.id, pets.name, pets.species, pets.breed, pets.age, pets.allergen, pets.temperament
         FROM pets
         JOIN saved_pets ON pets.id = saved_pets.pet_id
         WHERE saved_pets.user_id = ?
     """, (user_id,))
     rows = c.fetchall()
     conn.close()
-    return [{"id": row[0], "name": row[1], "species": row[2]} for row in rows]
+    return [{"id": row[0], "name": row[1], "species": row[2], "breed": row[3], "age": row[4], "allergen": row[5], "temperament": row[6]} for row in rows]
+
 def save_rsvp_for_user(user_id, event_id):
     """Save a user RSVP for an event if not already saved."""
     conn = get_connection()
@@ -117,4 +118,4 @@ def has_user_rsvped(user_id, event_id):
     c.execute("SELECT 1 FROM rsvped_events WHERE user_id = ? AND event_id = ?", (user_id, event_id))
     exists = c.fetchone()
     conn.close()
-    return exists is not Nonev
+    return exists is not None
