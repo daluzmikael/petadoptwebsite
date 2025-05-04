@@ -28,7 +28,7 @@ jobs:
       #   run: |
       #     python -m pip install --upgrade pip
       #     pip install flake8
-      #     flake8 
+      #     flake8
       # test
 
   tests:
@@ -73,12 +73,12 @@ jobs:
       - name: Run Docker Container
         id: docker
         run: |
-          # Check if a container is already running on port 5000, kill if exists
-          CONTAINER_ID=$(docker ps -q --filter "ancestor=team16-backend")
-          if [ -n "$CONTAINER_ID" ]; then
-            echo "Container is already running, stopping it..."
-            docker stop $CONTAINER_ID
-            docker rm $CONTAINER_ID
+          # Check if any container based on the image is running, and stop/remove them
+          CONTAINER_IDS=$(docker ps -aqf "ancestor=team16-backend")
+          if [ -n "$CONTAINER_IDS" ]; then
+            echo "Stopping and removing existing container(s)..."
+            docker stop $CONTAINER_IDS
+            docker rm -f $CONTAINER_IDS
           fi
           docker run -d -p 5000:5000 team16-backend
 
