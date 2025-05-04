@@ -1,0 +1,10 @@
+﻿{
+  "isHostedServer": false,
+  "agentId": 2,
+  "agentName": "Ashleys-MacBook-Pro",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://github.uconn.edu/_services/pipelines/olj2LqilNgvaFdYu4wcr2CTYkRkioFWUMxh6P5akpqmYZF5Tt8",
+  "gitHubUrl": "https://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16",
+  "workFolder": "_work"
+}
