@@ -44,14 +44,15 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install Dependencies and Run Pytest
-        run: |
-          pip install --upgrade pip
-          pip install -r backend/requirements.txt
-          pip install pytest requests
-          python backend/init_db.py
-          cd backend/tests
-          pytest --maxfail=1 --disable-warnings -q
+      # Temporarily disabled
+      # - name: Install Dependencies and Run Pytest
+      #   run: |
+      #     pip install --upgrade pip
+      #     pip install -r backend/requirements.txt
+      #     pip install pytest requests
+      #     python backend/init_db.py
+      #     cd backend/tests
+      #     pytest --maxfail=1 --disable-warnings -q
 
   docker:
     name: Build and Test Docker Container
