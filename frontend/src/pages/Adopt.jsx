@@ -49,7 +49,7 @@ export default function Adopt() {
               className="pet-image"
             />
             <h3 className="pet-name">{pet.name}</h3>
-            <p className="pet-details">{pet.species} • {pet.breed}</p>
+            <p className="pet-details">{pet.species} - {pet.breed}</p>
             <button
               className="save-button"
               onClick={() => handleSave(pet.id)}

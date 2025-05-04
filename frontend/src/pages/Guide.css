@@ -50,12 +50,10 @@
     color: #34495e;
   }
   
-  .guide-card-list {
-    text-align: left;
-    font-size: 1.0rem;
-    color: #555;
-    margin-top: 0.5rem;
+  .guide-card-list li {
+    margin-bottom: 0.5rem;
     padding-left: 0.5rem;
-    line-height: 1.5;
+    list-style: none;
   }
+  
   

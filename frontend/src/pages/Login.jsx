@@ -1,7 +1,6 @@
-// src/pages/Login.jsx
-
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import './Login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -20,22 +19,17 @@ export default function Login() {
       },
       body: JSON.stringify({ email, password })
     })
-      .then((res) => {
-        console.log("Login response status:", res.status);
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
-        console.log("Login response data:", data);
         if (data.user) {
           localStorage.setItem("userEmail", data.user.email);
           localStorage.setItem("userId", data.user.id);
-          navigate("/landing"); // ✅ Now redirects to Landing instead of Adopt
+          navigate("/landing");
         } else {
           setError("Login failed: user not found.");
         }
       })
-      .catch((err) => {
-        console.error("Login error (catch):", err);
+      .catch(() => {
         setError("Login failed: network or server error.");
       });
   };
@@ -45,45 +39,42 @@ export default function Login() {
     : "";
 
   return (
-    <div className="p-6 max-w-md mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-center">Log In</h2>
-      {loginRedirectMsg && (
-        <p className="text-red-600 text-sm mb-4 text-center">{loginRedirectMsg}</p>
-      )}
-      <form onSubmit={handleLogin} className="space-y-4">
-        <div>
-          <label className="block mb-1 font-medium">Email Address</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded"
-            placeholder="example@example.com"
-            required
-          />
-        </div>
-        <div>
-          <label className="block mb-1 font-medium">Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded"
-            placeholder="••••••••"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-        >
-          Log In
-        </button>
-        {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
-        <p className="mt-2 text-center text-sm">
-          Don’t have an account? <a href="/create-account" className="text-blue-600 underline">Create one</a>
-        </p>
-      </form>
+    <div className="login-page">
+      <div className="login-card">
+        <h2 className="login-title">Pet Adoption Log In</h2>
+        {loginRedirectMsg && (
+          <p className="login-warning">{loginRedirectMsg}</p>
+        )}
+        <form onSubmit={handleLogin} className="login-form">
+          <div>
+            <label className="login-label">Email Address</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="login-input"
+              placeholder="example@example.com"
+              required
+            />
+          </div>
+          <div>
+            <label className="login-label">Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="login-input"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+          <button type="submit" className="login-button">Log In</button>
+          {error && <p className="login-error">{error}</p>}
+          <p className="login-footer">
+            Don’t have an account? <a href="/create-account" className="login-link">Create one</a>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
