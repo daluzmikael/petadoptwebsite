@@ -29,7 +29,7 @@ export default function Login() {
         if (data.user) {
           localStorage.setItem("userEmail", data.user.email);
           localStorage.setItem("userId", data.user.id);
-          navigate("/adopt");
+          navigate("/landing"); // ✅ Now redirects to Landing instead of Adopt
         } else {
           setError("Login failed: user not found.");
         }
