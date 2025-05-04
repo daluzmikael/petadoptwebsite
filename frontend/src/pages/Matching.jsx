@@ -1,4 +1,3 @@
-// src/pages/Matching.jsx
 import { useState } from "react";
 import './Matching.css';
 
@@ -38,7 +37,11 @@ export default function Matching() {
         <div className="matching-grid">
           {results.map((pet) => (
             <div key={pet.id} className="matching-card">
-              <img src={`/images/${pet.image || "placeholder.jpg"}`} alt={pet.name} className="matching-image" />
+              <img
+                src={pet.image ? `/images/${pet.image}` : "/images/placeholder.jpg"}
+                alt={pet.name}
+                className="matching-image"
+              />
               <p className="matching-name">{pet.name}</p>
               <p className="matching-info">{pet.species} • {pet.breed} • Age {pet.age}</p>
               <p className="matching-temperament">{pet.temperament}</p>

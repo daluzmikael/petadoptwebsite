@@ -43,6 +43,50 @@ def save_pet(pet_id):
 
     return jsonify({"message": f"Pet {pet_id} saved for user {user_id}"}), 200
 
+
+@pet_api.route('/pets/saved/<int:user_id>', methods=['GET'])
+def get_saved_pets(user_id):
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute('''
+        SELECT pets.id, pets.name, pets.species
+        FROM pets
+        JOIN saved_pets ON pets.id = saved_pets.pet_id
+        WHERE saved_pets.user_id = ?
+    ''', (user_id,))
+    pets = c.fetchall()
+    conn.close()
+
+    return jsonify([
+        {"id": p[0], "name": p[1], "species": p[2]} for p in pets
+    ])
+
+
+def search_pets_by_query(query):
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("""
+        SELECT id, name, species, breed, age, allergen, temperament
+        FROM pets
+        WHERE 
+            species LIKE ? OR 
+            breed LIKE ? OR 
+            CAST(age AS TEXT) LIKE ? OR 
+            allergen LIKE ? OR 
+            temperament LIKE ?
+    """, (f"%{query}%",)*5)
+    rows = c.fetchall()
+    conn.close()
+    return [
+        {
+            "id": row[0], "name": row[1], "species": row[2],
+            "breed": row[3], "age": row[4],
+            "allergen": row[5], "temperament": row[6]
+        }
+        for row in rows
+    ]
+
+
 # Unsave a pet for a user
 @pet_api.route('/api/pets/<int:pet_id>/unsave', methods=['DELETE'])
 def unsave_pet(pet_id):
