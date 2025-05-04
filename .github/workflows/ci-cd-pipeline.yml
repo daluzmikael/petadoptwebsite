@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: '3.9'
 
-      # Temporarily disabled
+      # Temporarily disabled:
       # - name: Install and Run flake8
       #   run: |
       #     python -m pip install --upgrade pip
@@ -44,7 +44,7 @@ jobs:
         with:
           python-version: '3.9'
 
-      # Temporarily disabled
+      # Temporarily disabled:
       # - name: Install Dependencies and Run Pytest
       #   run: |
       #     pip install --upgrade pip
@@ -90,3 +90,7 @@ jobs:
         run: |
           sudo chown -R $(whoami):$(whoami) /home/runner/work/CSE2102-Spring25-Team16
           sudo chmod -R 755 /home/runner/work/CSE2102-Spring25-Team16
+
+
+
+          
