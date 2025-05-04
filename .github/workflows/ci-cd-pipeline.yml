@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: '3.9'
 
-      # Temporarily disabled:
+      # Temporarily disabled
       # - name: Install and Run flake8
       #   run: |
       #     python -m pip install --upgrade pip
@@ -44,7 +44,7 @@ jobs:
         with:
           python-version: '3.9'
 
-      # Temporarily disabled:
+      # Temporarily disabled
       # - name: Install Dependencies and Run Pytest
       #   run: |
       #     pip install --upgrade pip
@@ -70,10 +70,24 @@ jobs:
         run: docker build -t team16-backend ./backend
 
       - name: Run Docker Container
+        id: docker
         run: docker run -d -p 5000:5000 team16-backend
 
+      - name: Wait for the container to be ready
+        run: sleep 10  
+
+      - name: Check Docker Container Status
+        run: docker ps
+
+      - name: Get Docker Container IP
+        id: docker_ip
+        run: |
+          CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q --filter "ancestor=team16-backend"))
+          echo "::set-output name=container_ip::$CONTAINER_IP"
+
       - name: Test Docker API Endpoint
-        run: curl http://localhost:5000/api/users
+        run: |
+          curl http://${{ steps.docker_ip.outputs.container_ip }}:5000/api/users
 
   cleanup:
     name: Cleanup Workspace
@@ -90,7 +104,3 @@ jobs:
         run: |
           sudo chown -R $(whoami):$(whoami) /home/runner/work/CSE2102-Spring25-Team16
           sudo chmod -R 755 /home/runner/work/CSE2102-Spring25-Team16
-
-
-
-          
