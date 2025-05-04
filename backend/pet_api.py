@@ -103,3 +103,15 @@ def search_pets():
     species = request.args.get('species')
     pets = search_pets_by_species(species) if species else get_all_pets()
     return jsonify(pets)
+@pet_api.route('/api/pets/<int:pet_id>/unsave', methods=['DELETE'])
+def unsave_pet(pet_id):
+    data = request.get_json()
+    user_id = data.get("user_id")
+
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("DELETE FROM saved_pets WHERE user_id = ? AND pet_id = ?", (user_id, pet_id))
+    conn.commit()
+    conn.close()
+
+    return jsonify({"message": f"Pet {pet_id} unsaved for user {user_id}"}), 200
