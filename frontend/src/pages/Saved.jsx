@@ -1,45 +1,89 @@
-// src/pages/Saved.jsx
-
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import "./Saved.css";
 
 export default function Saved() {
-  const [savedPets, setSavedPets] = useState([]);
+  const [pets, setPets] = useState([]);
+  const [events, setEvents] = useState([]);
   const userId = localStorage.getItem("userId");
-  const navigate = useNavigate();
 
-  // Redirect if not logged in
   useEffect(() => {
-    if (!userId) {
-      navigate("/?error=login_required");
-    }
-  }, [userId, navigate]);
+    fetch(`http://localhost:5000/api/pets/saved/${userId}`)
+      .then(res => res.json())
+      .then(data => setPets(data));
 
-  // Fetch saved pets for this user
-  useEffect(() => {
-    if (userId) {
-      fetch(`http://localhost:5000/api/pets/saved/${userId}`)
-        .then(res => res.json())
-        .then(data => setSavedPets(data))
-        .catch(err => console.error("Failed to fetch saved pets:", err));
-    }
+    fetch(`http://localhost:5000/api/events/rsvped/${userId}`)
+      .then(res => res.json())
+      .then(data => setEvents(data));
   }, [userId]);
 
+  const handleUnsavePet = (petId) => {
+    fetch(`http://localhost:5000/api/pets/${petId}/unsave`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: userId }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        setPets(prev => prev.filter(pet => pet.id !== petId));
+      })
+      .catch(err => console.error("Unsave failed:", err));
+  };
+
+  const handleUnRSVP = (eventId) => {
+    fetch(`http://localhost:5000/api/events/${eventId}/rsvp`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: userId }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        setEvents(prev => prev.filter(e => e.id !== eventId));
+      })
+      .catch(err => console.error("Un-RSVP failed:", err));
+  };
+
   return (
-    <div className="p-6">
-      <h2 className="text-3xl font-bold mb-6 text-center">Your Saved Pets</h2>
-      {savedPets.length === 0 ? (
-        <p className="text-center text-gray-600">You haven't saved any pets yet.</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {savedPets.map((pet) => (
-            <div key={pet.id} className="border p-4 rounded shadow text-center">
-              <h3 className="text-xl font-bold">{pet.name}</h3>
-              <p>{pet.species} • {pet.breed}</p>
-            </div>
-          ))}
-        </div>
-      )}
+    <div className="saved-page">
+      <h2 className="saved-title">Your Saved Pets & Events</h2>
+
+      <h3>🐾 Pets</h3>
+      <div className="saved-grid">
+        {pets.map(p => (
+          <div key={p.id} className="pet-card">
+            <img
+              src={`/images/${p.image || "placeholder.jpg"}`}
+              className="pet-image"
+              alt={p.name || "Saved Pet"}
+            />
+            <p className="pet-name">{p.name}</p>
+            <p>{p.species}</p>
+            <button
+              className="save-button"
+              onClick={() => handleUnsavePet(p.id)}
+            >
+              Unsave Pet
+            </button>
+          </div>
+        ))}
+      </div>
+
+      <h3 className="mt-8">📅 RSVPed Events</h3>
+      <div className="saved-grid">
+        {events.map(e => (
+          <div key={e.id} className="pet-card">
+            <p className="pet-name">{e.name}</p>
+            <p>{e.date}</p>
+            <button
+              className="save-button"
+              onClick={() => handleUnRSVP(e.id)}
+            >
+              Remove RSVP
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
