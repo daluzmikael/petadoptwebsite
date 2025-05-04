@@ -5,12 +5,10 @@ DB_NAME = 'database.db'
 def get_connection():
     return sqlite3.connect(DB_NAME)
 
-# -------------------- User Functions --------------------
-
 def get_all_users():
     conn = get_connection()
     c = conn.cursor()
-    c.execute("SELECT id, username, email FROM users")
+    c.execute("SELECT * FROM users")
     rows = c.fetchall()
     conn.close()
     return [{"id": row[0], "username": row[1], "email": row[2]} for row in rows]
@@ -44,18 +42,13 @@ def update_user_profile(user_id, username, email):
     conn.commit()
     conn.close()
 
-# -------------------- Pet Functions --------------------
-
 def get_all_pets():
     conn = get_connection()
     c = conn.cursor()
     c.execute("SELECT id, name, species, breed, age, allergen, temperament FROM pets")
     rows = c.fetchall()
     conn.close()
-    return [
-        {"id": row[0], "name": row[1], "species": row[2], "breed": row[3], "age": row[4], "allergen": row[5], "temperament": row[6]}
-        for row in rows
-    ]
+    return [{"id": row[0], "name": row[1], "species": row[2], "breed": row[3], "age": row[4], "allergen": row[5], "temperament": row[6]} for row in rows]
 
 def get_pet_by_id(pet_id):
     conn = get_connection()
@@ -71,32 +64,7 @@ def search_pets_by_species(species):
     c.execute("SELECT id, name, species, breed, age, allergen, temperament FROM pets WHERE species LIKE ?", (f"%{species}%",))
     rows = c.fetchall()
     conn.close()
-    return [
-        {"id": row[0], "name": row[1], "species": row[2], "breed": row[3], "age": row[4], "allergen": row[5], "temperament": row[6]}
-        for row in rows
-    ]
-
-def search_pets_by_query(query):
-    conn = get_connection()
-    c = conn.cursor()
-    c.execute("""
-        SELECT id, name, species, breed, age, allergen, temperament
-        FROM pets
-        WHERE 
-            species LIKE ? OR 
-            breed LIKE ? OR 
-            CAST(age AS TEXT) LIKE ? OR 
-            allergen LIKE ? OR 
-            temperament LIKE ?
-    """, (f"%{query}%",)*5)
-    rows = c.fetchall()
-    conn.close()
-    return [
-        {"id": row[0], "name": row[1], "species": row[2], "breed": row[3], "age": row[4], "allergen": row[5], "temperament": row[6]}
-        for row in rows
-    ]
-
-# -------------------- Saved Pets --------------------
+    return [{"id": row[0], "name": row[1], "species": row[2], "breed": row[3], "age": row[4], "allergen": row[5], "temperament": row[6]} for row in rows]
 
 def save_pet_for_user(user_id, pet_id):
     conn = get_connection()
@@ -116,12 +84,7 @@ def get_saved_pets_for_user(user_id):
     """, (user_id,))
     rows = c.fetchall()
     conn.close()
-    return [
-        {"id": row[0], "name": row[1], "species": row[2], "breed": row[3], "age": row[4], "allergen": row[5], "temperament": row[6]}
-        for row in rows
-    ]
-
-# -------------------- Events --------------------
+    return [{"id": row[0], "name": row[1], "species": row[2], "breed": row[3], "age": row[4], "allergen": row[5], "temperament": row[6]} for row in rows]
 
 def save_rsvp_for_user(user_id, event_id):
     """Save a user RSVP for an event if not already saved."""
@@ -156,3 +119,32 @@ def has_user_rsvped(user_id, event_id):
     exists = c.fetchone()
     conn.close()
     return exists is not None
+
+def search_pets_by_query(query):
+    conn = get_connection()
+    c = conn.cursor()
+
+    query = query.lower()  # ensure case-insensitive matching
+
+    c.execute("""
+        SELECT id, name, species, breed, age, allergen, temperament
+        FROM pets
+        WHERE
+            LOWER(species) LIKE ?
+            OR LOWER(breed) LIKE ?
+            OR LOWER(temperament) LIKE ?
+            OR CAST(age AS TEXT) LIKE ?
+    """, tuple(f"%{query}%" for _ in range(4)))
+
+    rows = c.fetchall()
+    conn.close()
+
+    return [{
+        "id": row[0],
+        "name": row[1],
+        "species": row[2],
+        "breed": row[3],
+        "age": row[4],
+        "allergen": row[5],
+        "temperament": row[6]
+    } for row in rows]

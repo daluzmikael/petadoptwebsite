@@ -114,7 +114,10 @@ def init_db():
     ]
 
 
-    c.executemany("INSERT OR IGNORE INTO pets (name, species, breed, age, allergen, temperament, owner_id, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", pets)
+    c.executemany(
+        "INSERT OR IGNORE INTO pets (name, species, breed, age, allergen, temperament, owner_id, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        pets
+    )
 
     # Sample events
     events = [
