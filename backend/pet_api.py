@@ -86,23 +86,29 @@ def get_saved_pets(user_id):
     ])
 
 
-@pet_api.route('/pets/search', methods=['GET'])
-def search_pets():
-    """
-    Search pets by species
-    ---
-    parameters:
-      - name: species
-        in: query
-        type: string
-        required: false
-    responses:
-      200:
-        description: Filtered list of pets
-    """    
-    species = request.args.get('species')
-    pets = search_pets_by_species(species) if species else get_all_pets()
-    return jsonify(pets)
+def search_pets_by_query(query):
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("""
+        SELECT id, name, species, breed, age, allergen, temperament
+        FROM pets
+        WHERE 
+            species LIKE ? OR 
+            breed LIKE ? OR 
+            CAST(age AS TEXT) LIKE ? OR 
+            allergen LIKE ? OR 
+            temperament LIKE ?
+    """, (f"%{query}%",)*5)
+    rows = c.fetchall()
+    conn.close()
+    return [
+        {
+            "id": row[0], "name": row[1], "species": row[2],
+            "breed": row[3], "age": row[4],
+            "allergen": row[5], "temperament": row[6]
+        }
+        for row in rows
+    ]
 
 @pet_api.route('/api/pets/<int:pet_id>/unsave', methods=['DELETE'])
 def unsave_pet(pet_id):
@@ -117,8 +123,3 @@ def unsave_pet(pet_id):
 
     return jsonify({"message": f"Pet {pet_id} unsaved for user {user_id}"}), 200
 
-@pet_api.route('/api/pets/search', methods=['GET'])
-def search_pets_by_query_route():
-    query = request.args.get('query', '')
-    results = search_pets_by_query(query)
-    return jsonify(results)
