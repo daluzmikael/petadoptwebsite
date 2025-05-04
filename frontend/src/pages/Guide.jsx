@@ -3,6 +3,15 @@ import './Guide.css';
 export default function Guide() {
   const categories = ["Dog", "Cat", "Equine", "Rodent", "Reptile", "Bird"];
 
+  const careInfo = {
+    Dog: ["Exercise", "Leash & Collar", "Training", "Vaccinations"],
+    Cat: ["Litter Box", "Scratching Posts", "Enrichment", "Flea Treatments"],
+    Equine: ["Stabling", "Diet & Feeding", "Hoof Care", "Medical Information"],
+    Rodent: ["Cage Care", "Toys", "Bedding", "Diet"],
+    Reptile: ["Heat Lamps", "Terrarium", "Humidity", "Supplements"],
+    Bird: ["Cage Size", "Wing Trimming", "Toys & Misc.", "Diet Types"]
+  };
+
   return (
     <div className="guide-page">
       <h2 className="guide-title">Pet Supply and Care Guide</h2>
@@ -17,10 +26,9 @@ export default function Guide() {
             <div className="guide-card-content">
               <p className="guide-card-title">{type} Care</p>
               <ul className="guide-card-list">
-                <li>General</li>
-                <li>Supplies</li>
-                <li>Training</li>
-                <li>Medical</li>
+                {careInfo[type].map((item, idx) => (
+                  <li key={idx}> {item}</li>
+                ))}
               </ul>
             </div>
           </div>
