@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from db import get_connection, get_all_pets, get_pet_by_id, search_pets_by_species, save_pet_for_user, get_saved_pets_for_user
+from db import search_pets_by_query, get_connection, get_all_pets, get_pet_by_id, search_pets_by_species, save_pet_for_user, get_saved_pets_for_user
 
 '''Pets api'''
 
@@ -103,6 +103,7 @@ def search_pets():
     species = request.args.get('species')
     pets = search_pets_by_species(species) if species else get_all_pets()
     return jsonify(pets)
+
 @pet_api.route('/api/pets/<int:pet_id>/unsave', methods=['DELETE'])
 def unsave_pet(pet_id):
     data = request.get_json()
@@ -115,3 +116,9 @@ def unsave_pet(pet_id):
     conn.close()
 
     return jsonify({"message": f"Pet {pet_id} unsaved for user {user_id}"}), 200
+
+@pet_api.route('/api/pets/search', methods=['GET'])
+def search_pets_by_query_route():
+    query = request.args.get('query', '')
+    results = search_pets_by_query(query)
+    return jsonify(results)
