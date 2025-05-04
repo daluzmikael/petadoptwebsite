@@ -85,19 +85,32 @@ def init_db():
 
     # Sample pets
     pets = [
-        ('Fluffy', 'Cat', 'Siamese', 2, 'None', 'Playful', 1),
-        ('Rover', 'Dog', 'Labrador', 4, 'None', 'Friendly', 2),
-        ('Goldie', 'Fish', 'Goldfish', 1, 'None', 'Calm', 3),
-        ('Spike', 'Hedgehog', 'African Pygmy', 3, 'None', 'Quiet', 4),
-        ('Mittens', 'Cat', 'Tabby', 5, 'None', 'Curious', 5),
-        ('Buddy', 'Dog', 'Beagle', 6, 'None', 'Energetic', 6),
-        ('Charlie', 'Parrot', 'Macaw', 3, 'Feathers', 'Talkative', 7),
-        ('Daisy', 'Rabbit', 'Dutch', 2, 'Hay', 'Gentle', 8),
-        ('Luna', 'Cat', 'Persian', 4, 'None', 'Laid-back', 1),
-        ('Rocky', 'Dog', 'Bulldog', 5, 'None', 'Loyal', 2),
-        ('Bubbles', 'Fish', 'Betta', 1, 'None', 'Colorful', 3),
-        ('Nibbles', 'Hamster', 'Syrian', 2, 'Dust', 'Nocturnal', 4),
+        ('Max', 'Dog', 'Golden Retriever', 3, 'None', 'family-friendly', 1),
+        ('Lily', 'Cat', 'Siamese', 2, 'None', 'quiet', 2),
+        ('Bella', 'Dog', 'Beagle', 5, 'None', 'energetic', 3),
+        ('Shadow', 'Cat', 'Persian', 4, 'None', 'calm', 4),
+        ('Oreo', 'Rabbit', 'Dutch', 1, 'Hay', 'quiet', 5),
+        ('Coco', 'Dog', 'French Bulldog', 3, 'None', 'loyal', 6),
+        ('Pepper', 'Cat', 'Bengal', 2, 'None', 'playful', 7),
+        ('Milo', 'Hamster', 'Syrian', 1, 'Dust', 'independent', 8),
+        ('Rex', 'Dog', 'Rottweiler', 6, 'None', 'not-kid-friendly', 1),
+        ('Whiskers', 'Cat', 'Tabby', 5, 'None', 'family-friendly', 2),
+        ('Blue', 'Parrot', 'Macaw', 4, 'Feathers', 'loud', 3),
+        ('Finn', 'Fish', 'Betta', 1, 'None', 'calm', 4),
+        ('Hazel', 'Dog', 'Husky', 4, 'None', 'energetic', 5),
+        ('Nugget', 'Rabbit', 'Lop', 2, 'Hay', 'quiet', 6),
+        ('Ginger', 'Cat', 'Maine Coon', 3, 'None', 'loyal', 7),
+        ('Tank', 'Dog', 'Bulldog', 5, 'None', 'calm', 8),
+        ('Daisy', 'Dog', 'Poodle', 4, 'None', 'playful', 1),
+        ('Snowball', 'Cat', 'Ragdoll', 3, 'None', 'family-friendly', 2),
+        ('Winston', 'Dog', 'Corgi', 2, 'None', 'energetic', 3),
+        ('Basil', 'Cat', 'British Shorthair', 6, 'None', 'quiet', 4),
+        ('Mocha', 'Dog', 'Chihuahua', 3, 'None', 'loud', 5),
+        ('Poppy', 'Rabbit', 'Mini Rex', 2, 'Hay', 'independent', 6),
+        ('Zazu', 'Parrot', 'Cockatoo', 4, 'Feathers', 'loud', 7),
+        ('Buster', 'Dog', 'Boxer', 5, 'None', 'not-kid-friendly', 8)
     ]
+
     c.executemany("INSERT OR IGNORE INTO pets (name, species, breed, age, allergen, temperament, owner_id) VALUES (?, ?, ?, ?, ?, ?, ?)", pets)
 
     # Sample events
