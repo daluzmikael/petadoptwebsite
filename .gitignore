@@ -1,8 +1,9 @@
-#database files
+# database files
 *.db
 *.sqlite
 *.sqlite3
 
+# Python cache and environment
 __pycache__/
 *.pyc
 *.pyo
@@ -11,11 +12,21 @@ __pycache__/
 venv/
 .env/
 
-# frontend/node_modules/
+# Node.js
 node_modules/
 *.eslintcache
 *.pack
 .cache/
 
+# Backup files
 /backups/
 
+# GitHub Actions runner
+actions-runner/
+backend/actions-runner/
+**/_work/
+**/_diag/
+*.log
+
+# Ignore potential submodule remnants
+.gitmodules
