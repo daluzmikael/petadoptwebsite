@@ -11,6 +11,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
+        name: Checkout code
+      - name: Initialize submodules
+        run: |
+          git submodule update --init --recursive
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
@@ -41,3 +45,15 @@ jobs:
       - run: docker build -t team16-backend ./backend
       - run: docker run -d -p 5000:5000 team16-backend
       - run: curl http://localhost:5000/api/users
+
+  cleanup:
+    runs-on: self-hosted
+    steps:
+      - name: Clean up repository
+        run: |
+          git reset --hard
+          git clean -fdx
+      - name: Ensure directory permissions
+        run: |
+          sudo chown -R $(whoami):$(whoami) /home/runner/work/CSE2102-Spring25-Team16
+          sudo chmod -R 755 /home/runner/work/CSE2102-Spring25-Team16
