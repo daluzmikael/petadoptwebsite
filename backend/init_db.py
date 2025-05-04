@@ -16,21 +16,6 @@ def init_db():
         )
     ''')
 
-    # Pets table with new fields
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS pets (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            species TEXT NOT NULL,
-            breed TEXT NOT NULL,
-            age INTEGER NOT NULL,
-            allergen TEXT NOT NULL,
-            temperament TEXT NOT NULL,
-            owner_id INTEGER,
-            FOREIGN KEY(owner_id) REFERENCES users(id)
-        )
-    ''')
-
     # Pets table
     c.execute('''
         CREATE TABLE IF NOT EXISTS pets (
@@ -46,6 +31,19 @@ def init_db():
             FOREIGN KEY(owner_id) REFERENCES users(id)
         )
     ''')
+
+    # Saved pets
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS saved_pets (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            pet_id INTEGER,
+            UNIQUE(user_id, pet_id),
+            FOREIGN KEY(user_id) REFERENCES users(id),
+            FOREIGN KEY(pet_id) REFERENCES pets(id)
+        )
+    ''')
+
 
     # Events
     c.execute('''
