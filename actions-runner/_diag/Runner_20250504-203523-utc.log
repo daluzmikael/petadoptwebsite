@@ -116,3 +116,46 @@
 [2025-05-04 20:35:24Z INFO Terminal] WRITE LINE: Current runner version: '2.321.0'
 [2025-05-04 20:35:24Z INFO Terminal] WRITE LINE: 2025-05-04 20:35:24Z: Listening for Jobs
 [2025-05-04 20:35:24Z INFO JobDispatcher] Set runner/worker IPC timeout to 30 seconds.
+[2025-05-04 20:38:28Z INFO RSAFileKeyManager] Loading RSA key parameters from file /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.credentials_rsaparams
+[2025-05-04 20:38:28Z INFO MessageListener] Message '1' received from session '3abfc98d-7f2a-4229-97dd-ee3f919b260d'.
+[2025-05-04 20:38:28Z INFO Runner] Received job message of length 48619 from service, with hash '7518933bca751a4c10db8f56d8b1eee75c2ca88991ad6cc8f3336a578d49a0e6'
+[2025-05-04 20:38:29Z INFO JobDispatcher] Job request 301 for plan e0455433-d45c-400f-b208-a73b132c108f job 3a559e2a-952e-58d2-b8db-2e604a9266d7 received.
+[2025-05-04 20:38:29Z INFO JobDispatcher] Pull OrchestrationId e0455433-d45c-400f-b208-a73b132c108f.lint.__default from JWT claims
+[2025-05-04 20:38:29Z INFO MessageListener] Received job status event. JobState: Busy
+[2025-05-04 20:38:29Z INFO MessageListener] _getMessagesTokenSource is already disposed.
+[2025-05-04 20:38:29Z INFO Terminal] WRITE LINE: 2025-05-04 20:38:29Z: Running job: lint
+[2025-05-04 20:38:29Z INFO JobDispatcher] Start renew job request 301 for job 3a559e2a-952e-58d2-b8db-2e604a9266d7.
+[2025-05-04 20:38:29Z INFO JobDispatcher] Successfully renew job request 301, job is valid till 5/4/2025 8:48:29 PM
+[2025-05-04 20:38:29Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:38:29Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:38:29Z INFO ProcessInvokerWrapper]   File name: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin/Runner.Worker'
+[2025-05-04 20:38:29Z INFO ProcessInvokerWrapper]   Arguments: 'spawnclient 146 149'
+[2025-05-04 20:38:29Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:38:29Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:38:29Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:38:29Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'True'
+[2025-05-04 20:38:29Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:38:29Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:38:29Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:38:29Z INFO ProcessInvokerWrapper]   High priority process: 'True'
+[2025-05-04 20:38:29Z INFO ProcessInvokerWrapper] Process started with process id 96987, waiting for process exit.
+[2025-05-04 20:38:29Z INFO JobDispatcher] Send job request message to worker for job 3a559e2a-952e-58d2-b8db-2e604a9266d7.
+[2025-05-04 20:38:29Z INFO ProcessChannel] Sending message of length 48619, with hash '7518933bca751a4c10db8f56d8b1eee75c2ca88991ad6cc8f3336a578d49a0e6'
+[2025-05-04 20:38:30Z INFO JobNotification] Entering JobStarted Notification
+[2025-05-04 20:38:30Z INFO JobNotification] Entering StartMonitor
+[2025-05-04 20:39:26Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:39:26Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:39:26Z INFO ProcessInvokerWrapper] Finished process 96987 with exit code 102, and elapsed time 00:00:57.5235513.
+[2025-05-04 20:39:26Z INFO JobDispatcher] Worker finished for job 3a559e2a-952e-58d2-b8db-2e604a9266d7. Code: 102
+[2025-05-04 20:39:26Z INFO JobDispatcher] finish job request for job 3a559e2a-952e-58d2-b8db-2e604a9266d7 with result: Failed
+[2025-05-04 20:39:26Z INFO Terminal] WRITE LINE: 2025-05-04 20:39:26Z: Job lint completed with result: Failed
+[2025-05-04 20:39:26Z INFO JobDispatcher] Stop renew job request for job 3a559e2a-952e-58d2-b8db-2e604a9266d7.
+[2025-05-04 20:39:26Z INFO JobDispatcher] job renew has been cancelled, stop renew job request 301.
+[2025-05-04 20:39:27Z INFO JobNotification] Entering JobCompleted Notification
+[2025-05-04 20:39:27Z INFO JobNotification] Entering EndMonitor
+[2025-05-04 20:39:27Z INFO MessageListener] Received job status event. JobState: Online
+[2025-05-04 20:39:27Z WARN GitHubActionsService] GET request to https://github.uconn.edu/_services/pipelines/olj2LqilNgvaFdYu4wcr2CTYkRkioFWUMxh6P5akpqmYZF5Tt8/_apis/distributedtask/pools/1/messages?sessionId=3abfc98d-7f2a-4229-97dd-ee3f919b260d&lastMessageId=1&status=Busy&runnerVersion=2.321.0&os=macOS&architecture=X64&disableUpdate=false has been cancelled.
+[2025-05-04 20:39:27Z INFO MessageListener] Get messages has been cancelled using local token source. Continue to get messages with new status.
+[2025-05-04 20:39:28Z INFO MessageListener] Sleeping for 25.893 seconds before retrying.
+[2025-05-04 20:39:54Z INFO MessageListener] Sleeping for 28.273 seconds before retrying.
+[2025-05-04 20:41:13Z INFO MessageListener] Sleeping for 18.857 seconds before retrying.
