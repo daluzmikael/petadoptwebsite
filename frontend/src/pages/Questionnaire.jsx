@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './Questionnaire.css'; // ✅ Import the custom CSS
 
 export default function Questionnaire() {
   const [answers, setAnswers] = useState({});
@@ -30,24 +31,24 @@ export default function Questionnaire() {
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Pet Recommendation Questionnaire</h2>
-      <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+    <div className="questionnaire-page">
+      <h2 className="questionnaire-title">Pet Recommendation Questionnaire</h2>
+      <form onSubmit={handleSubmit} className="questionnaire-form">
         {questions.map((q, i) => (
           <div key={i}>
-            <label className="block text-sm font-medium mb-1">{q}</label>
+            <label className="questionnaire-label">{q}</label>
             <input
               type="text"
-              className="w-full border p-2"
+              className="questionnaire-input"
               onChange={(e) => setAnswers(prev => ({ ...prev, [i]: e.target.value }))}
               required
             />
           </div>
         ))}
-        <button type="submit" className="col-span-2 mt-4 bg-blue-600 text-white px-4 py-2 rounded">
+        <button type="submit" className="questionnaire-submit">
           Submit
         </button>
       </form>
-    </div> 
+    </div>
   );
 }
