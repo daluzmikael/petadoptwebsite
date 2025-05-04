@@ -4,9 +4,7 @@ def init_db():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
 
-    c.execute("PRAGMA foreign_keys = ON;")
-
-    # Users table with password
+    # Users table 
     c.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -32,6 +30,7 @@ def init_db():
         )
     ''')
 
+
     # Saved pets
     c.execute('''
         CREATE TABLE IF NOT EXISTS saved_pets (
@@ -43,7 +42,6 @@ def init_db():
             FOREIGN KEY(pet_id) REFERENCES pets(id)
         )
     ''')
-
 
     # Events
     c.execute('''
@@ -66,7 +64,7 @@ def init_db():
         )
     ''')
 
-    # Extra info table
+    # Extra info
     c.execute('''
         CREATE TABLE IF NOT EXISTS extra (
             id INTEGER PRIMARY KEY,
@@ -74,7 +72,7 @@ def init_db():
         )
     ''')
 
-    # Sample users with password
+    # Sample users 
     users = [
         ('alice', 'alice@example.com', 'password123'),
         ('bob', 'bob@example.com', 'password123'),
@@ -115,8 +113,8 @@ def init_db():
         ('Buster', 'Dog', 'Boxer', 5, 'None', 'not-kid-friendly', 8, '/images/buster.jpg')
     ]
 
-    c.executemany("INSERT OR IGNORE INTO pets (name, species, breed, age, allergen, temperament, owner_id, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", pets)
 
+    c.executemany("INSERT OR IGNORE INTO pets (name, species, breed, age, allergen, temperament, owner_id, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", pets)
 
     # Sample events
     events = [
