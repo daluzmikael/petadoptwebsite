@@ -8,7 +8,6 @@ export default function Adopt() {
   const [pets, setPets] = useState([]);
   const navigate = useNavigate();
 
-  // 🔒 Redirect if not logged in
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (!userId) {
@@ -16,7 +15,6 @@ export default function Adopt() {
     }
   }, [navigate]);
 
-  // 🐾 Fetch pets
   useEffect(() => {
     fetch("http://localhost:5000/api/pets")
       .then((res) => res.json())
@@ -24,7 +22,6 @@ export default function Adopt() {
       .catch((err) => console.error("Failed to fetch pets:", err));
   }, []);
 
-  // 💾 Save a pet for this user
   const handleSave = (petId) => {
     const userId = localStorage.getItem("userId");
 
@@ -52,7 +49,7 @@ export default function Adopt() {
               className="pet-image"
             />
             <h3 className="pet-name">{pet.name}</h3>
-            <p className="pet-details">{pet.species} • {pet.breed}</p>
+            <p className="pet-details">{pet.species} - {pet.breed}</p>
             <button
               className="save-button"
               onClick={() => handleSave(pet.id)}
