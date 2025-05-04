@@ -1,0 +1,4110 @@
+[2025-05-04 20:44:16Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:16Z INFO HostContext] Well known config file 'Credentials': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.credentials'
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:16Z INFO HostContext] Well known config file 'Runner': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.runner'
+[2025-05-04 20:44:16Z INFO Worker] Version: 2.321.0
+[2025-05-04 20:44:16Z INFO Worker] Commit: e249007931b7c8e857797fa259c167f0bd4f997a
+[2025-05-04 20:44:16Z INFO Worker] Culture: en-US
+[2025-05-04 20:44:16Z INFO Worker] UI Culture: en-US
+[2025-05-04 20:44:16Z INFO Worker] Waiting to receive the job message from the channel.
+[2025-05-04 20:44:16Z INFO ProcessChannel] Receiving message of length 26562, with hash 'd8ffccd05fa7c6deec9f3b3c9d1d023272c47fd2ce7489bb496bfc37e052612a'
+[2025-05-04 20:44:16Z INFO Worker] Message received.
+[2025-05-04 20:44:16Z INFO Worker] Job message:
+ {
+  "fileTable": [
+    ".github/workflows/ci-cd-pipeline.yml"
+  ],
+  "mask": [
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    }
+  ],
+  "steps": [
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "actions/checkout",
+        "ref": "v3",
+        "repositoryType": "GitHub",
+        "path": ""
+      },
+      "contextName": "__actions_checkout",
+      "condition": "success()",
+      "id": "15680c87-f1fa-531c-c5eb-115a4d991ee9",
+      "name": "__actions_checkout"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "actions/setup-python",
+        "ref": "v4",
+        "repositoryType": "GitHub",
+        "path": ""
+      },
+      "contextName": "__actions_setup-python",
+      "inputs": {
+        "type": 2,
+        "file": 1,
+        "line": 16,
+        "col": 11,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 16,
+              "col": 11,
+              "lit": "python-version"
+            },
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 16,
+              "col": 27,
+              "lit": "3.9"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "9757fc64-6aec-58eb-8422-b7e5a2ffd735",
+      "name": "__actions_setup-python"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 17,
+        "col": 15,
+        "lit": "Run linter"
+      },
+      "contextName": "__run",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 18,
+              "col": 14,
+              "lit": "python -m pip install flake8\npython -m flake8 .\n"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "98c2eea2-59df-5ac2-94a5-42878bcf6cb5",
+      "name": "__run"
+    }
+  ],
+  "variables": {
+    "system.isScheduled": {
+      "value": "False"
+    },
+    "system.servertype": {
+      "value": "Hosted"
+    },
+    "system.culture": {
+      "value": ""
+    },
+    "system.pipelineStartTime": {
+      "value": "2025-05-04 20:44:12+00:00"
+    },
+    "system.runner.lowdiskspacethreshold": {
+      "value": "100"
+    },
+    "DistributedTask.NewActionMetadata": {
+      "value": "true"
+    },
+    "DistributedTask.EnableCompositeActions": {
+      "value": "true"
+    },
+    "DistributedTask.EnhancedAnnotations": {
+      "value": "true"
+    },
+    "DistributedTask.UploadStepSummary": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode16": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode20": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode12Action": {
+      "value": "true"
+    },
+    "DistributedTask.LogTemplateErrorsAsDebugMessages": {
+      "value": "true"
+    },
+    "DistributedTask.AllowRunnerContainerHooks": {
+      "value": "true"
+    },
+    "DistributedTask.DeprecateStepOutputCommands": {
+      "value": "true"
+    },
+    "DistributedTask.UseWhich2": {
+      "value": "true"
+    },
+    "DistributedTask.DetailUntarFailure": {
+      "value": "true"
+    },
+    "DistributedTask.UseActionArchiveCache": {
+      "value": "true"
+    },
+    "DistributedTask.EnableJobServerQueueTelemetry": {
+      "value": "true"
+    },
+    "DistributedTask.MarkJobAsFailedOnWorkerCrash": {
+      "value": "true"
+    },
+    "system.teamProjectId": {
+      "value": "00000000-0000-0000-0000-000000000000"
+    },
+    "build.buildId": {
+      "value": "120"
+    },
+    "build.containerId": {
+      "value": "97311"
+    },
+    "build.allowCreateArtifacts": {
+      "value": "False"
+    },
+    "system.workflowFilePath": {
+      "value": ".github/workflows/ci-cd-pipeline.yml"
+    },
+    "system.phaseDisplayName": {
+      "value": "lint"
+    },
+    "system.phaseId": {
+      "value": "e39c5cfa-6e46-508a-17bc-1eb311ee91ac"
+    },
+    "system.phaseName": {
+      "value": "lint"
+    },
+    "system.phaseAttempt": {
+      "value": "1"
+    },
+    "system.jobIdentifier": {
+      "value": "lint.__default"
+    },
+    "system.jobAttempt": {
+      "value": "1"
+    },
+    "System.JobPositionInPhase": {
+      "value": "1"
+    },
+    "System.TotalJobsInPhase": {
+      "value": "1"
+    },
+    "system.github.job": {
+      "value": "lint"
+    },
+    "system.jobDisplayName": {
+      "value": "lint"
+    },
+    "system.jobId": {
+      "value": "3a559e2a-952e-58d2-b8db-2e604a9266d7"
+    },
+    "system.jobName": {
+      "value": "__default"
+    },
+    "system.github.token.permissions": {
+      "value": "{\"Actions\":\"write\",\"Attestations\":\"write\",\"Checks\":\"write\",\"Contents\":\"write\",\"Deployments\":\"write\",\"Discussions\":\"write\",\"Issues\":\"write\",\"Metadata\":\"read\",\"Packages\":\"write\",\"Pages\":\"write\",\"PullRequests\":\"write\",\"RepositoryProjects\":\"write\",\"SecurityEvents\":\"write\",\"Statuses\":\"write\"}"
+    },
+    "system.github.token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.runnerEnvironment": {
+      "value": "self-hosted"
+    },
+    "system.orchestrationId": {
+      "value": "e60bb906-f0b9-4e90-b1f3-b53e15a08574.lint.__default"
+    },
+    "system.runnerGroupName": {
+      "value": "Default"
+    }
+  },
+  "messageType": "PipelineAgentJobRequest",
+  "plan": {
+    "scopeIdentifier": "00000000-0000-0000-0000-000000000000",
+    "planType": "Actions",
+    "version": 39,
+    "planId": "e60bb906-f0b9-4e90-b1f3-b53e15a08574",
+    "planGroup": "Actions:00000000-0000-0000-0000-000000000000:1",
+    "artifactUri": "vstfs:///Build/Build/120",
+    "artifactLocation": null,
+    "definition": {
+      "_links": {},
+      "id": 3,
+      "name": "CSE2102-Spring25-Team16"
+    },
+    "owner": {
+      "_links": {},
+      "id": 3,
+      "name": "CSE2102-Spring25"
+    }
+  },
+  "timeline": {
+    "id": "e60bb906-f0b9-4e90-b1f3-b53e15a08574",
+    "changeId": 0,
+    "location": null
+  },
+  "jobId": "3a559e2a-952e-58d2-b8db-2e604a9266d7",
+  "jobDisplayName": "lint",
+  "jobName": "__default",
+  "requestId": 312,
+  "lockedUntil": "0001-01-01T00:00:00",
+  "resources": {
+    "endpoints": [
+      {
+        "data": {
+          "ServerId": "1ea5ef56-bb0d-4f6d-a37f-542a5741e9ec",
+          "ServerName": "olj2LqilNgvaFdYu4wcr2CTYkRkioFWUMxh6P5akpqmYZF5Tt8",
+          "CacheServerUrl": "https://github.uconn.edu/_services/artifactcache/olj2LqilNgvaFdYu4wcr2CTYkRkioFWUMxh6P5akpqmYZF5Tt8/",
+          "FeedStreamUrl": "https://github.uconn.edu/_services/pipelines/olj2LqilNgvaFdYu4wcr2CTYkRkioFWUMxh6P5akpqmYZF5Tt8/00000000-0000-0000-0000-000000000000/_apis/distributedtask/hubs/Actions/plans/e60bb906-f0b9-4e90-b1f3-b53e15a08574/timelines/e60bb906-f0b9-4e90-b1f3-b53e15a08574/records/3a559e2a-952e-58d2-b8db-2e604a9266d7/feedstream?api-version=6.0-preview"
+        },
+        "name": "SystemVssConnection",
+        "url": "https://github.uconn.edu/_services/pipelines/olj2LqilNgvaFdYu4wcr2CTYkRkioFWUMxh6P5akpqmYZF5Tt8/",
+        "authorization": {
+          "parameters": {
+            "AccessToken": ***
+          },
+          "scheme": "OAuth"
+        },
+        "isShared": false,
+        "isReady": true
+      }
+    ]
+  },
+  "contextData": {
+    "github": {
+      "t": 2,
+      "d": [
+        {
+          "k": "ref",
+          "v": "refs/heads/main"
+        },
+        {
+          "k": "sha",
+          "v": "711b96401f88efd8613f0bcfb0e89287245210c8"
+        },
+        {
+          "k": "repository",
+          "v": "CSE2102-Spring25/CSE2102-Spring25-Team16"
+        },
+        {
+          "k": "repository_owner",
+          "v": "CSE2102-Spring25"
+        },
+        {
+          "k": "repository_owner_id",
+          "v": "5934"
+        },
+        {
+          "k": "repositoryUrl",
+          "v": "git://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16.git"
+        },
+        {
+          "k": "run_id",
+          "v": "39047"
+        },
+        {
+          "k": "run_number",
+          "v": "95"
+        },
+        {
+          "k": "retention_days",
+          "v": "90"
+        },
+        {
+          "k": "run_attempt",
+          "v": "1"
+        },
+        {
+          "k": "artifact_cache_size_limit",
+          "v": "10"
+        },
+        {
+          "k": "repository_visibility",
+          "v": "private"
+        },
+        {
+          "k": "repo-self-hosted-runners-disabled",
+          "v": false
+        },
+        {
+          "k": "enterprise-managed-business-id",
+          "v": ""
+        },
+        {
+          "k": "repository_id",
+          "v": "16347"
+        },
+        {
+          "k": "actor_id",
+          "v": "6058"
+        },
+        {
+          "k": "actor",
+          "v": "kok20002"
+        },
+        {
+          "k": "triggering_actor",
+          "v": "kok20002"
+        },
+        {
+          "k": "workflow",
+          "v": "CI/CD Pipeline"
+        },
+        {
+          "k": "head_ref",
+          "v": ""
+        },
+        {
+          "k": "base_ref",
+          "v": ""
+        },
+        {
+          "k": "event_name",
+          "v": "push"
+        },
+        {
+          "k": "event",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "after",
+                "v": "711b96401f88efd8613f0bcfb0e89287245210c8"
+              },
+              {
+                "k": "base_ref",
+                "v": null
+              },
+              {
+                "k": "before",
+                "v": "e5beeda6659446bce04ae339e4ac53057c0a1c9e"
+              },
+              {
+                "k": "commits",
+                "v": {
+                  "t": 1,
+                  "a": [
+                    {
+                      "t": 2,
+                      "d": [
+                        {
+                          "k": "author",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "konrad.koc@uconn.edu"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Konrad Koc"
+                              },
+                              {
+                                "k": "username",
+                                "v": "kok20002"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "committer",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "konrad.koc@uconn.edu"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Konrad Koc"
+                              },
+                              {
+                                "k": "username",
+                                "v": "kok20002"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "distinct",
+                          "v": true
+                        },
+                        {
+                          "k": "id",
+                          "v": "711b96401f88efd8613f0bcfb0e89287245210c8"
+                        },
+                        {
+                          "k": "message",
+                          "v": "."
+                        },
+                        {
+                          "k": "timestamp",
+                          "v": "2025-05-04T16:44:06-04:00"
+                        },
+                        {
+                          "k": "tree_id",
+                          "v": "f07675fa17463bff5c5f92414c4b8814a2cb287b"
+                        },
+                        {
+                          "k": "url",
+                          "v": "https://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16/commit/711b96401f88efd8613f0bcfb0e89287245210c8"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "compare",
+                "v": "https://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16/compare/e5beeda66594...711b96401f88"
+              },
+              {
+                "k": "created",
+                "v": false
+              },
+              {
+                "k": "deleted",
+                "v": false
+              },
+              {
+                "k": "enterprise",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "avatar_url",
+                      "v": "https://github.uconn.edu/avatars/b/1?"
+                    },
+                    {
+                      "k": "created_at",
+                      "v": "2019-05-21T14:57:14Z"
+                    },
+                    {
+                      "k": "description",
+                      "v": ""
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.uconn.edu/enterprises/university-of-connecticut-school-of-engineering"
+                    },
+                    {
+                      "k": "id",
+                      "v": 1.0
+                    },
+                    {
+                      "k": "name",
+                      "v": "University of Connecticut"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "MDEwOkVudGVycHJpc2Ux"
+                    },
+                    {
+                      "k": "slug",
+                      "v": "university-of-connecticut-school-of-engineering"
+                    },
+                    {
+                      "k": "updated_at",
+                      "v": "2024-02-13T20:16:45Z"
+                    },
+                    {
+                      "k": "website_url",
+                      "v": "https://uconn.edu"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "forced",
+                "v": false
+              },
+              {
+                "k": "head_commit",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "author",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "konrad.koc@uconn.edu"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Konrad Koc"
+                          },
+                          {
+                            "k": "username",
+                            "v": "kok20002"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "committer",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "konrad.koc@uconn.edu"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Konrad Koc"
+                          },
+                          {
+                            "k": "username",
+                            "v": "kok20002"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "distinct",
+                      "v": true
+                    },
+                    {
+                      "k": "id",
+                      "v": "711b96401f88efd8613f0bcfb0e89287245210c8"
+                    },
+                    {
+                      "k": "message",
+                      "v": "."
+                    },
+                    {
+                      "k": "timestamp",
+                      "v": "2025-05-04T16:44:06-04:00"
+                    },
+                    {
+                      "k": "tree_id",
+                      "v": "f07675fa17463bff5c5f92414c4b8814a2cb287b"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16/commit/711b96401f88efd8613f0bcfb0e89287245210c8"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "organization",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "avatar_url",
+                      "v": "https://github.uconn.edu/avatars/u/5934?"
+                    },
+                    {
+                      "k": "description",
+                      "v": null
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://github.uconn.edu/api/v3/orgs/CSE2102-Spring25/events"
+                    },
+                    {
+                      "k": "hooks_url",
+                      "v": "https://github.uconn.edu/api/v3/orgs/CSE2102-Spring25/hooks"
+                    },
+                    {
+                      "k": "id",
+                      "v": 5934.0
+                    },
+                    {
+                      "k": "issues_url",
+                      "v": "https://github.uconn.edu/api/v3/orgs/CSE2102-Spring25/issues"
+                    },
+                    {
+                      "k": "login",
+                      "v": "CSE2102-Spring25"
+                    },
+                    {
+                      "k": "members_url",
+                      "v": "https://github.uconn.edu/api/v3/orgs/CSE2102-Spring25/members{/member}"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "MDEyOk9yZ2FuaXphdGlvbjU5MzQ="
+                    },
+                    {
+                      "k": "public_members_url",
+                      "v": "https://github.uconn.edu/api/v3/orgs/CSE2102-Spring25/public_members{/member}"
+                    },
+                    {
+                      "k": "repos_url",
+                      "v": "https://github.uconn.edu/api/v3/orgs/CSE2102-Spring25/repos"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.uconn.edu/api/v3/orgs/CSE2102-Spring25"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "pusher",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "email",
+                      "v": "konrad.koc@uconn.edu"
+                    },
+                    {
+                      "k": "name",
+                      "v": "kok20002"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "ref",
+                "v": "refs/heads/main"
+              },
+              {
+                "k": "repository",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "allow_forking",
+                      "v": false
+                    },
+                    {
+                      "k": "archive_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/{archive_format}{/ref}"
+                    },
+                    {
+                      "k": "archived",
+                      "v": false
+                    },
+                    {
+                      "k": "assignees_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/assignees{/user}"
+                    },
+                    {
+                      "k": "blobs_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/git/blobs{/sha}"
+                    },
+                    {
+                      "k": "branches_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/branches{/branch}"
+                    },
+                    {
+                      "k": "clone_url",
+                      "v": "https://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16.git"
+                    },
+                    {
+                      "k": "collaborators_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/collaborators{/collaborator}"
+                    },
+                    {
+                      "k": "comments_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/comments{/number}"
+                    },
+                    {
+                      "k": "commits_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/commits{/sha}"
+                    },
+                    {
+                      "k": "compare_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/compare/{base}...{head}"
+                    },
+                    {
+                      "k": "contents_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/contents/{+path}"
+                    },
+                    {
+                      "k": "contributors_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/contributors"
+                    },
+                    {
+                      "k": "created_at",
+                      "v": 1740675683.0
+                    },
+                    {
+                      "k": "custom_properties",
+                      "v": {
+                        "t": 2
+                      }
+                    },
+                    {
+                      "k": "default_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "deployments_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/deployments"
+                    },
+                    {
+                      "k": "description",
+                      "v": null
+                    },
+                    {
+                      "k": "disabled",
+                      "v": false
+                    },
+                    {
+                      "k": "downloads_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/downloads"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/events"
+                    },
+                    {
+                      "k": "fork",
+                      "v": false
+                    },
+                    {
+                      "k": "forks",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/forks"
+                    },
+                    {
+                      "k": "full_name",
+                      "v": "CSE2102-Spring25/CSE2102-Spring25-Team16"
+                    },
+                    {
+                      "k": "git_commits_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/git/commits{/sha}"
+                    },
+                    {
+                      "k": "git_refs_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/git/refs{/sha}"
+                    },
+                    {
+                      "k": "git_tags_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/git/tags{/sha}"
+                    },
+                    {
+                      "k": "git_url",
+                      "v": "git://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16.git"
+                    },
+                    {
+                      "k": "has_discussions",
+                      "v": false
+                    },
+                    {
+                      "k": "has_downloads",
+                      "v": true
+                    },
+                    {
+                      "k": "has_issues",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pages",
+                      "v": false
+                    },
+                    {
+                      "k": "has_projects",
+                      "v": true
+                    },
+                    {
+                      "k": "has_wiki",
+                      "v": true
+                    },
+                    {
+                      "k": "homepage",
+                      "v": null
+                    },
+                    {
+                      "k": "hooks_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/hooks"
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16"
+                    },
+                    {
+                      "k": "id",
+                      "v": 16347.0
+                    },
+                    {
+                      "k": "is_template",
+                      "v": false
+                    },
+                    {
+                      "k": "issue_comment_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/issues/comments{/number}"
+                    },
+                    {
+                      "k": "issue_events_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/issues/events{/number}"
+                    },
+                    {
+                      "k": "issues_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/issues{/number}"
+                    },
+                    {
+                      "k": "keys_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/keys{/key_id}"
+                    },
+                    {
+                      "k": "labels_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/labels{/name}"
+                    },
+                    {
+                      "k": "language",
+                      "v": "Python"
+                    },
+                    {
+                      "k": "languages_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/languages"
+                    },
+                    {
+                      "k": "license",
+                      "v": null
+                    },
+                    {
+                      "k": "master_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "merges_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/merges"
+                    },
+                    {
+                      "k": "milestones_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/milestones{/number}"
+                    },
+                    {
+                      "k": "mirror_url",
+                      "v": null
+                    },
+                    {
+                      "k": "name",
+                      "v": "CSE2102-Spring25-Team16"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "MDEwOlJlcG9zaXRvcnkxNjM0Nw=="
+                    },
+                    {
+                      "k": "notifications_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/notifications{?since,all,participating}"
+                    },
+                    {
+                      "k": "open_issues",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "open_issues_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "organization",
+                      "v": "CSE2102-Spring25"
+                    },
+                    {
+                      "k": "owner",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "avatar_url",
+                            "v": "https://github.uconn.edu/avatars/u/5934?"
+                          },
+                          {
+                            "k": "email",
+                            "v": null
+                          },
+                          {
+                            "k": "events_url",
+                            "v": "https://github.uconn.edu/api/v3/users/CSE2102-Spring25/events{/privacy}"
+                          },
+                          {
+                            "k": "followers_url",
+                            "v": "https://github.uconn.edu/api/v3/users/CSE2102-Spring25/followers"
+                          },
+                          {
+                            "k": "following_url",
+                            "v": "https://github.uconn.edu/api/v3/users/CSE2102-Spring25/following{/other_user}"
+                          },
+                          {
+                            "k": "gists_url",
+                            "v": "https://github.uconn.edu/api/v3/users/CSE2102-Spring25/gists{/gist_id}"
+                          },
+                          {
+                            "k": "gravatar_id",
+                            "v": ""
+                          },
+                          {
+                            "k": "html_url",
+                            "v": "https://github.uconn.edu/CSE2102-Spring25"
+                          },
+                          {
+                            "k": "id",
+                            "v": 5934.0
+                          },
+                          {
+                            "k": "login",
+                            "v": "CSE2102-Spring25"
+                          },
+                          {
+                            "k": "name",
+                            "v": "CSE2102-Spring25"
+                          },
+                          {
+                            "k": "node_id",
+                            "v": "MDEyOk9yZ2FuaXphdGlvbjU5MzQ="
+                          },
+                          {
+                            "k": "organizations_url",
+                            "v": "https://github.uconn.edu/api/v3/users/CSE2102-Spring25/orgs"
+                          },
+                          {
+                            "k": "received_events_url",
+                            "v": "https://github.uconn.edu/api/v3/users/CSE2102-Spring25/received_events"
+                          },
+                          {
+                            "k": "repos_url",
+                            "v": "https://github.uconn.edu/api/v3/users/CSE2102-Spring25/repos"
+                          },
+                          {
+                            "k": "site_admin",
+                            "v": false
+                          },
+                          {
+                            "k": "starred_url",
+                            "v": "https://github.uconn.edu/api/v3/users/CSE2102-Spring25/starred{/owner}{/repo}"
+                          },
+                          {
+                            "k": "subscriptions_url",
+                            "v": "https://github.uconn.edu/api/v3/users/CSE2102-Spring25/subscriptions"
+                          },
+                          {
+                            "k": "type",
+                            "v": "Organization"
+                          },
+                          {
+                            "k": "url",
+                            "v": "https://github.uconn.edu/api/v3/users/CSE2102-Spring25"
+                          },
+                          {
+                            "k": "user_view_type",
+                            "v": "public"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "private",
+                      "v": true
+                    },
+                    {
+                      "k": "pulls_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/pulls{/number}"
+                    },
+                    {
+                      "k": "pushed_at",
+                      "v": 1746391449.0
+                    },
+                    {
+                      "k": "releases_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/releases{/id}"
+                    },
+                    {
+                      "k": "size",
+                      "v": 61406.0
+                    },
+                    {
+                      "k": "ssh_url",
+                      "v": "git@github.uconn.edu:CSE2102-Spring25/CSE2102-Spring25-Team16.git"
+                    },
+                    {
+                      "k": "stargazers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/stargazers"
+                    },
+                    {
+                      "k": "statuses_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/statuses/{sha}"
+                    },
+                    {
+                      "k": "subscribers_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/subscribers"
+                    },
+                    {
+                      "k": "subscription_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/subscription"
+                    },
+                    {
+                      "k": "svn_url",
+                      "v": "https://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16"
+                    },
+                    {
+                      "k": "tags_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/tags"
+                    },
+                    {
+                      "k": "teams_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/teams"
+                    },
+                    {
+                      "k": "topics",
+                      "v": {
+                        "t": 1
+                      }
+                    },
+                    {
+                      "k": "trees_url",
+                      "v": "https://github.uconn.edu/api/v3/repos/CSE2102-Spring25/CSE2102-Spring25-Team16/git/trees{/sha}"
+                    },
+                    {
+                      "k": "updated_at",
+                      "v": "2025-05-04T20:43:44Z"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16"
+                    },
+                    {
+                      "k": "visibility",
+                      "v": "private"
+                    },
+                    {
+                      "k": "watchers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "watchers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "web_commit_signoff_required",
+                      "v": false
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "sender",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "avatar_url",
+                      "v": "https://github.uconn.edu/avatars/u/6058?"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://github.uconn.edu/api/v3/users/kok20002/events{/privacy}"
+                    },
+                    {
+                      "k": "followers_url",
+                      "v": "https://github.uconn.edu/api/v3/users/kok20002/followers"
+                    },
+                    {
+                      "k": "following_url",
+                      "v": "https://github.uconn.edu/api/v3/users/kok20002/following{/other_user}"
+                    },
+                    {
+                      "k": "gists_url",
+                      "v": "https://github.uconn.edu/api/v3/users/kok20002/gists{/gist_id}"
+                    },
+                    {
+                      "k": "gravatar_id",
+                      "v": ""
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.uconn.edu/kok20002"
+                    },
+                    {
+                      "k": "id",
+                      "v": 6058.0
+                    },
+                    {
+                      "k": "ldap_dn",
+                      "v": "uid=kok20002,ou=people,dc=uconn,dc=edu"
+                    },
+                    {
+                      "k": "login",
+                      "v": "kok20002"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "MDQ6VXNlcjYwNTg="
+                    },
+                    {
+                      "k": "organizations_url",
+                      "v": "https://github.uconn.edu/api/v3/users/kok20002/orgs"
+                    },
+                    {
+                      "k": "received_events_url",
+                      "v": "https://github.uconn.edu/api/v3/users/kok20002/received_events"
+                    },
+                    {
+                      "k": "repos_url",
+                      "v": "https://github.uconn.edu/api/v3/users/kok20002/repos"
+                    },
+                    {
+                      "k": "site_admin",
+                      "v": false
+                    },
+                    {
+                      "k": "starred_url",
+                      "v": "https://github.uconn.edu/api/v3/users/kok20002/starred{/owner}{/repo}"
+                    },
+                    {
+                      "k": "subscriptions_url",
+                      "v": "https://github.uconn.edu/api/v3/users/kok20002/subscriptions"
+                    },
+                    {
+                      "k": "type",
+                      "v": "User"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.uconn.edu/api/v3/users/kok20002"
+                    },
+                    {
+                      "k": "user_view_type",
+                      "v": "public"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "k": "server_url",
+          "v": "https://github.uconn.edu"
+        },
+        {
+          "k": "api_url",
+          "v": "https://github.uconn.edu/api/v3"
+        },
+        {
+          "k": "graphql_url",
+          "v": "https://github.uconn.edu/api/graphql"
+        },
+        {
+          "k": "ref_name",
+          "v": "main"
+        },
+        {
+          "k": "ref_protected",
+          "v": true
+        },
+        {
+          "k": "ref_type",
+          "v": "branch"
+        },
+        {
+          "k": "secret_source",
+          "v": "Actions"
+        },
+        {
+          "k": "workflow_ref",
+          "v": "CSE2102-Spring25/CSE2102-Spring25-Team16/.github/workflows/ci-cd-pipeline.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "711b96401f88efd8613f0bcfb0e89287245210c8"
+        }
+      ]
+    },
+    "partialrerun": false,
+    "needs": {
+      "t": 2
+    },
+    "vars": null,
+    "inputs": {
+      "t": 2
+    },
+    "matrix": null,
+    "strategy": {
+      "t": 2,
+      "d": [
+        {
+          "k": "fail-fast",
+          "v": true
+        },
+        {
+          "k": "job-index",
+          "v": 0.0
+        },
+        {
+          "k": "job-total",
+          "v": 1.0
+        },
+        {
+          "k": "max-parallel",
+          "v": 1.0
+        }
+      ]
+    }
+  }
+}
+[2025-05-04 20:44:16Z INFO JobRunner] Job ID 3a559e2a-952e-58d2-b8db-2e604a9266d7
+[2025-05-04 20:44:16Z INFO ConfigurationStore] currentAssemblyLocation: /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin/Runner.Worker.dll
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:16Z INFO ConfigurationStore] binPath: /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:16Z INFO ConfigurationStore] RootFolder: /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:16Z INFO HostContext] Well known config file 'Runner': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.runner'
+[2025-05-04 20:44:16Z INFO ConfigurationStore] ConfigFilePath: /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.runner
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:16Z INFO HostContext] Well known config file 'Credentials': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.credentials'
+[2025-05-04 20:44:16Z INFO ConfigurationStore] CredFilePath: /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.credentials
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:16Z INFO HostContext] Well known config file 'MigratedCredentials': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.credentials_migrated'
+[2025-05-04 20:44:16Z INFO ConfigurationStore] MigratedCredFilePath: /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.credentials_migrated
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:16Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:16Z INFO HostContext] Well known config file 'Service': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.service'
+[2025-05-04 20:44:16Z INFO ConfigurationStore] ServiceConfigFilePath: /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.service
+[2025-05-04 20:44:16Z INFO ConfigurationStore] Read setting file: 346 chars
+[2025-05-04 20:44:16Z INFO JobRunner] Creating job server with URL: https://github.uconn.edu/_services/pipelines/olj2LqilNgvaFdYu4wcr2CTYkRkioFWUMxh6P5akpqmYZF5Tt8/
+[2025-05-04 20:44:16Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2025-05-04 20:44:17Z INFO Worker] Listening for cancel message from the channel.
+[2025-05-04 20:44:17Z INFO Worker] Waiting for the job to complete or for a cancel message from the channel.
+[2025-05-04 20:44:17Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2025-05-04 20:44:17Z INFO JobServer] Creating websocket client ...wss://github.uconn.edu/_services/pipelines/olj2LqilNgvaFdYu4wcr2CTYkRkioFWUMxh6P5akpqmYZF5Tt8/00000000-0000-0000-0000-000000000000/_apis/distributedtask/hubs/Actions/plans/e60bb906-f0b9-4e90-b1f3-b53e15a08574/timelines/e60bb906-f0b9-4e90-b1f3-b53e15a08574/records/3a559e2a-952e-58d2-b8db-2e604a9266d7/feedstream?api-version=6.0-preview
+[2025-05-04 20:44:17Z INFO JobServer] Attempting to start websocket client with delay 00:00:00.
+[2025-05-04 20:44:17Z INFO JobServerQueue] Start process web console line queue.
+[2025-05-04 20:44:17Z INFO JobServerQueue] Start process file upload queue.
+[2025-05-04 20:44:17Z INFO JobServerQueue] Start results file upload queue.
+[2025-05-04 20:44:17Z INFO JobServerQueue] Starting results-based upload queue...
+[2025-05-04 20:44:17Z INFO JobServerQueue] Start process timeline update queue.
+[2025-05-04 20:44:17Z INFO ExecutionContext] Initialize GitHub context
+[2025-05-04 20:44:17Z INFO ExecutionContext] Initialize Env context
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:17Z INFO JobRunner] Starting the job execution context.
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:17Z INFO JobRunner] Validating directory permissions for: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Tools': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_tool'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Temp': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp'
+[2025-05-04 20:44:17Z INFO JobRunner] Getting job extension.
+[2025-05-04 20:44:17Z INFO JobRunner] Initialize job. Getting all job steps.
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known config file 'Credentials': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.credentials'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known config file 'SetupInfo': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/.setup_info'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:17Z INFO PipelineDirectoryManager] Loading tracking config if exists: /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_PipelineMapping/CSE2102-Spring25/CSE2102-Spring25-Team16/PipelineFolder.json
+[2025-05-04 20:44:17Z INFO PipelineDirectoryManager] Updating job run properties.
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:17Z INFO JobServer] Successfully started websocket client.
+[2025-05-04 20:44:17Z INFO JobExtension] Downloading actions
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:17Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'dfa7ae80-6890-4394-be37-5c4a590f3ca0', success rate: 1/1.
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:17Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:17Z INFO ActionManager] Save archive 'https://github.uconn.edu/api/v3/repos/actions/checkout/tarball/f43a0e5ff2bd294095638e18286ca9a3d1956744' into /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/_temp_7073ad2e-fed2-49ce-9189-10a74ea79f6f/94de8bbc-27de-4727-90e3-725918333638.tar.gz.
+[2025-05-04 20:44:17Z INFO JobServerQueue] Job timeline record has been updated for the first time.
+[2025-05-04 20:44:18Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'dfa7ae80-6890-4394-be37-5c4a590f3ca0', success rate: 1/1.
+[2025-05-04 20:44:18Z INFO ActionManager] Which2: 'tar'
+[2025-05-04 20:44:18Z INFO ActionManager] Location: '/usr/bin/tar'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   File name: '/usr/bin/tar'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Arguments: '-xzf "/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/_temp_7073ad2e-fed2-49ce-9189-10a74ea79f6f/94de8bbc-27de-4727-90e3-725918333638.tar.gz"'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/_temp_7073ad2e-fed2-49ce-9189-10a74ea79f6f/_staging'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper] Process started with process id 98975, waiting for process exit.
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper] Finished process 98975 with exit code 0, and elapsed time 00:00:00.0839397.
+[2025-05-04 20:44:18Z INFO ActionManager] Finished getting action repository.
+[2025-05-04 20:44:18Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:18Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:18Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:18Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:18Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:18Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:18Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:18Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:18Z INFO ActionManager] Save archive 'https://github.uconn.edu/api/v3/repos/actions/setup-python/tarball/65d7f2d534ac1bc67fcd62888c5f4f3d2cb2b236' into /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/_temp_d9740bd6-a84d-4bd9-b2d5-e1579501c394/e9ec0cbf-a720-4d9c-8109-7ec4ab7598a4.tar.gz.
+[2025-05-04 20:44:18Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'dfa7ae80-6890-4394-be37-5c4a590f3ca0', success rate: 1/1.
+[2025-05-04 20:44:18Z INFO ActionManager] Which2: 'tar'
+[2025-05-04 20:44:18Z INFO ActionManager] Location: '/usr/bin/tar'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   File name: '/usr/bin/tar'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Arguments: '-xzf "/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/_temp_d9740bd6-a84d-4bd9-b2d5-e1579501c394/e9ec0cbf-a720-4d9c-8109-7ec4ab7598a4.tar.gz"'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/_temp_d9740bd6-a84d-4bd9-b2d5-e1579501c394/_staging'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper] Process started with process id 98977, waiting for process exit.
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:44:18Z INFO ProcessInvokerWrapper] Finished process 98977 with exit code 0, and elapsed time 00:00:00.0730354.
+[2025-05-04 20:44:18Z INFO ActionManager] Finished getting action repository.
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 50,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 53,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 56,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 61,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 67,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 68,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 71,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-05-04 20:44:19Z INFO ActionManager] Action node.js file: dist/index.js, no more preparation.
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:19Z INFO ActionManager] Load action that reference repository from '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/actions/checkout/v3'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 50,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 53,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 56,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 61,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 67,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 68,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 71,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-05-04 20:44:19Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-05-04 20:44:19Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-05-04 20:44:19Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Ignore action property author.
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Ignore action property branding.
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Setup Python",
+  "description": "Set up a specific version of Python and add the command-line tools to the PATH.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 6,
+          "col": 3,
+          "lit": "python-version"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 8,
+          "col": 3,
+          "lit": "python-version-file"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "cache"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 13,
+          "col": 3,
+          "lit": "architecture"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 15,
+          "col": 3,
+          "lit": "check-latest"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 18,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 3,
+          "line": 20,
+          "col": 14,
+          "expr": "github.server_url == 'https://github.com' && github.token || ''"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 21,
+          "col": 3,
+          "lit": "cache-dependency-path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 23,
+          "col": 3,
+          "lit": "update-environment"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 25,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 3,
+          "lit": "allow-prereleases"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 28,
+          "col": 14,
+          "lit": "false"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/setup/index.js",
+    "pre": null,
+    "post": "dist/cache-save/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "success()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-05-04 20:44:19Z INFO ActionManager] Action node.js file: dist/setup/index.js, no more preparation.
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:19Z INFO ActionManager] Load action that reference repository from '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/actions/setup-python/v4'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Ignore action property author.
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Ignore action property branding.
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Setup Python",
+  "description": "Set up a specific version of Python and add the command-line tools to the PATH.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 6,
+          "col": 3,
+          "lit": "python-version"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 8,
+          "col": 3,
+          "lit": "python-version-file"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "cache"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 13,
+          "col": 3,
+          "lit": "architecture"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 15,
+          "col": 3,
+          "lit": "check-latest"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 18,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 3,
+          "line": 20,
+          "col": 14,
+          "expr": "github.server_url == 'https://github.com' && github.token || ''"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 21,
+          "col": 3,
+          "lit": "cache-dependency-path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 23,
+          "col": 3,
+          "lit": "update-environment"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 25,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 3,
+          "lit": "allow-prereleases"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 28,
+          "col": 14,
+          "lit": "false"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/setup/index.js",
+    "pre": null,
+    "post": "dist/cache-save/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "success()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-05-04 20:44:19Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-05-04 20:44:19Z INFO ActionManager] Action node.js file: dist/setup/index.js.
+[2025-05-04 20:44:19Z INFO ActionManager] Action post node.js file: dist/cache-save/index.js.
+[2025-05-04 20:44:19Z INFO JobExtension] Adding .
+[2025-05-04 20:44:19Z INFO JobExtension] Adding .
+[2025-05-04 20:44:19Z INFO JobExtension] Adding .
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:19Z INFO JobExtension] Total accessible running process: 302.
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO JobExtension] Start checking service connectivity in background.
+[2025-05-04 20:44:19Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "setup_job",
+  "type": "runner",
+  "stage": "Pre",
+  "stepId": "dfa7ae80-6890-4394-be37-5c4a590f3ca0",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 2,
+  "startTime": "2025-05-04T20:44:17.336094Z",
+  "finishTime": "2025-05-04T20:44:19.20957Z"
+}.
+[2025-05-04 20:44:19Z INFO JobRunner] Total job steps: 3.
+[2025-05-04 20:44:19Z INFO JobRunner] Run all job steps.
+[2025-05-04 20:44:19Z INFO StepsRunner] Processing step: DisplayName='Run actions/checkout@v3'
+[2025-05-04 20:44:19Z INFO StepsRunner] Evaluating: success()
+[2025-05-04 20:44:19Z INFO StepsRunner] Result: true
+[2025-05-04 20:44:19Z INFO StepsRunner] Starting the step.
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:19Z INFO ActionManager] Load action that reference repository from '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/actions/checkout/v3'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 50,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 53,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 56,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 61,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 67,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 68,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 71,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-05-04 20:44:19Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-05-04 20:44:19Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-05-04 20:44:19Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-05-04 20:44:19Z INFO ExecutionContext] Reserve record order 5 to 8 for post job actions.
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Temp': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp'
+[2025-05-04 20:44:19Z INFO ExecutionContext] Write event payload to /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp/_github_workflow/event.json
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Temp': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp'
+[2025-05-04 20:44:19Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathFileCommand, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvFileCommand, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.CreateStepSummaryCommand, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateFileCommand, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputFileCommand, Runner.Worker
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "CSE2102-Spring25/CSE2102-Spring25-Team16"
+}
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'ref': default value evaluate result: ""
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'ssh-key': default value evaluate result: ""
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'ssh-known-hosts': default value evaluate result: ""
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 50,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'path': default value evaluate result: ""
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 55,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 60,
+  "col": 14,
+  "lit": ""
+}
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 67,
+  "col": 14,
+  "lit": "1"
+}
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 70,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-04 20:44:19Z INFO ActionManifestManager] Input 'github-server-url': default value evaluate result: ""
+[2025-05-04 20:44:19Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.InternalPluginSetRepoPathCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMaskCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMatcherCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.RemoveMatcherCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.WarningCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.ErrorCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.NoticeCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.DebugCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.GroupCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EndGroupCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EchoCommandExtension, Runner.Worker
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command error
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command group
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-05-04 20:44:19Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:19Z INFO HostContext] Well known directory 'Externals': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/externals'
+[2025-05-04 20:44:19Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:44:19Z INFO ProcessInvokerWrapper]   File name: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/externals/node20/bin/node'
+[2025-05-04 20:44:19Z INFO ProcessInvokerWrapper]   Arguments: '"/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/actions/checkout/v3/dist/index.js"'
+[2025-05-04 20:44:19Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/CSE2102-Spring25-Team16/CSE2102-Spring25-Team16'
+[2025-05-04 20:44:19Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:44:19Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:44:19Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:44:19Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:44:19Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:44:19Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:44:19Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:44:19Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'dfa7ae80-6890-4394-be37-5c4a590f3ca0', success rate: 1/1.
+[2025-05-04 20:44:19Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:19Z INFO ProcessInvokerWrapper] Process started with process id 98986, waiting for process exit.
+[2025-05-04 20:44:19Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-05-04 20:44:19Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:19Z INFO AddMaskCommandExtension] Add new secret mask with length of 76
+[2025-05-04 20:44:19Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:20Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:20Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:20Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:21Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:23Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:25Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:25Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:25Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:26Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:26Z INFO JobServerQueue] Try to append 3 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 3/3.
+[2025-05-04 20:44:28Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:28Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:29Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:29Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:29Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:31Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:31Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:31Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:32Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:32Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:33Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:35Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:36Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:38Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:39Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:39Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:39Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:39Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:40Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:41Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:42Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:44Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:45Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:45Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:45Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:49Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:49Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:49Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:50Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:50Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:50Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:51Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:51Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:52Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:53Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:53Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:53Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:53Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:54Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:54Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:54Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:54Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper] Finished process 98986 with exit code 0, and elapsed time 00:00:37.2942852.
+[2025-05-04 20:44:56Z INFO CreateStepSummaryCommand] Step Summary file (/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp/_runner_file_commands/step_summary_d70ff043-af4d-44c1-913d-bf10b4b1b429) is empty; skipping attachment upload
+[2025-05-04 20:44:56Z INFO StepsRunner] Step result: 
+[2025-05-04 20:44:56Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v3",
+  "type": "node20",
+  "stage": "Main",
+  "stepId": "15680c87-f1fa-531c-c5eb-115a4d991ee9",
+  "stepContextName": "__actions_checkout",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [
+    "no submodule mapping found in .gitmodules for path 'backend/actions-runner/_work/CSE2102-Spring25-Team16/CSE2102-Spring25-Team16'",
+    "Unable to clean or reset the repository. The repository will be recreated instead."
+  ],
+  "executionTimeInSeconds": 38,
+  "startTime": "2025-05-04T20:44:19.22317Z",
+  "finishTime": "2025-05-04T20:44:56.597247Z"
+}.
+[2025-05-04 20:44:56Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-05-04 20:44:56Z INFO StepsRunner] Current state: job state = ''
+[2025-05-04 20:44:56Z INFO StepsRunner] Processing step: DisplayName='Run actions/setup-python@v4'
+[2025-05-04 20:44:56Z INFO StepsRunner] Evaluating: success()
+[2025-05-04 20:44:56Z INFO StepsRunner] Result: true
+[2025-05-04 20:44:56Z INFO StepsRunner] Starting the step.
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:56Z INFO ActionManager] Load action that reference repository from '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/actions/setup-python/v4'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:44:56Z INFO ActionManifestManager] Ignore action property author.
+[2025-05-04 20:44:56Z INFO ActionManifestManager] Ignore action property branding.
+[2025-05-04 20:44:56Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Setup Python",
+  "description": "Set up a specific version of Python and add the command-line tools to the PATH.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 6,
+          "col": 3,
+          "lit": "python-version"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 8,
+          "col": 3,
+          "lit": "python-version-file"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "cache"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 13,
+          "col": 3,
+          "lit": "architecture"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 15,
+          "col": 3,
+          "lit": "check-latest"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 18,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 3,
+          "line": 20,
+          "col": 14,
+          "expr": "github.server_url == 'https://github.com' && github.token || ''"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 21,
+          "col": 3,
+          "lit": "cache-dependency-path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 23,
+          "col": 3,
+          "lit": "update-environment"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 25,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 3,
+          "lit": "allow-prereleases"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 28,
+          "col": 14,
+          "lit": "false"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/setup/index.js",
+    "pre": null,
+    "post": "dist/cache-save/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "success()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-05-04 20:44:56Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-05-04 20:44:56Z INFO ActionManager] Action node.js file: dist/setup/index.js.
+[2025-05-04 20:44:56Z INFO ActionManager] Action post node.js file: dist/cache-save/index.js.
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Temp': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp'
+[2025-05-04 20:44:56Z INFO ExecutionContext] Write event payload to /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp/_github_workflow/event.json
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Temp': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp'
+[2025-05-04 20:44:56Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-05-04 20:44:56Z INFO ActionManifestManager] Input 'python-version-file': default value evaluate result: ""
+[2025-05-04 20:44:56Z INFO ActionManifestManager] Input 'cache': default value evaluate result: ""
+[2025-05-04 20:44:56Z INFO ActionManifestManager] Input 'architecture': default value evaluate result: ""
+[2025-05-04 20:44:56Z INFO ActionManifestManager] Input 'check-latest': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 17,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-04 20:44:56Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 20,
+  "col": 14,
+  "lit": ""
+}
+[2025-05-04 20:44:56Z INFO ActionManifestManager] Input 'cache-dependency-path': default value evaluate result: ""
+[2025-05-04 20:44:56Z INFO ActionManifestManager] Input 'update-environment': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 25,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-04 20:44:56Z INFO ActionManifestManager] Input 'allow-prereleases': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 28,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-04 20:44:56Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command error
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command group
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-05-04 20:44:56Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:56Z INFO HostContext] Well known directory 'Externals': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/externals'
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper]   File name: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/externals/node20/bin/node'
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper]   Arguments: '"/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/actions/setup-python/v4/dist/setup/index.js"'
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/CSE2102-Spring25-Team16/CSE2102-Spring25-Team16'
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:44:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record '15680c87-f1fa-531c-c5eb-115a4d991ee9', success rate: 1/1.
+[2025-05-04 20:44:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9757fc64-6aec-58eb-8422-b7e5a2ffd735', success rate: 1/1.
+[2025-05-04 20:44:56Z INFO ProcessInvokerWrapper] Process started with process id 99169, waiting for process exit.
+[2025-05-04 20:44:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9757fc64-6aec-58eb-8422-b7e5a2ffd735', success rate: 1/1.
+[2025-05-04 20:44:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9757fc64-6aec-58eb-8422-b7e5a2ffd735', success rate: 1/1.
+[2025-05-04 20:44:57Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-05-04 20:44:59Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:44:59Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:44:59Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:45:09Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:09Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:09Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:45:13Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9757fc64-6aec-58eb-8422-b7e5a2ffd735', success rate: 1/1.
+[2025-05-04 20:45:14Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9757fc64-6aec-58eb-8422-b7e5a2ffd735', success rate: 1/1.
+[2025-05-04 20:45:16Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9757fc64-6aec-58eb-8422-b7e5a2ffd735', success rate: 1/1.
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper] Finished process 99169 with exit code 1, and elapsed time 00:00:19.4163504.
+[2025-05-04 20:45:16Z INFO CreateStepSummaryCommand] Step Summary file (/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp/_runner_file_commands/step_summary_1b44a913-e965-41f2-9fe8-48bab1532cc5) is empty; skipping attachment upload
+[2025-05-04 20:45:16Z INFO StepsRunner] Step result: Failed
+[2025-05-04 20:45:16Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/setup-python",
+  "ref": "v4",
+  "type": "node20",
+  "stage": "Main",
+  "stepId": "9757fc64-6aec-58eb-8422-b7e5a2ffd735",
+  "stepContextName": "__actions_setup-python",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "failed",
+  "errorMessages": [
+    "mkdir: /Users/runner: Permission denied",
+    "The process '/bin/bash' failed with exit code 1"
+  ],
+  "executionTimeInSeconds": 20,
+  "startTime": "2025-05-04T20:44:56.604549Z",
+  "finishTime": "2025-05-04T20:45:16.081097Z"
+}.
+[2025-05-04 20:45:16Z INFO StepsRunner] Update job result with current step result 'Failed'.
+[2025-05-04 20:45:16Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-05-04 20:45:16Z INFO StepsRunner] Processing step: DisplayName='Run linter'
+[2025-05-04 20:45:16Z INFO StepsRunner] Evaluating: success()
+[2025-05-04 20:45:16Z INFO StepsRunner] Result: false
+[2025-05-04 20:45:16Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-05-04 20:45:16Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-05-04 20:45:16Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-05-04 20:45:16Z INFO StepsRunner] Processing step: DisplayName='Post Run actions/setup-python@v4'
+[2025-05-04 20:45:16Z INFO StepsRunner] Evaluating: success()
+[2025-05-04 20:45:16Z INFO StepsRunner] Result: false
+[2025-05-04 20:45:16Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-05-04 20:45:16Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-05-04 20:45:16Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-05-04 20:45:16Z INFO StepsRunner] Processing step: DisplayName='Post Run actions/checkout@v3'
+[2025-05-04 20:45:16Z INFO StepsRunner] Evaluating: always()
+[2025-05-04 20:45:16Z INFO StepsRunner] Result: true
+[2025-05-04 20:45:16Z INFO StepsRunner] Starting the step.
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:45:16Z INFO ActionManager] Load action that reference repository from '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/actions/checkout/v3'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Actions': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions'
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 50,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 53,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 56,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 61,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 67,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 68,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 71,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-05-04 20:45:16Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-05-04 20:45:16Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-05-04 20:45:16Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Temp': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp'
+[2025-05-04 20:45:16Z INFO ExecutionContext] Write event payload to /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp/_github_workflow/event.json
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Work': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Temp': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp'
+[2025-05-04 20:45:16Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "CSE2102-Spring25/CSE2102-Spring25-Team16"
+}
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'ref': default value evaluate result: ""
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'ssh-key': default value evaluate result: ""
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'ssh-known-hosts': default value evaluate result: ""
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 50,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'path': default value evaluate result: ""
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 55,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 60,
+  "col": 14,
+  "lit": ""
+}
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 67,
+  "col": 14,
+  "lit": "1"
+}
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 70,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "false"
+}
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "true"
+}
+[2025-05-04 20:45:16Z INFO ActionManifestManager] Input 'github-server-url': default value evaluate result: ""
+[2025-05-04 20:45:16Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command error
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command group
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-05-04 20:45:16Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:16Z INFO HostContext] Well known directory 'Externals': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/externals'
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper]   File name: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/externals/node20/bin/node'
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper]   Arguments: '"/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_actions/actions/checkout/v3/dist/index.js"'
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/CSE2102-Spring25-Team16/CSE2102-Spring25-Team16'
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:16Z INFO ProcessInvokerWrapper] Process started with process id 99278, waiting for process exit.
+[2025-05-04 20:45:16Z INFO JobServerQueue] Try to append 1 batches web console lines for record '02cf4222-baa6-4e44-8d68-808cce3eb598', success rate: 1/1.
+[2025-05-04 20:45:16Z INFO AddMaskCommandExtension] Add new secret mask with length of 32
+[2025-05-04 20:45:16Z INFO JobServerQueue] Try to append 1 batches web console lines for record '02cf4222-baa6-4e44-8d68-808cce3eb598', success rate: 1/1.
+[2025-05-04 20:45:16Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-05-04 20:45:16Z INFO JobServerQueue] Try to append 1 batches web console lines for record '02cf4222-baa6-4e44-8d68-808cce3eb598', success rate: 1/1.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99278 with exit code 0, and elapsed time 00:00:00.9746277.
+[2025-05-04 20:45:17Z INFO CreateStepSummaryCommand] Step Summary file (/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp/_runner_file_commands/step_summary_3f13b457-5ad7-4aa0-aa63-41c6eadb506c) is empty; skipping attachment upload
+[2025-05-04 20:45:17Z INFO StepsRunner] Step result: 
+[2025-05-04 20:45:17Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v3",
+  "type": "node20",
+  "stage": "Post",
+  "stepId": "02cf4222-baa6-4e44-8d68-808cce3eb598",
+  "result": "succeeded",
+  "errorMessages": [
+    "The process '/usr/bin/git' failed with exit code 128"
+  ],
+  "executionTimeInSeconds": 2,
+  "startTime": "2025-05-04T20:45:16.089201Z",
+  "finishTime": "2025-05-04T20:45:17.094048Z"
+}.
+[2025-05-04 20:45:17Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-05-04 20:45:17Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-05-04 20:45:17Z INFO JobRunner] Finalize job.
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:45:17Z INFO JobExtension] Initialize Env context
+[2025-05-04 20:45:17Z INFO JobExtension] Initialize steps context
+[2025-05-04 20:45:17Z INFO JobExtension] Total accessible running process: 309.
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99269 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99269 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99269 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99315, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99315 with exit code 0, and elapsed time 00:00:00.0342014.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99269
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99268 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99268 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99268 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99316, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99316 with exit code 0, and elapsed time 00:00:00.0264881.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99268
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99265 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99265 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99265 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99317, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99317 with exit code 0, and elapsed time 00:00:00.0224163.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99265
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99264 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99264 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99264 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99318, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99318 with exit code 0, and elapsed time 00:00:00.0276724.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99264
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99263 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99263 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99263 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99319, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99319 with exit code 0, and elapsed time 00:00:00.0245342.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99263
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99262 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99262 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99262 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99320, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99320 with exit code 0, and elapsed time 00:00:00.0204129.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99262
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99261 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99261 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99261 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99324, waiting for process exit.
+[2025-05-04 20:45:17Z INFO JobServerQueue] Try to append 1 batches web console lines for record '02cf4222-baa6-4e44-8d68-808cce3eb598', success rate: 1/1.
+[2025-05-04 20:45:17Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ea08f7de-9b7b-4abf-8973-ff6965bf2deb', success rate: 1/1.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99324 with exit code 0, and elapsed time 00:00:00.0316309.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99261
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99255 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99255 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99255 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99325, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99325 with exit code 0, and elapsed time 00:00:00.0293796.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99255
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99253 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99253 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99253 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99326, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99326 with exit code 0, and elapsed time 00:00:00.0307022.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99253
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99246 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99246 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99246 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99327, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99327 with exit code 0, and elapsed time 00:00:00.0437790.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99246
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99244 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99244 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99244 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99328, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99328 with exit code 0, and elapsed time 00:00:00.0929538.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99244
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99243 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99243 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99243 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99329, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99329 with exit code 0, and elapsed time 00:00:00.0447192.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99243
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99239 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99239 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99239 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99330, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99330 with exit code 0, and elapsed time 00:00:00.0239561.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99239
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99232 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99232 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99232 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99331, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99331 with exit code 0, and elapsed time 00:00:00.0209857.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99232
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99223 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99223 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99223 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99332, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99332 with exit code 0, and elapsed time 00:00:00.0207114.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99223
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99215 (mdworker_shared)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99215 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99215 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99333, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99333 with exit code 0, and elapsed time 00:00:00.0220274.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99215
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99128 (Google Chrome H)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99128 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99128 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99334, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99334 with exit code 0, and elapsed time 00:00:00.0217771.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99128
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99127 (Google Chrome H)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99127 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99127 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99335, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99335 with exit code 0, and elapsed time 00:00:00.0217225.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99127
+[2025-05-04 20:45:17Z INFO JobExtension] Inspecting process environment variables. PID: 99034 (Google Chrome H)
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Read env from output of `ps e -p 99034 -o command`
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:17Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Starting process:
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   File name: 'ps'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Arguments: 'e -p 99034 -o command'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Working directory: '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Process started with process id 99336, waiting for process exit.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-05-04 20:45:17Z INFO ProcessInvokerWrapper] Finished process 99336 with exit code 0, and elapsed time 00:00:00.0220158.
+[2025-05-04 20:45:17Z INFO LinuxProcessExtensions] Successfully dump environment variables for 99034
+[2025-05-04 20:45:17Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "complete_job",
+  "type": "runner",
+  "stage": "Post",
+  "stepId": "ea08f7de-9b7b-4abf-8973-ff6965bf2deb",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-05-04T20:45:17.10982Z",
+  "finishTime": "2025-05-04T20:45:17.729815Z"
+}.
+[2025-05-04 20:45:17Z INFO JobRunner] Job result after all job steps finish: Failed
+[2025-05-04 20:45:17Z INFO JobRunner] Completing the job execution context.
+[2025-05-04 20:45:17Z INFO JobRunner] Shutting down the job server queue.
+[2025-05-04 20:45:17Z INFO JobServerQueue] Fire signal to shutdown all queues.
+[2025-05-04 20:45:18Z INFO JobServerQueue] All queue process task stopped.
+[2025-05-04 20:45:18Z INFO JobServerQueue] Stop aggressive process web console line queue.
+[2025-05-04 20:45:18Z INFO JobServerQueue] Web console line queue drained.
+[2025-05-04 20:45:18Z INFO JobServerQueue] Uploading 3 files in one shot.
+[2025-05-04 20:45:18Z INFO JobServerQueue] Try to upload 3 log files or attachments, success rate: 3/3.
+[2025-05-04 20:45:18Z INFO JobServerQueue] File upload queue drained.
+[2025-05-04 20:45:18Z INFO JobServerQueue] Starting results-based upload queue...
+[2025-05-04 20:45:18Z INFO JobServerQueue] Results upload queue drained.
+[2025-05-04 20:45:18Z INFO JobServerQueue] Timeline update queue drained.
+[2025-05-04 20:45:18Z INFO JobServerQueue] Disposing job server ...
+[2025-05-04 20:45:18Z INFO JobServerQueue] Disposing results server ...
+[2025-05-04 20:45:18Z INFO JobServerQueue] All queue process tasks have been stopped, and all queues are drained.
+[2025-05-04 20:45:18Z INFO TempDirectoryManager] Cleaning runner temp folder: /Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_work/_temp
+[2025-05-04 20:45:19Z INFO HostContext] Well known directory 'Bin': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/bin'
+[2025-05-04 20:45:19Z INFO HostContext] Well known directory 'Root': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner'
+[2025-05-04 20:45:19Z INFO HostContext] Well known directory 'Diag': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag'
+[2025-05-04 20:45:19Z INFO HostContext] Well known config file 'Telemetry': '/Users/ashleynegron/CSE2102-Spring25-Team16/actions-runner/_diag/.telemetry'
+[2025-05-04 20:45:19Z INFO JobRunner] Raising job completed event
+[2025-05-04 20:45:19Z INFO Worker] Job completed.
