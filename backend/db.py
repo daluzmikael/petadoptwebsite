@@ -119,3 +119,27 @@ def has_user_rsvped(user_id, event_id):
     exists = c.fetchone()
     conn.close()
     return exists is not None
+
+def search_pets_by_query(query):
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("""
+        SELECT id, name, species, breed, age, allergen, temperament
+        FROM pets
+        WHERE 
+            species LIKE ? OR 
+            breed LIKE ? OR 
+            CAST(age AS TEXT) LIKE ? OR 
+            allergen LIKE ? OR 
+            temperament LIKE ?
+    """, (f"%{query}%",)*5)
+    rows = c.fetchall()
+    conn.close()
+    return [
+        {
+            "id": row[0], "name": row[1], "species": row[2],
+            "breed": row[3], "age": row[4],
+            "allergen": row[5], "temperament": row[6]
+        }
+        for row in rows
+    ]
