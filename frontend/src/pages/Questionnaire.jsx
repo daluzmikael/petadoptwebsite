@@ -7,10 +7,10 @@ export default function Questionnaire() {
   const navigate = useNavigate();
 
   const questions = [
-    "How old are you?", "How active are you?", "Did you have pets growing up?", "Scared of hospitals?",
-    "Would be tolerant?", "Compromises to illness?", "Financial limitation?", "Grew up in suburbia or farm?",
-    "Who else do you live?", "Work remotely?", "How many pets this household?", "Height/Weight?",
-    "Kids?", "Older people living with you?"
+    "How old are you?", "How active are you?", "Did you have pets growing up?", "Are you scared of hospitals?",
+    "Would be a tolerant owner?", "Compromises to illness?", "Any financial limitations?", "Did you grow up on a farm?",
+    "Who else do you live with?", "Do you work remotely?", "How many other pets this household?", "What is your Height/Weight?",
+    "Do you have any kids?", "How many older people living with you?"
   ];
 
   const handleSubmit = (e) => {
