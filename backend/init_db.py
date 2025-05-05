@@ -99,11 +99,11 @@ def init_db():
 
     # Sample pets
     pets = [
-        ('Max', 'Dog', 'Golden Retriever', 3, 'None', 'family-friendly', 1, '/placeholder.jpg'),
-        ('Lily', 'Cat', 'Siamese', 2, 'None', 'quiet', 2, '/placeholder.jpg'),
-        ('Bella', 'Dog', 'Beagle', 5, 'None', 'energetic', 3, '/placeholder.jpg'),
-        ('Shadow', 'Cat', 'Persian', 4, 'None', 'calm', 4, '/placeholder.jpg'),
-        ('Oreo', 'Rabbit', 'Dutch', 1, 'Hay', 'quiet', 5, '/placeholder.jpg'),
+        ('Max', 'Dog', 'Golden Retriever', 3, 'None', 'family-friendly', 1, '/public/max.jpg'),
+        ('Lily', 'Cat', 'Siamese', 2, 'None', 'quiet', 2, '/public/lily.jpg'),
+        ('Bella', 'Dog', 'Beagle', 5, 'None', 'energetic', 3, '/public/bella.jpg'),
+        ('Shadow', 'Cat', 'Persian', 4, 'None', 'calm', 4, '/public/shadow.jpg'),
+        ('Oreo', 'Rabbit', 'Dutch', 1, 'Hay', 'quiet', 5, '/public/oreo.jpg'),
         ('Coco', 'Dog', 'French Bulldog', 3, 'None', 'loyal', 6, '/placeholder.jpg'),
         ('Pepper', 'Cat', 'Bengal', 2, 'None', 'playful', 7, '/placeholder.jpg'),
         ('Milo', 'Hamster', 'Syrian', 1, 'Dust', 'independent', 8, '/placeholder.jpg'),

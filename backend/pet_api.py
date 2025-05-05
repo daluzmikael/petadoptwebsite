@@ -41,6 +41,34 @@ def save_pet(pet_id):
         if conn:
             conn.close()
 
+            
+@pet_api.route('/pets/saved/<int:user_id>', methods=['GET'])
+def get_saved_pets(user_id):
+    """
+    Get all saved pets for a user
+    """
+    pets = get_saved_pets_for_user(user_id)
+    return jsonify(pets)
+
+
+@pet_api.route('/pets/search', methods=['GET'])
+def search_pets_by_query_route():
+    query = request.args.get('query', '').strip()
+    if not query:
+        return jsonify(get_all_pets())
+    results = search_pets_by_query(query)
+    print(f"Query: {query}, Matches: {len(results)}")
+    return jsonify(results)
+
+
+=======
+        return jsonify({"message": f"Pet {pet_id} saved for user {user_id}"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    finally:
+        if conn:
+            conn.close()
+
 @pet_api.route('/pets/<int:pet_id>/unsave', methods=['DELETE'])
 def unsave_pet(pet_id):
     data = request.get_json()
