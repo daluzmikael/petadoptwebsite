@@ -17,17 +17,28 @@ export default function Questionnaire() {
     e.preventDefault();
     const userId = localStorage.getItem("userId");
 
-    fetch("http://localhost:5000/api/questionnaire", {
+    if (!userId) {
+      alert("You must be logged in to submit the questionnaire.");
+      return;
+    }
+
+    fetch("http://localhost:5000/api/questionnaire/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user_id: userId, answers })
     })
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error("Failed to submit questionnaire");
+        return res.json();
+      })
       .then(data => {
         alert("Questionnaire submitted!");
         navigate("/matching");
       })
-      .catch(err => console.error("Submit failed:", err));
+      .catch(err => {
+        console.error("Submit failed:", err);
+        alert("Failed to submit questionnaire. Try again.");
+      });
   };
 
   return (

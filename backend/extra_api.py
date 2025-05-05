@@ -77,17 +77,3 @@ def un_rsvp_event(event_id):
 
     return jsonify({"message": f"RSVP removed for event {event_id}"}), 200
 
-@extra_api.route('/questionnaire', methods=['POST'])
-def submit_questionnaire():
-    data = request.get_json()
-    user_id = data.get("user_id")
-    answers = data.get("answers")
-
-    conn = get_connection()
-    c = conn.cursor()
-
-    c.execute("INSERT INTO questionnaires (user_id, answers) VALUES (?, ?)", (user_id, json.dumps(answers)))
-    conn.commit()
-    conn.close()
-
-    return jsonify({"message": "Questionnaire submitted"})
