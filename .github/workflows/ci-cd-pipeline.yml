@@ -10,6 +10,7 @@ jobs:
   lint:
     name: Lint Python Code
     runs-on: self-hosted
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -22,16 +23,18 @@ jobs:
         with:
           python-version: '3.9'
 
-      #- name: Install and Run flake8
-        #run: |
-          #python -m pip install --upgrade pip
-          #pip install flake8
-          #flake8 .
+      # Commented out pylint run step for now
+      # - name: Install Pylint
+      #   run: pip install pylint
+
+      # - name: Run Pylint
+      #   run: pylint **/*.py
 
   tests:
     name: Run Tests
     runs-on: self-hosted
     needs: lint
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -41,17 +44,18 @@ jobs:
         with:
           python-version: '3.9'
 
-      #- name: Install Dependencies and Run Pytest
-        #run: |
-         #python -m pip install --upgrade pip
-          #pip install -r backend/requirements.txt
-          #pip install pytest
-          #pytest tests/
+      # Commented out pytest run step for now
+      # - name: Install Dependencies
+      #   run: pip install -r requirements.txt
+
+      # - name: Run Pytests
+      #   run: pytest
 
   docker:
     name: Build and Test Docker Container
     runs-on: self-hosted
     needs: tests
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -79,9 +83,21 @@ jobs:
           echo "Waiting a moment before checking the container..."
           sleep 10
 
-      - name: Wait for Container to be Ready
+      - name: Check Docker Logs
         run: |
-          echo "Waiting for container to be ready..."
+          docker logs team16-backend
+
+      - name: Check if API is running inside the container
+        run: |
+          docker exec team16-backend ps aux
+
+      - name: Confirm Docker Port Mapping
+        run: |
+          docker ps --filter "name=team16-backend"
+
+      - name: Wait for the container to be ready
+        run: |
+          echo "Waiting for the container to be ready..."
           timeout=0
           until curl -s http://${{ steps.docker_ip.outputs.container_ip }}:5001/api/users; do
             if [ $timeout -ge 60 ]; then
@@ -99,26 +115,33 @@ jobs:
       - name: Get Docker Container IP
         id: docker_ip
         run: |
+          # Get the container ID of the running container
           CONTAINER_ID=$(docker ps -q --filter "name=team16-backend")
+          
+          # If no container is running, exit the script with an error message
           if [ -z "$CONTAINER_ID" ]; then
             echo "Error: No container found for team16-backend."
             exit 1
           fi
+
+          # Get the container IP address
           CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_ID)
           echo "::set-output name=container_ip::$CONTAINER_IP"
 
       - name: Test Docker API Endpoint
         run: |
+          # Make the curl call more reliable by ensuring the container is ready
           echo "Testing API endpoint..."
           until curl -s http://${{ steps.docker_ip.outputs.container_ip }}:5001/api/users; do
             echo "Waiting for container to respond..."
-            sleep 5
+            sleep 5  # Retry every 5 seconds until the API responds
           done
 
   cleanup:
     name: Cleanup Workspace
     runs-on: self-hosted
     needs: docker
+
     steps:
       - name: Clean Git Repository
         run: |
