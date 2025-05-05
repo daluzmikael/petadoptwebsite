@@ -23,14 +23,6 @@ jobs:
         with:
           python-version: '3.9'
 
-      # Temporarily disabled
-      # - name: Install and Run flake8
-      #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip install flake8
-      #     flake8
-      # test
-
   tests:
     name: Run Tests
     runs-on: self-hosted
@@ -44,16 +36,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-
-      # Temporarily disabled
-      # - name: Install Dependencies and Run Pytest
-      #   run: |
-      #     pip install --upgrade pip
-      #     pip install -r backend/requirements.txt
-      #     pip install pytest requests
-      #     python backend/init_db.py
-      #     cd backend/tests
-      #     pytest --maxfail=1 --disable-warnings -q
 
   docker:
     name: Build and Test Docker Container
@@ -82,9 +64,10 @@ jobs:
       - name: Run Docker Container
         id: docker
         run: |
-          echo "Waiting a moment before starting the container..."
-          sleep 3
-          docker run -d -p 5001:5000 team16-backend
+          echo "Starting the Docker container..."
+          docker run -d -p 5001:5000 --name team16-backend team16-backend
+          echo "Waiting a moment before checking the container..."
+          sleep 10
 
       - name: Wait for the container to be ready
         run: |
@@ -98,7 +81,7 @@ jobs:
         id: docker_ip
         run: |
           # Get the container ID of the running container
-          CONTAINER_ID=$(docker ps -q --filter "ancestor=team16-backend")
+          CONTAINER_ID=$(docker ps -q --filter "name=team16-backend")
           
           # If no container is running, exit the script with an error message
           if [ -z "$CONTAINER_ID" ]; then
