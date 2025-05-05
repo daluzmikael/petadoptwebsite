@@ -94,7 +94,4 @@ jobs:
         run: |
           git reset --hard
           git clean -fdx
-      - name: Fix Directory Permissions
-        run: |
-          sudo chown -R $(whoami):$(whoami) /home/runner/work/CSE2102-Spring25-Team16
-          sudo chmod -R 755 /home/runner/work/CSE2102-Spring25-Team16
+      
