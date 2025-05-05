@@ -27,7 +27,7 @@ export default function Nav() {
         <nav className="nav-links">
           <Link to="/landing" onClick={() => setOpen(false)}>Home</Link>
           <Link to="/adopt" onClick={() => setOpen(false)}>Adopt</Link>
-          <Link to="/saved" onClick={() => setOpen(false)}>Saved</Link>
+          <Link to="/saved" onClick={() => setOpen(false)}>Account</Link>
           <Link to="/faq" onClick={() => setOpen(false)}>FAQ</Link>
           <Link to="/events" onClick={() => setOpen(false)}>Events</Link>
           <Link to="/guide" onClick={() => setOpen(false)}>Guide</Link>

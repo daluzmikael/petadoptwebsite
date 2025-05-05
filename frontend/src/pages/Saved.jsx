@@ -48,7 +48,7 @@ export default function Saved() {
     <div className="saved-page">
       <h2 className="saved-title">Your Saved Pets & Events</h2>
 
-      <h3>🐾 Pets</h3>
+      <h3></h3>
       <div className="saved-grid">
         {pets.map(p => (
           <div key={p.id} className="pet-card">
@@ -69,7 +69,7 @@ export default function Saved() {
         ))}
       </div>
 
-      <h3 className="mt-8">📅 RSVPed Events</h3>
+      <h3 className="mt-8"></h3>
       <div className="saved-grid">
         {events.map(e => (
           <div key={e.id} className="pet-card">
