@@ -1,5 +1,5 @@
 name: CI/CD Pipeline
-#test
+
 on:
   push:
     branches: [main, develop]
@@ -69,20 +69,6 @@ jobs:
 
       - name: Build Docker Image
         run: docker build -t team16-backend ./backend
-
-      - name: Install lsof
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends lsof
-
-      - name: Kill Processes Using Port 5000 (Cautious Approach - Without sudo)
-        run: |
-          PROCESS_ID=$(lsof -ti:5000)
-          if [ -n "$PROCESS_ID" ]; then
-            echo "Found process(es) using port 5000: $PROCESS_ID"
-            echo "Attempting to kill these process(es)..."
-            kill -9 $PROCESS_ID
-          fi
 
       - name: Stop and Remove Existing Docker Containers
         run: |
