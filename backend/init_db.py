@@ -71,6 +71,18 @@ def init_db():
             info TEXT NOT NULL
         )
     ''')
+    # Questionnaire responses
+    c.execute('''
+    CREATE TABLE IF NOT EXISTS questionnaire_responses (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER,
+        question TEXT NOT NULL,
+        answer TEXT NOT NULL,
+        FOREIGN KEY(user_id) REFERENCES users(id)
+    )
+    ''')   
+
+
 
     # Sample users 
     users = [

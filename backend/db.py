@@ -144,3 +144,23 @@ def search_pets_by_query(query):
         for row in rows
     ]
 
+
+    return [{
+        "id": row[0],
+        "name": row[1],
+        "species": row[2],
+        "breed": row[3],
+        "age": row[4],
+        "allergen": row[5],
+        "temperament": row[6]
+    } for row in rows]
+
+def get_questionnaire_responses():
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("SELECT user_id, question, answer FROM questionnaire_responses")
+    rows = c.fetchall()
+    conn.close()
+    return [{"user_id": row[0], "question": row[1], "answer": row[2]} for row in rows]
+
+
