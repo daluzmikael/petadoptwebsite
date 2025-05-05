@@ -59,11 +59,18 @@ def save_pet(pet_id):
     data = request.get_json()
     user_id = data.get("user_id")
 
-    conn = get_connection()
-    c = conn.cursor()
-    c.execute("INSERT INTO saved_pets (user_id, pet_id) VALUES (?, ?)", (user_id, pet_id))
-    conn.commit()
-    conn.close()
+    try:
+        conn = get_connection()
+        c = conn.cursor()
+        c.execute("INSERT INTO saved_pets (user_id, pet_id) VALUES (?, ?)", (user_id, pet_id))
+        conn.commit()
+    except sqlite3.OperationalError as e:
+        if "database is locked" in str(e):
+            return jsonify({"error": "Database is busy. Please try again shortly."}), 503
+        else:
+            return jsonify({"error": str(e)}), 500
+    finally:
+        conn.close()
 
     return jsonify({"message": f"Pet {pet_id} saved for user {user_id}"}), 200
 
@@ -86,31 +93,19 @@ def get_saved_pets(user_id):
     ])
 
 
-def search_pets_by_query(query):
-    conn = get_connection()
-    c = conn.cursor()
-    c.execute("""
-        SELECT id, name, species, breed, age, allergen, temperament
-        FROM pets
-        WHERE 
-            species LIKE ? OR 
-            breed LIKE ? OR 
-            CAST(age AS TEXT) LIKE ? OR 
-            allergen LIKE ? OR 
-            temperament LIKE ?
-    """, (f"%{query}%",)*5)
-    rows = c.fetchall()
-    conn.close()
-    return [
-        {
-            "id": row[0], "name": row[1], "species": row[2],
-            "breed": row[3], "age": row[4],
-            "allergen": row[5], "temperament": row[6]
-        }
-        for row in rows
-    ]
 
-@pet_api.route('/api/pets/<int:pet_id>/unsave', methods=['DELETE'])
+@pet_api.route('/pets/search', methods=['GET'])
+def search_pets_by_query_route():
+    query = request.args.get('query', '').strip()
+    if not query:
+        return jsonify(get_all_pets())
+    results = search_pets_by_query(query)
+    print(f"Query: {query}, Matches: {len(results)}")
+    return jsonify(results)
+
+
+
+@pet_api.route('/pets/<int:pet_id>/unsave', methods=['DELETE'])
 def unsave_pet(pet_id):
     data = request.get_json()
     user_id = data.get("user_id")
