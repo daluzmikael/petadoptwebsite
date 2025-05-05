@@ -1,6 +1,5 @@
-// src/pages/Events.jsx
 import { useState, useEffect } from 'react';
-import EventCard from '../components/EventCard';
+import './Events.css';
 
 export default function Events() {
   const [events, setEvents] = useState([]);
@@ -24,10 +23,19 @@ export default function Events() {
       .catch(err => console.error("RSVP error:", err));
   };
 
+  const EventCard = ({ title, date, location, onRSVP }) => (
+    <div className="event-card">
+      <h3 className="event-title">{title}</h3>
+      <p className="event-details">📅 {date}</p>
+      <p className="event-details">📍 {location}</p>
+      <button className="event-button" onClick={onRSVP}>RSVP</button>
+    </div>
+  );
+
   return (
-    <div className="p-6">
-      <h2 className="text-3xl font-bold mb-6 text-center">Upcoming Events</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="events-page">
+      <h2 className="events-title">Upcoming Events</h2>
+      <div className="events-grid">
         {events.map((event) => (
           <EventCard
             key={event.id}
