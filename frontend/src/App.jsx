@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Nav from './components/nav';
 
 import Login from './pages/Login';
-import CreateAccount from './pages/CreateAccount'; // ✅ Added import
+import CreateAccount from './pages/CreateAccount';
 import Landing from './pages/Landing';
 import Adopt from './pages/Adopt';
 import Saved from './pages/Saved';
@@ -27,7 +27,7 @@ function App() {
       <div className="min-h-screen bg-white text-black font-sans">
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/create-account" element={<CreateAccount />} /> {/* ✅ Added route */}
+          <Route path="/create-account" element={<CreateAccount />} /> {}
           <Route path="/landing" element={<Landing />} />
           <Route path="/adopt" element={<Adopt />} />
           <Route path="/saved" element={<Saved />} />

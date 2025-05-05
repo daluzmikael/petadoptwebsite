@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Questionnaire.css'; // ✅ Import the custom CSS
+import './Questionnaire.css';
 
 export default function Questionnaire() {
   const [answers, setAnswers] = useState({});
