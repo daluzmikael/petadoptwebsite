@@ -84,7 +84,7 @@ jobs:
         run: |
           echo "Waiting a moment before starting the container..."
           sleep 3
-          docker run -d -p 5000:5000 team16-backend
+          docker run -d -p 5001:5000 team16-backend  # Changed to port 5001
 
       - name: Wait for the container to be ready
         run: |
@@ -102,9 +102,9 @@ jobs:
 
       - name: Test Docker API Endpoint
         run: |
-          # Make the curl call more reliable by ensuring the container is ready
+          # Test the API endpoint using the updated port 5001
           echo "Testing API endpoint..."
-          until curl -s http://${{ steps.docker_ip.outputs.container_ip }}:5000/api/users; do
+          until curl -s http://${{ steps.docker_ip.outputs.container_ip }}:5001/api/users; do  # Updated to port 5001
             echo "Waiting for container to respond..."
             sleep 5  # Retry every 5 seconds until the API responds
           done
