@@ -54,7 +54,7 @@ jobs:
 
       - name: Stop and Remove Existing Docker Containers
         run: |
-          CONTAINER_IDS=$(docker ps -aqf "ancestor=team16-backend")
+          CONTAINER_IDS=$(docker ps -aqf "name=team16-backend")
           if [ -n "$CONTAINER_IDS" ]; then
             echo "Stopping and removing existing container(s)..."
             docker stop $CONTAINER_IDS
@@ -74,7 +74,7 @@ jobs:
       - name: Check Docker Container Status
         run: docker ps
 
-      # Commenting out the Test Docker API Endpoint section
+      # Commented out the Test Docker API Endpoint step
       # - name: Test Docker API Endpoint
       #   run: |
       #     # Make the curl call more reliable by ensuring the container is ready
