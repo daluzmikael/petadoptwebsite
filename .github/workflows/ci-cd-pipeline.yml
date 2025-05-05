@@ -70,6 +70,16 @@ jobs:
       - name: Build Docker Image
         run: docker build -t team16-backend ./backend
 
+      - name: Kill Processes Using Port 5000 (Cautious Approach)
+        run: |
+          sudo apt-get update && sudo apt-get install -y lsof # Ensure lsof is installed
+          PROCESS_ID=$(sudo lsof -ti:5000)
+          if [ -n "$PROCESS_ID" ]; then
+            echo "Found process(es) using port 5000: $PROCESS_ID"
+            echo "Attempting to kill these process(es)..."
+            sudo kill -9 $PROCESS_ID
+          fi
+
       - name: Run Docker Container
         id: docker
         run: |
@@ -80,6 +90,8 @@ jobs:
             docker stop $CONTAINER_IDS
             docker rm -f $CONTAINER_IDS
           fi
+          echo "Waiting for a moment before starting the new container..."
+          sleep 5
           docker run -d -p 5000:5000 team16-backend
 
       - name: Wait for the container to be ready
