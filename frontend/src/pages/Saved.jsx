@@ -1,59 +1,63 @@
 import { useEffect, useState } from "react";
 import "./Saved.css";
+import { apiRequest, getPetImage } from "../api";
 
 export default function Saved() {
   const [pets, setPets] = useState([]);
   const [events, setEvents] = useState([]);
+  const [error, setError] = useState('');
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/pets/saved/${userId}`)
-      .then(res => res.json())
-      .then(data => setPets(data));
-
-    fetch(`http://localhost:5000/api/events/rsvped/${userId}`)
-      .then(res => res.json())
-      .then(data => setEvents(data));
+    Promise.all([
+      apiRequest(`/api/pets/saved/${userId}`),
+      apiRequest(`/api/events/rsvped/${userId}`),
+    ])
+      .then(([savedPets, savedEvents]) => {
+        setPets(savedPets);
+        setEvents(savedEvents);
+      })
+      .catch(err => setError(err.message));
   }, [userId]);
 
   const handleUnsavePet = (petId) => {
-    fetch(`http://localhost:5000/api/pets/${petId}/unsave`, {
+    apiRequest(`/api/pets/${petId}/unsave`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user_id: userId }),
     })
-      .then(res => res.json())
       .then(data => {
         alert(data.message);
         setPets(prev => prev.filter(pet => pet.id !== petId));
       })
-      .catch(err => console.error("Unsave failed:", err));
+      .catch(err => setError(err.message));
   };
 
   const handleUnRSVP = (eventId) => {
-    fetch(`http://localhost:5000/api/events/${eventId}/rsvp`, {
+    apiRequest(`/api/events/${eventId}/rsvp`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user_id: userId }),
     })
-      .then(res => res.json())
       .then(data => {
         alert(data.message);
         setEvents(prev => prev.filter(e => e.id !== eventId));
       })
-      .catch(err => console.error("Un-RSVP failed:", err));
+      .catch(err => setError(err.message));
   };
 
   return (
     <div className="saved-page">
       <h2 className="saved-title">Your Saved Pets & Events</h2>
+      {error ? <p className="page-error">{error}</p> : null}
 
-      <h3></h3>
+      <h3 className="saved-section-title">Saved Pets</h3>
+      {pets.length === 0 ? <p className="saved-empty">No saved pets yet.</p> : null}
       <div className="saved-grid">
         {pets.map(p => (
           <div key={p.id} className="pet-card">
             <img
-              src={`/images/${p.image || "placeholder.jpg"}`}
+              src={getPetImage(p)}
               className="pet-image"
               alt={p.name || "Saved Pet"}
             />
@@ -69,7 +73,8 @@ export default function Saved() {
         ))}
       </div>
 
-      <h3 className="mt-8"></h3>
+      <h3 className="saved-section-title">Event RSVPs</h3>
+      {events.length === 0 ? <p className="saved-empty">No event RSVPs yet.</p> : null}
       <div className="saved-grid">
         {events.map(e => (
           <div key={e.id} className="pet-card">

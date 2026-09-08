@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Login.css';
+import { apiRequest } from '../api';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -9,29 +10,22 @@ export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
 
-    fetch("http://localhost:5000/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ email, password })
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.user) {
-          localStorage.setItem("userEmail", data.user.email);
-          localStorage.setItem("userId", data.user.id);
-          navigate("/landing");
-        } else {
-          setError("Login failed: user not found.");
-        }
-      })
-      .catch(() => {
-        setError("Login failed: network or server error.");
+    try {
+      const data = await apiRequest("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
+      localStorage.setItem("userEmail", data.user.email);
+      localStorage.setItem("userId", data.user.id);
+      navigate("/landing");
+    } catch (err) {
+      setError(err.message || "Login failed. Make sure the backend is running.");
+    }
   };
 
   const loginRedirectMsg = new URLSearchParams(location.search).get("error") === "login_required"
@@ -71,7 +65,7 @@ export default function Login() {
           <button type="submit" className="login-button">Log In</button>
           {error && <p className="login-error">{error}</p>}
           <p className="login-footer">
-            Don’t have an account? <a href="/create-account" className="login-link">Create one</a>
+            Don’t have an account? <Link to="/create-account" className="login-link">Create one</Link>
           </p>
         </form>
       </div>

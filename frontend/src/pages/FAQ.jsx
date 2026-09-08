@@ -1,20 +1,6 @@
 import './FAQ.css';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function FAQ() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const userEmail = localStorage.getItem("userEmail");
-    if (!userEmail) {
-      // Delay redirect slightly to let router mount properly
-      setTimeout(() => {
-        navigate("/?error=login_required");
-      }, 0);
-    }
-  }, [navigate]);
-
   const questions = [
     {
       question: "How do I adopt a pet?",

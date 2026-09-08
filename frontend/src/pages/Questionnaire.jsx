@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Questionnaire.css';
+import { apiRequest } from '../api';
 
 export default function Questionnaire() {
   const [answers, setAnswers] = useState({});
@@ -13,7 +14,7 @@ export default function Questionnaire() {
     "Do you have any kids?", "How many older people living with you?"
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const userId = localStorage.getItem("userId");
 
@@ -22,23 +23,17 @@ export default function Questionnaire() {
       return;
     }
 
-    fetch("http://localhost:5000/api/questionnaire/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_id: userId, answers })
-    })
-      .then(res => {
-        if (!res.ok) throw new Error("Failed to submit questionnaire");
-        return res.json();
-      })
-      .then(data => {
-        alert("Questionnaire submitted!");
-        navigate("/matching");
-      })
-      .catch(err => {
-        console.error("Submit failed:", err);
-        alert("Failed to submit questionnaire. Try again.");
+    try {
+      await apiRequest("/api/questionnaire/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId, answers }),
       });
+      alert("Questionnaire submitted!");
+      navigate("/matching");
+    } catch (err) {
+      alert(err.message || "Failed to submit questionnaire. Try again.");
+    }
   };
 
   return (

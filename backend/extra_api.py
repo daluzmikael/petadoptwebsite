@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify, request
-from db import save_rsvp_for_user, get_rsvped_events_for_user, get_connection
-import json
+from db import get_all_events, get_rsvped_events_for_user, remove_rsvp_for_user, save_rsvp_for_user
 
 extra_api = Blueprint('extra_api', __name__)
 
@@ -42,15 +41,11 @@ def get_adoption_status():
 # Events API
 @extra_api.route('/events', methods=['GET'])
 def get_events():
-    return jsonify([
-        {"id": 1, "name": "Spring Pet Fair", "date": "2025-05-01"},
-        {"id": 2, "name": "Adoption Meet & Greet", "date": "2025-05-15"},
-        {"id": 3, "name": "Puppy Yoga", "date": "2025-05-10"}
-    ])
+    return jsonify(get_all_events())
 
 @extra_api.route('/events/<int:event_id>/rsvp', methods=['POST'])
 def rsvp_event(event_id):
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     user_id = data.get("user_id")
     if not user_id:
         return jsonify({"error": "User ID required"}), 400
@@ -64,16 +59,12 @@ def get_user_rsvped_events(user_id):
 
 @extra_api.route('/events/<int:event_id>/rsvp', methods=['DELETE'])
 def un_rsvp_event(event_id):
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     user_id = data.get("user_id")
     if not user_id:
         return jsonify({"error": "User ID required"}), 400
 
-    conn = get_connection()
-    c = conn.cursor()
-    c.execute("DELETE FROM rsvped_events WHERE user_id = ? AND event_id = ?", (user_id, event_id))
-    conn.commit()
-    conn.close()
+    remove_rsvp_for_user(user_id, event_id)
 
     return jsonify({"message": f"RSVP removed for event {event_id}"}), 200
 

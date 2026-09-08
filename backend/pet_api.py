@@ -1,12 +1,11 @@
 from flask import Blueprint, jsonify, request
 from db import (
     search_pets_by_query,
-    get_connection,
     get_all_pets,
     get_pet_by_id,
-    search_pets_by_species,
     save_pet_for_user,
-    get_saved_pets_for_user
+    unsave_pet_for_user,
+    get_saved_pets_for_user,
 )
 
 '''Pets API'''
@@ -28,32 +27,25 @@ def get_pet(pet_id):
 
 @pet_api.route('/pets/<int:pet_id>/save', methods=['POST'])
 def save_pet(pet_id):
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     user_id = data.get("user_id")
-
-    conn = None
+    if not user_id:
+        return jsonify({"error": "User ID required"}), 400
+    if not get_pet_by_id(pet_id):
+        return jsonify({"error": "Pet not found"}), 404
     try:
-        conn = get_connection()
-        c = conn.cursor()
-        c.execute("INSERT INTO saved_pets (user_id, pet_id) VALUES (?, ?)", (user_id, pet_id))
-        conn.commit()
+        save_pet_for_user(user_id, pet_id)
         return jsonify({"message": f"Pet {pet_id} saved for user {user_id}"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-    finally:
-        if conn:
-            conn.close()
 
 @pet_api.route('/pets/<int:pet_id>/unsave', methods=['DELETE'])
 def unsave_pet(pet_id):
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     user_id = data.get("user_id")
-
-    conn = get_connection()
-    c = conn.cursor()
-    c.execute("DELETE FROM saved_pets WHERE user_id = ? AND pet_id = ?", (user_id, pet_id))
-    conn.commit()
-    conn.close()
+    if not user_id:
+        return jsonify({"error": "User ID required"}), 400
+    unsave_pet_for_user(user_id, pet_id)
 
     return jsonify({"message": f"Pet {pet_id} unsaved for user {user_id}"}), 200
 
@@ -64,9 +56,8 @@ def get_saved_pets(user_id):
 
 @pet_api.route('/pets/search', methods=['GET'])
 def search_pets_by_query_route():
-    query = request.args.get('query', '').strip()
+    query = (request.args.get('query') or request.args.get('species') or '').strip()
     if not query:
         return jsonify(get_all_pets())
     results = search_pets_by_query(query)
-    print(f"Query: {query}, Matches: {len(results)}")
     return jsonify(results)

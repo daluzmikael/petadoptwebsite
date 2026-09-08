@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI
 
 on:
   push:
@@ -6,92 +6,44 @@ on:
   pull_request:
     branches: [main, develop]
 
+permissions:
+  contents: read
+
 jobs:
-  lint:
-    name: Lint Python Code
-    runs-on: self-hosted
-
+  backend-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Initialize Git Submodules
-        run: git submodule update --init --recursive
-
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
 
-  tests:
-    name: Run Tests
-    runs-on: self-hosted
-    needs: lint
-
+  frontend-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          python-version: '3.9'
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run build
 
-  docker:
-    name: Build and Test Docker Container
-    runs-on: self-hosted
-    needs: tests
-
+  docker-builds:
+    runs-on: ubuntu-latest
+    needs: [backend-tests, frontend-build]
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Build Docker Image
-        run: docker build -t team16-backend ./backend
-
-      - name: Stop and Remove Existing Docker Containers
-        run: |
-          CONTAINER_IDS=$(docker ps -aqf "name=team16-backend")
-          if [ -n "$CONTAINER_IDS" ]; then
-            echo "Stopping and removing existing container(s)..."
-            docker stop $CONTAINER_IDS
-            docker rm -f $CONTAINER_IDS
-          fi
-      - name: Run Docker Container
-        id: docker
-        run: |
-          echo "Starting the Docker container..."
-          docker run -d -p 5001:5000 --name team16-backend team16-backend
-          echo "Waiting a moment before checking the container..."
-          sleep 10
-      - name: Wait for the container to be ready
-        run: |
-          echo "Waiting for the container to be ready..."
-          sleep 15  # Increased wait time for the container to be fully up
-      - name: Check Docker Container Status
-        run: docker ps
-
-      # Commented out the Test Docker API Endpoint step
-      # - name: Test Docker API Endpoint
-      #   run: |
-      #     # Make the curl call more reliable by ensuring the container is ready
-      #     echo "Testing API endpoint..."
-      #     until curl -s http://${{ steps.docker_ip.outputs.container_ip }}:5001/api/users; do
-      #       echo "Waiting for container to respond..."
-      #       sleep 5  # Retry every 5 seconds until the API responds
-      #     done
-
-  cleanup:
-    name: Cleanup Workspace
-    runs-on: self-hosted
-    needs: docker
-
-    steps:
-      - name: Clean Git Repository
-        run: |
-          git reset --hard
-          git clean -fdx
-      
+      - uses: actions/checkout@v4
+      - run: docker build -t team16-backend ./backend
+      - run: docker build -t team16-frontend ./frontend

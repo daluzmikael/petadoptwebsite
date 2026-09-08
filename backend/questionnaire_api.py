@@ -1,10 +1,10 @@
 from flask import Blueprint, jsonify, request
-from db import get_connection, get_questionnaire_responses
+from db import get_questionnaire_responses, save_questionnaire_responses
 questionnaire_api = Blueprint('questionnaire_api', __name__)
 
 @questionnaire_api.route('/questionnaire/submit', methods=['POST'])
 def submit_questionnaire():
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     user_id = data.get("user_id")
     responses = data.get("responses") or data.get("answers")
 
@@ -12,18 +12,14 @@ def submit_questionnaire():
         return jsonify({"error": "Invalid request"}), 400
 
     if isinstance(responses, dict):
-        formatted = [(user_id, f"Q{idx}", answer) for idx, answer in responses.items()]
+        formatted = [(f"Q{idx}", str(answer)) for idx, answer in responses.items()]
     else:
-        formatted = [(user_id, r["question"], r["answer"]) for r in responses]
+        try:
+            formatted = [(str(item["question"]), str(item["answer"])) for item in responses]
+        except (KeyError, TypeError):
+            return jsonify({"error": "Invalid responses"}), 400
 
-    conn = get_connection()
-    c = conn.cursor()
-    c.executemany(
-        "INSERT INTO questionnaire_responses (user_id, question, answer) VALUES (?, ?, ?)",
-        formatted
-    )
-    conn.commit()
-    conn.close()
+    save_questionnaire_responses(user_id, formatted)
 
     return jsonify({"message": "Questionnaire submitted"})
 

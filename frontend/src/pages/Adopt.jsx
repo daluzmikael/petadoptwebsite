@@ -1,50 +1,42 @@
 // src/pages/Adopt.jsx
 
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './Adopt.css';
+import { apiRequest, getPetImage } from '../api';
 
 export default function Adopt() {
   const [pets, setPets] = useState([]);
-  const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    if (!userId) {
-      navigate("/?error=login_required");
-    }
-  }, [navigate]);
-
-  useEffect(() => {
-    fetch("http://localhost:5000/api/pets")
-      .then((res) => res.json())
-      .then((data) => setPets(data))
-      .catch((err) => console.error("Failed to fetch pets:", err));
+    apiRequest("/api/pets")
+      .then(setPets)
+      .catch((err) => setError(err.message));
   }, []);
 
   const handleSave = (petId) => {
     const userId = localStorage.getItem("userId");
 
-    fetch(`http://localhost:5000/api/pets/${petId}/save`, {
+    apiRequest(`/api/pets/${petId}/save`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ user_id: userId })
     })
-      .then(res => res.json())
       .then(data => alert(data.message))
-      .catch(err => console.error("Save failed:", err));
+      .catch(err => setError(err.message));
   };
 
   return (
     <div className="adopt-page">
       <h2 className="adopt-title">Available Pets</h2>
+      {error ? <p className="page-error">{error}</p> : null}
       <div className="pets-grid">
         {pets.map((pet) => (
           <div key={pet.id} className="pet-card">
             <img
-              src={`/images/${pet.image}`}
+              src={getPetImage(pet)}
               alt={pet.name}
               className="pet-image"
             />

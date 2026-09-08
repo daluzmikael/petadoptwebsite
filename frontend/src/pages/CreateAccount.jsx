@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./CreateAccount.css";
+import { apiRequest } from "../api";
 
 export default function CreateAccount() {
   const [name, setName] = useState('');
@@ -9,23 +10,20 @@ export default function CreateAccount() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
 
-    fetch("http://localhost:5000/api/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password })
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to create account");
-        return res.json();
-      })
-      .then(() => navigate("/"))
-      .catch((err) => {
-        console.error(err);
-        setError("Account creation failed.");
+    try {
+      await apiRequest("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
       });
+      navigate("/");
+    } catch (err) {
+      setError(err.message || "Account creation failed.");
+    }
   };
 
   return (
@@ -48,7 +46,7 @@ export default function CreateAccount() {
           <button type="submit" className="create-account-button">Create Account</button>
           {error && <p className="create-account-error">{error}</p>}
           <p className="create-account-footer">
-            Already have an account? <a href="/" className="create-account-link">Log in</a>
+            Already have an account? <Link to="/" className="create-account-link">Log in</Link>
           </p>
         </form>
       </div>

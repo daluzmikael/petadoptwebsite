@@ -1,7 +1,7 @@
 // src/App.jsx
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Routes, Route, useLocation } from 'react-router-dom';
 
 import Nav from './components/nav';
 
@@ -18,8 +18,12 @@ import Matching from './pages/Matching';
 
 function App() {
   const location = useLocation();
-  const isLoggedIn = localStorage.getItem("userEmail");
-  const hideNav = location.pathname === "/";
+  const isLoggedIn = Boolean(localStorage.getItem("userId"));
+  const hideNav = location.pathname === "/" || location.pathname === "/create-account";
+
+  const protectedPage = (page) => (
+    isLoggedIn ? page : <Navigate to="/?error=login_required" replace />
+  );
 
   return (
     <>
@@ -27,15 +31,16 @@ function App() {
       <div className="min-h-screen bg-white text-black font-sans">
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/create-account" element={<CreateAccount />} /> {}
-          <Route path="/landing" element={<Landing />} />
-          <Route path="/adopt" element={<Adopt />} />
-          <Route path="/saved" element={<Saved />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/guide" element={<Guide />} />
-          <Route path="/questionnaire" element={<Questionnaire />} />
-          <Route path="/matching" element={<Matching />} />
+          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/landing" element={protectedPage(<Landing />)} />
+          <Route path="/adopt" element={protectedPage(<Adopt />)} />
+          <Route path="/saved" element={protectedPage(<Saved />)} />
+          <Route path="/faq" element={protectedPage(<FAQ />)} />
+          <Route path="/events" element={protectedPage(<Events />)} />
+          <Route path="/guide" element={protectedPage(<Guide />)} />
+          <Route path="/questionnaire" element={protectedPage(<Questionnaire />)} />
+          <Route path="/matching" element={protectedPage(<Matching />)} />
+          <Route path="*" element={<Navigate to={isLoggedIn ? "/landing" : "/"} replace />} />
         </Routes>
       </div>
     </>

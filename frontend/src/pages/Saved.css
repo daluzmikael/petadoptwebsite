@@ -1,7 +1,5 @@
 .saved-page {
-  padding: 2rem;
-  padding-left: 25rem;
-  padding-right: 25rem;
+  padding: 3rem clamp(1rem, 5vw, 4rem);
   font-family: 'Segoe UI', sans-serif;
   background-color: #cfe7fe;
   min-height: 100vh;
@@ -32,6 +30,15 @@
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+.saved-section-title {
+  max-width: 1200px;
+  margin: 0 auto 1.25rem;
+  color: #1a3c63;
+  font-size: 1.5rem;
 }
 
 .pet-image {

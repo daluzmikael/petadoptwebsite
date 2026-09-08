@@ -1,8 +1,12 @@
 import sqlite3
 
+from db import DB_PATH
+
 def init_db():
-    conn = sqlite3.connect('database.db')
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
+    c.execute("PRAGMA foreign_keys = ON")
 
     # Users table 
     c.execute('''
@@ -125,10 +129,12 @@ def init_db():
         ('Buster', 'Dog', 'Boxer', 5, 'None', 'not-kid-friendly', 8, '/placeholder.jpg')
     ]
 
-    c.executemany(
-        "INSERT OR IGNORE INTO pets (name, species, breed, age, allergen, temperament, owner_id, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-        pets
-    )
+    pet_count = c.execute("SELECT COUNT(*) FROM pets").fetchone()[0]
+    if pet_count == 0:
+        c.executemany(
+            "INSERT INTO pets (name, species, breed, age, allergen, temperament, owner_id, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            pets
+        )
 
     # Sample events
     events = [

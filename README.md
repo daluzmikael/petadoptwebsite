@@ -1,105 +1,68 @@
-# Pet-Website
-Konrad Koc  kok20002
+# Pet Adoption Portal
 
-Ashley Negron amn20017
+Spring 2025 CSE 2102 Team 16 project by Konrad Koc, Ashley Negron, Mikael Daluz, and Von Lindenthal.
 
-Mikael Daluz mcd21017
+The application has a Flask/SQLite API and a React frontend. The API initializes its database automatically, so a clean clone can start without a checked-in database file.
 
-Von Lindenthal vml21004
+## Run locally
 
-Trello Board Link: https://trello.com/b/uu1cemtE/cse2102-project
+Requirements: Python 3.10 or newer and Node.js 20 or newer.
 
-Figma Prototype Link: https://www.figma.com/proto/vge47by7dz4RJa5QVwpjz1/CSE-2102-Project-Prototype?node-id=0-1&t=dOAkwKwEU7wwRfE0-1
+In the first terminal:
 
----
+```bash
+cd backend
+python -m venv venv
+# Windows: venv\Scripts\activate
+# macOS/Linux: source venv/bin/activate
+python -m pip install -r requirements.txt
+python main.py
+```
 
-## Project Structure Backend
-1. Git clone our repo
-   
-   `git clone <https://github.uconn.edu/CSE2102-Spring25/CSE2102-Spring25-Team16.git>`
+In a second terminal:
 
-2. Use a vm for this to run
-   
-   `python3 -m venv venv`
+```bash
+cd frontend
+npm ci
+npm start
+```
 
-   `source venv/bin/activate`
+Open <http://localhost:3000>. A seeded login is `alice@example.com` with password `password123`, or create a new account.
 
-3. Go into backend directory
+The frontend uses `http://localhost:5000` by default. Set `REACT_APP_API_URL` before building or starting the frontend when the API is hosted elsewhere. Set `PET_ADOPTION_DB_PATH` to override the backend database location.
 
-   `cd backend`
+## Run with Docker
 
-4. Install dependencies
+From the repository root:
 
-   `pip install -r requirements.txt`
+```bash
+docker compose up --build
+```
 
-5. Initialize the DB
-   
-   `python init_db.py`
+Then open <http://localhost:3000>. The API and Swagger UI are available at <http://localhost:5000> and <http://localhost:5000/apidocs>.
 
-6. Run the Backend API Server (or run from docker, steps below)
-   
-   `python main.py`
+## Verify
 
-- http://127.0.0.1:5000 <- server address
-- /api/pets <- pets
-- /api/users <- users
-- /apidocs <- Swagger UI doc
+```bash
+cd backend
+python -m unittest discover -s tests -v
 
+cd ../frontend
+npm run build
+```
 
-### Docker
+The same checks run in GitHub Actions for pushes and pull requests to `main` and `develop`.
 
-(run from root and vm)
-
-`docker build -t team16-backend ./backend`
-
-`docker run -p 5000:5000 team16-backend`
-
-
-
-### API Endpoints Summary
+## Main API endpoints
 
 | Endpoint | Method | Description |
-|-------------|---------|----------|
-| `/api/users` | `GET` | Get all users
-| `/api/register` | `POST` | Register a user
-| `/api/login` | `POST` | Login with email
-| `/api/profile` | `GET/PUT` | Get or update profile (user ID 1 for demo)
-| `/api/pets` | `GET` | Get all pets
-| `/api/pets/search?species=cat` | `GET` | Filter pets by species
-| `/api/pets/<id>` | `GET` | Get pet by ID
-| `/api/pets/<id>/save` | `POST` | Save pet
-| `/api/pets/saved` | `GET` |  Get saved pets
-| `/apidocs` | `GET` | Swagger UI interactive docs
-
-(`/api/pets/<id>/save` and `/api/pets/saved`  have full functionality)
-
----
-
-## Frontend Structure (check Doceker below)
-
-1. Navigate to the frontend directory
-
-`cd frontend`
-
-2. Install dependencies (only run once)
-
-`npm install`
-
-3. Start the development server:
-
-`npm start`
-
-### Docker Setup
-
-run with vm
-
-Build Docker image 
-
-From the `/frontend` directory: `docker build -t pet-frontend .`
-
-Run it
-
-`docker run -p 3000:3000 pet-frontend`
-
-
-
+| --- | --- | --- |
+| `/api/register` | `POST` | Create an account |
+| `/api/login` | `POST` | Log in with email and password |
+| `/api/pets` | `GET` | List available pets |
+| `/api/pets/search?query=cat` | `GET` | Search pet fields |
+| `/api/pets/<id>/save` | `POST` | Save a pet for a user |
+| `/api/pets/saved/<user_id>` | `GET` | List a user's saved pets |
+| `/api/events` | `GET` | List events |
+| `/api/events/<id>/rsvp` | `POST`, `DELETE` | Add or remove an RSVP |
+| `/api/questionnaire/submit` | `POST` | Save questionnaire answers |
